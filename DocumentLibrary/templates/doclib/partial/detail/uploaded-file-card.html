@@ -1,0 +1,23 @@
+{% spaceless %}
+    <div class="row">
+        {% for document in documents %}
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    {#                    <img class="card-img-top" src="{{ document.files.url }}" width="50" height="250" alt="Card image cap">#}
+                    <div class="card-body">
+                        <h5>{{ document.title }}</h5>
+                        <p class="card-text">{{ document.short_description }}</p>
+                        <div class="d-flex flex-md-row flex-lg-row flex-sm-column  flex-xs-row justify-content-between">
+                            <a href="{% url 'doclib:download-file' document.file|stringformat:"s" %}" class="">Download</a>
+
+                            <form method="post" action="{% url 'doclib:delete-file' document.pk %}">
+                                {% csrf_token %}
+                                <input type="submit" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endspaceless %}

@@ -1,0 +1,33 @@
+{% load static %}
+
+<div class="col-12">
+    <table id="table" class="table table-bordered table-hover w-100">
+        <thead>
+        <tr>
+            {% block thead %}
+                <th>Action</th>
+                <th>{{ assignee|default:'Name' }}</th>
+                <th>{{ subject|default:'Category' }}</th>
+            {% endblock %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for material in materials %}
+            <tr>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-primary" href="{% url 'warehouse:material_detail' pk=material.pk %}#content">View</a>
+                        <a class="btn btn-danger"  href="{% url 'warehouse:material_update' pk=material.pk %}#content">Update</a>
+                    </div>
+                </td>
+                <td class="text-center">{{ material.name }}</td>
+                <td class="text-center">{{ material.get_category_display }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% block javascript %}
+    <script src="{% static "js/datatable_configuration.js" %}"></script>
+{% endblock %}

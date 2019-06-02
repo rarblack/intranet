@@ -1,0 +1,48 @@
+<div class="navigation-title">
+    ACTION BUTTONS
+</div>
+<div class="navigation-panel">
+    <a class="navigation-box" href="{% url 'helpdesk:ticket_create' %}">
+        This is CREATE
+    </a>
+</div>
+{% if user %}
+    <div class="navigation-title">
+        Common buttons
+    </div>
+    <div class="navigation-panel">
+        {% for pattern in default_navigation_patterns %}
+
+            <a class="navigation-box" href="{% url 'helpdesk:tickets_list' pattern=pattern.0 %}">
+                {{ pattern.1 }}
+            </a>
+        {% endfor %}
+    </div>
+
+    {% if user.is_staff %}
+        <div class="navigation-title">
+            ICT STAFF ONLY
+        </div>
+        <div class="navigation-panel">
+            {% for pattern in ict_staff_navigation_patterns %}
+                <a class="navigation-box" href="{% url 'helpdesk:tickets_list' pattern=pattern.0 %}">
+                    {{ pattern.1 }}
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if user.is_admin %}
+        <div class="navigation-title">
+            ICT HEAD ONLY
+        </div>
+        <div class="navigation-panel">
+            {% for pattern in ict_head_navigation_patterns %}
+                <a class="navigation-box" href="{% url 'helpdesk:tickets_list' pattern=pattern.0 %}">
+                    {{ pattern.1 }}
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endif %}

@@ -1,0 +1,27 @@
+<div id="nav-scroller" class="nav-scroller nav-scroller-sticky-top bg-white shadow-sm">
+    <nav class="nav nav-underline">
+        <a class="nav-link" href="{% url 'news:article_create' %}/#content">Create a Article</a>
+        <a class="nav-link" href="{% url 'news:articles_list' pattern='my/open' %}/#content">List my open Articles</a>
+{#        <a class="nav-link" href="{% url 'news:articles_list' pattern='my/processing' %}/#content">List my processing Articles</a>#}
+        <a class="nav-link" href="{% url 'news:articles_list' pattern='my/closed' %}/#content">List my closed Articles</a>
+        <a class="nav-link" href="{% url 'news:articles_list' pattern='my/closed' %}/#content">List my closed Articles</a>
+        {% if user.profile.department == 5 or user.is_superuser%}
+            {% if user.is_staff or user.is_superuser or user.is_HEAD%}
+                <a class="nav-link" href="{% url 'news:tag_create' %}/#content">Create a Tag</a>
+                <a class="nav-link" href="{% url 'news:tags_list'%}/#content">List Tags</a>
+                <a class="nav-link" href="{% url 'news:articles_list' pattern='all/open' %}/#content">All open articles</a>
+{#                <a class="nav-link" href="{% url 'news:articles_list' pattern='to/me/assigned' %}/#content">To me assigned articles</a>#}
+{#                <a class="nav-link" href="{% url 'news:articles_list' pattern='by/me/assigned' %}/#content">By me assigned articles</a>#}
+{#                <a class="nav-link" href="{% url 'news:articles_list' pattern='by/me/accepted' %}/#content">By me accepted articles</a>#}
+{#                <a class="nav-link" href="{% url 'news:articles_list' pattern='by/me/distagded' %}/#content">By me distagded articles</a>#}
+                <a class="nav-link" href="{% url 'news:articles_list' pattern='by/me/closed' %}/#content">By me closed articles</a>
+                {% if user.is_HEAD or user.is_superuser%}
+{#                    <a class="nav-link" href="{% url 'news:articles_list' pattern='all/accepted' %}/#content">All accepted articles</a>#}
+{#                    <a class="nav-link" href="{% url 'news:articles_list' pattern='all/assigned' %}/#content">All assigned articles</a>#}
+{#                    <a class="nav-link" href="{% url 'news:articles_list' pattern='all/distagded' %}/#content">All distagded articles</a>#}
+                    <a class="nav-link" href="{% url 'news:articles_list' pattern='all/closed' %}/#content">All closed articles</a>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </nav>
+</div>

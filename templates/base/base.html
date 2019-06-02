@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+
+    <!-- Title -->
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Custom links -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logoes/socar-favicon.png' %}">
+    <link rel="stylesheet" href="{% static "css/sidebar.css" %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/basics.css' %}">
+    <link rel="stylesheet" href="{% static "css/nav-scroller.css" %}">
+
+    <!-- Library links -->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/mdb/mdb.min.css' %}">
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/datatable/datatables.min.css' %}"/>
+</head>
+
+<body class="fixed-sn black-skin">
+
+
+
+<div class="container-fluid w-90">
+    <!-- Sidebar -->
+
+
+    {% include 'base/blocks/sidebar_block.html' %}
+
+    <div id="welcome-container">
+        <div id="welcome-content">
+            {% include 'base/blocks/navbar_block.html' %}
+            {% block nav-scroller %}
+            {% endblock %}
+            <hr>
+            {% include 'base/blocks/random_info_block.html' %}
+            <hr>
+            {% include 'base/blocks/footer_block.html' %}
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+        <main id="content" class="row justify-content-center align-items-center m-0 p-0 bg-white py-5" role="main">
+            <div class="row justify-content-center align-items-center w-100">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+    {% endif %}
+
+</div>
+
+
+
+
+<!-- Custom scripts -->
+<script src="{% static 'js/custom.js' %}"></script>
+
+<!-- Library scripts -->
+<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'vendor/datatable/datatables.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'vendor/mdb/mdb.min.js' %}"></script>
+
+<script>
+
+    // SideNav Initialization
+    $(".button-collapse").sideNav();
+
+    new WOW().init();
+
+</script>
+{% block javascript %}
+{% endblock %}
+</body>
+
+</html>

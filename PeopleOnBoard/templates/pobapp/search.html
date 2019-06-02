@@ -1,0 +1,110 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'assets/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/block.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/JQuery-UI-1.12.1/jquery-ui.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'assets/JQuery-UI-1.12.1/jquery-ui.js' %}" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+    //adding datepicker in the datepicker class
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+    //adding tooltip to the page
+        $( function() {
+            $( document ).tooltip();
+        } );
+    //adding datepicker to the tag in add_starttimeid id
+        $(function() {
+            $('#add_starttimeid').datepicker({
+                zIndex: 2048,
+            });
+        });
+    </script>
+{% endblock %}
+
+
+{% block s2nav %}
+    <a class="nav-link" href="{% url 'dashboard'%}"><i class="fas fa-home"></i><br>Dashboard</a>
+    {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'admin:index'%}"><i class="fas fa-cogs"></i><br>Admin panel</a>
+    {% endif %}
+    <a class="nav-link active" href=""><i class="fas fa-search"></i><br>Search</a>
+
+    <a id="addlink" class="nav-link" href="" data-toggle="modal" data-target="#addModal" ><i class="fas fa-plus"></i><br>Add</a>
+
+    <a class="nav-link" href="{% url 'update'%}"><i class="fas fa-edit"></i><br>Update</a>
+{% endblock %}
+
+
+{% block content %}
+    <div class="jumbotron cbg-white shadow-sm cmt-xs cmt-sm cmt-md cmt-lg cmt-xlg">
+
+        <form id="form" class="form-inline m-0"  method="POST">
+
+            {% csrf_token %}
+
+            <div class=" cform-md-group cform-xs-group col-md-12 mt-md-2 mb-md-4 col-lg-12 mt-lg-2 mb-lg-4">
+                {{ form.assigned_work_place }}
+                <input type="text" name="start_time" id="search_starttimeid" class="form-control col-md-3 mr-md-5 col-lg-3 mr-lg-5 datepicker" autocomplete="off" readonly="readonly" placeholder="Starts time" required />
+                <input type="text" name="end_time" id="endtimeid" class="form-control col-md-3 mr-md-5 col-lg-3 mr-lg-5 datepicker" autocomplete="off" readonly="readonly" placeholder="End time" required />
+            </div>
+
+            <div class="cform-md-group cform-xs-group col-md-12 mt-md-2 mb-md-4 col-lg-12 mt-lg-2 mb-lg-4">
+                <input type="text" class="form-control col-md-3 mr-md-5 ml-md-5 col-lg-3 mr-lg-5 ml-lg-5" name="company" placeholder="Company name">
+                <input type="text" class="form-control col-md-3 mr-md-5 col-lg-3 mr-lg-5" name="work_id" placeholder="Work id">
+                <input type="text" class="form-control col-md-3 mr-md-5 col-lg-3 mr-lg-5" name="id_card" placeholder="Id card">
+            </div>
+
+            <div class="cform-md-group cform-xs-group col-md-12 mt-md-2 mb-md-4 col-lg-12 mt-lg-2 mb-lg-4">
+                {{ form.profession }}
+                {{ form.transport }}
+                <button class="btn btn-outline-info btn-lg cmt-xs col-sm-3 col-xs-12 col-md-3 col-lg-3" type="submit">Search</button>
+            </div>
+
+        </form>
+    </div>
+
+
+    <!-- Modal -->
+
+    <div id="addModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add instance</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addform" class="form" method="POST" action="{% url 'add' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ formadd.employee }}
+                        </div>
+                        <div class="form-group">
+                            {{ formadd.assigned_work_place }}
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="start_time" id="add_starttimeid" class="form-control" autocomplete="off" readonly="readonly" placeholder="Starts time" />
+                        </div>
+                        <div class="form-group">
+                            <input name="note" id="noteid" class="form-control" placeholder="Additional note">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

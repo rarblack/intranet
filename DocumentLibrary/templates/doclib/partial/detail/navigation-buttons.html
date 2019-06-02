@@ -1,0 +1,10 @@
+{% spaceless %}
+    <div class="mb-5" style="display: flex;justify-content: space-around;flex-direction: row;">
+        <a class="btn btn-gradient-primary" href="{% url 'doclib:view-uploaded-files'%}">
+            <span>View uploaded files</span>
+        </a>
+            <a class="btn btn-gradient-primary" href="{% url 'doclib:upload-files' %}">
+                <span>Upload files</span>
+            </a>
+    </div>
+{% endspaceless %}

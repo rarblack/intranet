@@ -1,0 +1,35 @@
+{% load static %}
+
+<div class="col-12">
+    <table id="table" class="table table-bordered table-hover w-100">
+        <thead>
+        <tr>
+            {% block thead %}
+                <th>Action</th>
+                <th>{{ brand|default:'Brand' }}</th>
+                <th>{{ model|default:'Model' }}</th>
+                <th>{{ type|default:'Type' }}</th>
+            {% endblock %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-primary" href="{% url 'transportation:car_detail' pk=car.pk %}/#page-content">View</a>
+                        <a class="btn btn-danger"  href="{% url 'transportation:car_update' pk=car.pk %}/#page-content">Update</a>
+                    </div>
+                </td>
+                <td class="text-center">{{ car.get_brand_display }}</td>
+                <td class="text-center">{{ car.get_model_display }}</td>
+                <td class="text-center">{{ car.get_type_display }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% block javascript %}
+    <script src="{% static "js/datatable_configuration.js" %}"></script>
+{% endblock %}

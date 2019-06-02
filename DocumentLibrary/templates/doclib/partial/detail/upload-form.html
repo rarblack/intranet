@@ -1,0 +1,38 @@
+{% load crispy_forms_tags %}
+
+
+<div class="col-lg-8 col-md-8 col-xs-12">
+    <h2 class="card-title">Create an Article</h2>
+    <form class="forms-sample" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="form-group col-md-12 mb-0" style="margin-top:30px;">
+                <label>Secondary-image upload</label>
+                <div class="input-group col-xs-12">
+                    <p id="id_uploaded_secondary_image" class="form-control file-upload-info"><span class="text-muted" >Uploaded file's full name</span></p>
+                    <span class="input-group-append">
+                    <input id="id_secondary_image" type="file" name="secondary_image" class="file-upload-browse btn btn-gradient-primary" style="display: none;" />
+                    <button type="button" id="id_button_upload_secondary_image" class="file-upload-browse btn btn-gradient-primary  button_upload">Upload</button>
+                </span>
+                </div>
+            </div>
+        </div>
+        <button  type="submit" class="btn btn-primary mr-0 my-4 float-right">Create</button>
+    </form>
+</div>
+
+{% block js %}
+    <script>
+
+        $(document).ready(function () {
+            $('#id_button_upload_secondary_image').click(function () {
+                $('#id_secondary_image').click();
+            });
+            $('#id_secondary_image').change(function(e){
+                let fileName = e.target.files[0].name
+                $('#id_uploaded_secondary_image').html(fileName)
+            });
+
+        });
+    </script>
+{% endblock%}

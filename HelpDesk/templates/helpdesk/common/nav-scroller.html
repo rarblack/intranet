@@ -1,0 +1,24 @@
+<div id="nav-scroller" class="nav-scroller nav-scroller-sticky-top bg-white shadow-sm">
+    <nav class="nav nav-underline">
+        <a class="nav-link" href="{% url 'helpdesk:ticket_create' %}/#page-content">Create a Ticket</a>
+        <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='my/open' %}/#page-content">List my open Tickets</a>
+        <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='my/processing' %}/#page-content">List my processing Tickets</a>
+        <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='my/closed' %}/#page-content">List my closed Tickets</a>
+        {% if user.profile.department == 4 or user.is_superuser%}
+            {% if user.is_staff or user.is_superuser or user.is_HEAD%}
+                <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='all/open' %}/#page-content">All open tickets</a>
+                <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='to/me/assigned' %}/#page-content">To me assigned tickets</a>
+                <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='by/me/assigned' %}/#page-content">By me assigned tickets</a>
+                <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='by/me/accepted' %}/#page-content">By me accepted tickets</a>
+                <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='by/me/discarded' %}/#page-content">By me discarded tickets</a>
+                <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='by/me/closed' %}/#page-content">By me closed tickets</a>
+                {% if user.is_HEAD or user.is_superuser%}
+                    <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='all/accepted' %}/#page-content">All accepted tickets</a>
+                    <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='all/assigned' %}/#page-content">All assigned tickets</a>
+                    <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='all/discarded' %}/#page-content">All discarded tickets</a>
+                    <a class="nav-link" href="{% url 'helpdesk:tickets_list' pattern='all/closed' %}/#page-content">All closed tickets</a>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </nav>
+</div>

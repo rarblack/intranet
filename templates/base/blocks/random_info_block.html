@@ -1,0 +1,179 @@
+{% load static %}
+
+{% spaceless %}
+    <div class="container-fluid">
+
+        <div class="row justify-content-between px-4">
+
+            {% for article in latest_articles %}
+                <!-- Card Light -->
+                <div class="card">
+
+                    <!-- Card image -->
+                    <div class="view zoom overlay">
+                        <img class="card-img-top" src="{% if article.secondary_image %}{{ article.secondary_image.url }}{% else %}https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg{% endif %}" alt="Card image cap">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body p-c-lg-4 p-c-md-1">
+
+                        <!-- Social shares button -->
+                        <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+                        <!-- Title -->
+                        <h4 class="card-title">{{ article.subject }}</h4>
+                        <hr>
+                        <!-- Text -->
+                        <p class="card-text">{{ article.introduction }}</p>
+                        <!-- Link -->
+                        <a href="{% url 'news:article_template' pk=article.pk %}#content" class="black-text d-flex justify-content-end"><h5>Read more <i class="fas fa-angle-double-right"></i></h5></a>
+
+                    </div>
+
+                </div>
+                <!-- Card Light -->
+            {% endfor %}
+        </div>
+
+        <hr class="mx-2">
+
+        <div class="row justify-content-between px-4">
+
+            {% for employee in newest_employees.0 %}
+                <!-- Card -->
+                <div class="card card-cascade wider">
+                    <!-- Card image -->
+                    <div class="view view-cascade gradient-card-header peach-gradient p-c-lg-4 p-c-md-2" >
+                        <!-- Image -->
+                        <div class="row justify-content-center">
+                            <div class="col-xl-5 col-md-4 mb-1 zoom">
+                                <img id="random_info_block_img" src="{{ employee.profile_image.url }}" class="img-fluid z-depth-1 rounded-circle"
+                                     alt="Responsive image" >
+                            </div>
+                        </div>
+                        <!-- Text -->
+                        <h6 class="mb-0"><i class="fas fa-calendar mr-2"></i>{{ employee.employ_date }}</h6>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center p-c-lg-4 p-c-md-3">
+
+                        <!-- Text -->
+                        <p class="card-text mb-0">{{ employee.get_full_name }} has joined to {{ employee.get_department_display }}.</p>
+                        {#                    <!-- Link -->#}
+                        {#                    <a href="#!" class="orange-text d-flex flex-row-reverse p-c-lg-2 p-c-md-1">#}
+                        {#                        <h6 class="waves-effect waves-light">Read more<i class="fas fa-angle-double-right ml-2"></i></h6>#}
+                        {#                    </a>#}
+
+                    </div>
+                    <!-- Card content -->
+
+                </div>
+                <!-- Card -->
+            {% endfor %}
+
+            {% for _ in newest_employees.1 %}
+
+                <!-- Card -->
+                <div class="card card-cascade wider">
+
+                    <!-- Card image -->
+                    <div class="view view-cascade gradient-card-header peach-gradient p-c-lg-4 p-c-md-2" >
+                        <!-- Title -->
+                        <h4 class="card-header-title mb-3">No Employee</h4>
+                        <!-- Text -->
+                        <h6 class="mb-0"><i class="fas fa-calendar mr-2"></i></h6>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center p-c-lg-4 p-c-md-3">
+
+                        <!-- Text -->
+                        <p class="card-text mb-0">This week there is no any new employee</p>
+                        {#                    <!-- Link -->#}
+                        {#                    <a href="#!" class="orange-text d-flex flex-row-reverse p-c-lg-2 p-c-md-1">#}
+                        {#                        <h6 class="waves-effect waves-light">Read more<i class="fas fa-angle-double-right ml-2"></i></h6>#}
+                        {#                    </a>#}
+
+                    </div>
+                    <!-- Card content -->
+
+                </div>
+                <!-- Card -->
+            {% endfor %}
+
+            {% for birthday in closest_birthdays.0 %}
+                <!-- Card -->
+                <div class="card card-cascade wider">
+
+                    <!-- Card image -->
+                    <div class="view view-cascade gradient-card-header blue-gradient p-c-lg-4 p-c-md-2" >
+
+                        <div class="row justify-content-center">
+                            <div class="col-xl-5 col-md-4 mb-3 zoom">
+
+                                <img src="{{ birthday.profile_image.url }}" class="img-fluid z-depth-1 rounded-circle"
+                                     alt="Responsive image" style="width: 87px; height: 87px;">
+
+                            </div>
+                        </div>
+                        <!-- Text -->
+                        <h6 class="mb-0"><i class="fas fa-calendar mr-2"></i>{{ birthday.birth_date }}</h6>
+
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center p-c-lg-4 p-c-md-3">
+
+                        <!-- Text -->
+                        <p class="card-text mb-0">Congratulations on up coming birthday of {{ birthday.get_full_name }}.</p>
+                        {#                        <!-- Link -->#}
+                        {#                        <a href="#!" class="orange-text d-flex flex-row-reverse p-c-lg-2 p-c-md-1">#}
+                        {#                            <h6 class="waves-effect waves-light">Read more<i class="fas fa-angle-double-right ml-2"></i></h6>#}
+                        {#                        </a>#}
+
+                    </div>
+                    <!-- Card content -->
+
+                </div>
+                <!-- Card -->
+            {% endfor %}
+
+            {% for _ in closest_birthdays.1 %}
+                <!-- Card -->
+                <div class="card card-cascade wider">
+
+                    <!-- Card image -->
+                    <div class="view view-cascade gradient-card-header blue-gradient p-c-lg-4 p-c-md-2" >
+
+                        <!-- Title -->
+                        <h4 class="card-header-title mb-3">No Birthday</h4>
+                        <!-- Text -->
+                        <h6 class="mb-0"><i class="fas fa-calendar mr-2"></i></h6>
+
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center p-c-lg-4 p-c-md-3">
+
+                        <!-- Text -->
+                        <p class="card-text mb-0">Today there is no any birthday.</p>
+                        {#                        <!-- Link -->#}
+                        {#                        <a href="#!" class="orange-text d-flex flex-row-reverse p-c-lg-2 p-c-md-1">#}
+                        {#                            <h6 class="waves-effect waves-light">Read more<i class="fas fa-angle-double-right ml-2"></i></h6>#}
+                        {#                        </a>#}
+
+                    </div>
+                    <!-- Card content -->
+
+                </div>
+                <!-- Card -->
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+{% endspaceless %}

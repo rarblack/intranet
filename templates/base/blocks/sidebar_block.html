@@ -1,0 +1,119 @@
+{% load static %}
+
+{% spaceless %}
+    <header>
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav sn-bg-4 fixed">
+            <ul class="custom-scrollbar">
+                <!-- Logo -->
+                <li>
+                    <div class="logo-wrapper waves-light">
+                        <a href="#"><img src="{% static 'images/logoes/socar-white-logo.png' %}" class="img-fluid flex-center"></a>
+                    </div>
+                </li>
+                <!--/. Logo -->
+                <!--Social-->
+                <li>
+                    <ul class="social">
+                        <li><a href="#" class="icons-sm fb-ic"><i class="fab fa-facebook-f"> </i></a></li>
+                        <li><a href="#" class="icons-sm pin-ic"><i class="fab fa-pinterest"> </i></a></li>
+                        <li><a href="#" class="icons-sm gplus-ic"><i class="fab fa-google-plus-g"> </i></a></li>
+                        <li><a href="#" class="icons-sm tw-ic"><i class="fab fa-twitter"> </i></a></li>
+                    </ul>
+                </li>
+                <!--/Social-->
+                <!--Search Form-->
+                {#                <li>#}
+                {#                    <form class="search-form" role="search">#}
+                {#                        <div class="form-group md-form mt-0 pt-1 waves-light">#}
+                {#                            <input type="text" class="form-control" placeholder="Search">#}
+                {#                        </div>#}
+                {#                    </form>#}
+                {#                </li>#}
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <!-- Dashboard -->
+                        <li><a class="waves-effect"  href="{% url 'dashboard:dashboard_template' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <!-- Admin -->
+                        {% if user.is_superuser %}
+                            <li><a class="waves-effect" href="{% url 'admin:index' %}"><i class="fab fa-angrycreative fa-10x"></i> Admin</a>
+                        {% endif %}
+                        <!-- Self-service -->
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fab fa-servicestack"></i>   Self Service<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="{% url 'warehouse:ticket_create' %}#content" class="waves-effect">Warehouse</a>
+                                    </li>
+                                    <li><a href="{% url 'transportation:ticket_create' %}#content" class="waves-effect">Transportation</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">Lunchroom</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">Settings</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Departments -->
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-building"></i> Departments<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="waves-effect">ICT</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">HR</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">LD</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">Finance</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Directory -->
+                        <li><a class="waves-effect" href="{% url 'directory:contacts_list' %}/#content"><i class="fas fa-address-book"></i> Directory</a>
+                            <!-- Document Library -->
+                        <li><a class="waves-effect" href="{% url 'doclib:view-uploaded-files' %}/#content"><i class="fas fa-file-alt"></i> Document Library</a>
+                            <!-- IT HelpDesk -->
+                        <li><a class="waves-effect" href="{% url 'helpdesk:ticket_create' %}/#content"><i class="fab fa-hire-a-helper"></i> IT Help Desk</a>
+                            <!-- Management -->
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-tasks"></i> Management<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="waves-effect">Project Management</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">Task Management</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- Events -->
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-calendar-alt"></i> Events<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="waves-effect">Events</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">Invitations</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-calendar-alt"></i> Guest Control<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="{% url 'guestcontrol:external_visit_tickets_list' pattern='my/open' %}#content" class="waves-effect">External Visit Tickets</a>
+                                    </li>
+                                    <li><a href="{% url 'guestcontrol:internal_visit_tickets_list' pattern='my/open' %}#content" class="waves-effect">Internal Visit Tickets</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--/. Side navigation links -->
+                    </ul>
+                </li>
+            </ul>
+            <div class="sidenav-bg mask-strong"></div>
+        </div>
+        <!--/. Sidebar navigation -->
+    </header>
+{% endspaceless %}

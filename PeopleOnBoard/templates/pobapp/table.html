@@ -1,0 +1,94 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'assets/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/block.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block js_head %}
+    <script type="text/javascript" src="{% static 'assets/../../../static/new/vendor/DataTables/datatables.min.js' %}"></script>
+{% endblock %}
+
+{% block s2nav %}
+{#    <a class="nav-link" href="{% url 'home'%}"><i class="fas fa-home"></i><br>Home</a>#}
+    {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'admin:index'%}"><i class="fas fa-cogs"></i><br>Admin panel</a>
+    {% endif %}
+    <a class="nav-link" href="{% url 'search'%}"><i class="fas fa-search"></i><br>Search</a>
+
+    <a class="nav-link active" href=""><i class="fas fa-table"></i><br>Table</a>
+
+    <a class="nav-link" href="{% url 'update'%}"><i class="fas fa-edit"></i><br>Update</a>
+{% endblock %}
+
+{% block content %}
+            <div class="mt-lg-5 mt-md-5 mt-sm-2 mb-5 p-3 cbg-white shadow-sm rounded">
+                <table id="table" class="table table-striped table-bordered table-hover w-100" >
+                    <thead>
+                    <tr>
+                        <th>Work Place</th>
+                        <th>Employee</th>
+                        <th>Company</th>
+                        <th>Profession</th>
+                        <th>Work Id</th>
+                        <th>Id card</th>
+                        <th>Transport</th>
+                        <th>Start time</th>
+                        <th>End time</th>
+                        <th>Note</th>
+                    </tr>
+                    </thead>
+                    {% if query_set %}
+                    <tbody>
+                        {% for query in query_set %}
+                            <tr>
+                                <td>{{ query.assigned_work_place_object.work_place_name}}</td>
+                                <td>{{ query.assigner_object.profile.get_full_name}}</td>
+                                <td>{{ query.employee_object.company_object }}</td>
+                                <td>{{ query.employee_object.profession_object.profession_name }}</td>
+                                <td>{{ query.employee_object.work_id_card_name }}</td>
+                                <td>{{ query.employee_object.id_card_name }} {{ instance.assigner_object.is_admin }}</td>
+                                <td>{{ query.employee_object.transportation_object }}</td>
+                                <td>{{ query.start_time }}</td>
+                                <td>{{ query.end_time }}</td>
+                                <td>{{ query.note_name }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info mt-5" role="alert">
+                            Unmatched <b>search</b>
+                        </div>
+                    {% endif %}
+</div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').DataTable( {
+                responsive: true,
+                dom: 'Brtp',
+                buttons: [
+                    {
+                        extend: 'print',
+                        customize: function ( win ) {
+                            $(win.document.body)
+                                .css( 'font-size', '12pt' )
+                                .prepend(
+                                    '<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;" />'
+                                );
+
+                            $(win.document.body).find( 'table' )
+                                .addClass( 'compact' )
+                                .css( 'font-size', 'inherit' );
+                        }
+                    },
+                    'excel', 'pdf',
+                ]
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+<div class="col-12">
+    <table id="table" class="table table-bordered table-hover w-100">
+        <thead>
+        <tr>
+            {% block thead %}
+                <th>Action</th>
+                <th>{{ assignee|default:'Assignee' }}</th>
+                <th>{{ subject|default:'Subject' }}</th>
+                <th>{{ title|default:'Title' }}</th>
+                <th>{{ importance|default:'Importance' }}</th>
+                <th>{{ status|default:'Status' }}</th>
+                {% if not user == articles.0.detail.created_by %}
+                    <th>{{ created_by|default:'Creator' }}</th>
+                {% endif %}
+                <th>{{ created_at|default:'Created at' }}</th>
+            {% endblock %}
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a class="btn btn-primary" href="{% url 'news:article_detail' pk=article.pk %}#content">View</a>
+                        {% if user != article.detail.created_by and user.is_superuser or user != article.detail.created_by and user.is_staff and user.profile.department == 5 %}
+                            <a class="btn btn-danger"  href="{% url 'news:article_detail_update' pk=article.detail.pk %}/#content">Process</a>
+                        {% else %}
+                            <a class="btn btn-danger"  href="{% url 'news:article_update' pk=article.pk %}/#content">Update</a>
+                        {% endif %}
+                    </div>
+                </td>
+                <td class="text-center">{% if article.detail.assignee %}
+                    {{ article.detail.assignee }}
+                {% else %}
+                    Not assigned
+                {% endif %}
+                </td>
+                <td class="text-center">{{ article.subject }}</td>
+                <td class="text-center">{{ article.title }}</td>
+                <td class="text-center">{{ article.get_importance_display }}</td>
+                <td class="text-center">{{ article.detail.get_status_display }}</td>
+                {% if user != article.detail.created_by %}
+                    <td class="text-center">{{ article.detail.created_by }}</td>
+                {% endif %}
+                <td class="text-center">{{ article.detail.created_at }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% block javascript %}
+    <script src="{% static "js/datatable_configuration.js" %}"></script>
+{% endblock %}
