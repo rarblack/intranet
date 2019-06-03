@@ -23,6 +23,7 @@ def secondary_image_directory_path(instance, filename):
 
 
 class Tag(models.Model):
+
     name = models.CharField(max_length=100)
 
     category = models.IntegerField(choices=CATEGORIES,
@@ -45,6 +46,7 @@ class Tag(models.Model):
 
 
 class Article(models.Model):
+
     subject = models.CharField(max_length=100)
 
     title = models.CharField(max_length=100,
