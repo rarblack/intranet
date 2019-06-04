@@ -143,6 +143,13 @@ body{
     #news-container {
         height: 24%;
     }
+    #random_article_ready{
+        margin-right: 10px!important;
+    }
+    #navbar_block_logo{
+        width: 150px;
+        height: 28px;
+    }
 }
 
 @media (min-width: 1500px) {
@@ -195,6 +202,10 @@ body{
     #random_info_block_img{
         width: 87px;
         height: 87px;
+    }
+    #navbar_block_logo{
+        width: 150px;
+        height: 30px;
     }
 }
 

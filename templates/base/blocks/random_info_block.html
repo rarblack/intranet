@@ -21,14 +21,14 @@
                     <div class="card-body p-c-lg-4 p-c-md-1">
 
                         <!-- Social shares button -->
-                        <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+                        <a class="activator waves-effect waves-light mr-4"></a>
                         <!-- Title -->
                         <h4 class="card-title">{{ article.subject }}</h4>
                         <hr>
                         <!-- Text -->
                         <p class="card-text">{{ article.introduction }}</p>
                         <!-- Link -->
-                        <a href="{% url 'news:article_template' pk=article.pk %}#content" class="black-text d-flex justify-content-end"><h5>Read more <i class="fas fa-angle-double-right"></i></h5></a>
+                        <a  id="random_article_ready" href="{% url 'news:article_template' pk=article.pk %}#content" class="black-text d-flex justify-content-end"><h5>Read more <i class="fas fa-angle-double-right"></i></h5></a>
 
                     </div>
 
