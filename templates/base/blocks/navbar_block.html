@@ -1,9 +1,9 @@
 {% load static %}
 
 <nav id="main-navbar" class="navbar navbar-expand-lg py-1 navbar-dark bg-dark">
-{#        <a id="show-sidebar" class="btn btn-lg btn-dark">#}
-{#            <i class="fas fa-bars"></i>#}
-{#        </a>#}
+    {#        <a id="show-sidebar" class="btn btn-lg btn-dark">#}
+    {#            <i class="fas fa-bars"></i>#}
+    {#        </a>#}
     <div class="float-left">
         <a href="" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i></a>
     </div>
@@ -26,11 +26,14 @@
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ user.username }}
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-{#                        <a class="dropdown-item" href="{% url 'settings:change_password' %}">Settings</a>#}
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                         aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="#">{{ user.username }}</a>
+{#                        <a class="dropdown-item" href="#">Another action</a>#}
                         <a class="dropdown-item" href="{% url 'logout' %}">Sign out</a>
                     </div>
                 </li>
