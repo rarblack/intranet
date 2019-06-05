@@ -5,6 +5,7 @@
         <!-- Sidebar navigation -->
         <div id="slide-out" class="side-nav sn-bg-4 fixed">
             <ul class="custom-scrollbar">
+
                 <!-- Logo -->
                 <li>
                     <div class="logo-wrapper waves-light">
@@ -12,16 +13,18 @@
                     </div>
                 </li>
                 <!--/. Logo -->
+
                 <!--Social-->
                 <li>
                     <ul class="social">
-                        <li><a href="#" class="icons-sm fb-ic"><i class="fab fa-facebook-f"> </i></a></li>
-                        <li><a href="#" class="icons-sm pin-ic"><i class="fab fa-pinterest"> </i></a></li>
-                        <li><a href="#" class="icons-sm gplus-ic"><i class="fab fa-google-plus-g"> </i></a></li>
+                        <li><a href="#" class="icons-sm fb-ic mr-2"><i class="fab fa-facebook-f"> </i></a></li>
+                        <li><a href="#" class="icons-sm pin-ic mr-2"><i class="fab fa-pinterest"> </i></a></li>
+                        <li><a href="#" class="icons-sm gplus-ic mr-2"><i class="fab fa-google-plus-g"> </i></a></li>
                         <li><a href="#" class="icons-sm tw-ic"><i class="fab fa-twitter"> </i></a></li>
                     </ul>
                 </li>
                 <!--/Social-->
+
                 <!--Search Form-->
                 {#                <li>#}
                 {#                    <form class="search-form" role="search">#}
@@ -31,6 +34,7 @@
                 {#                    </form>#}
                 {#                </li>#}
                 <!--/.Search Form-->
+
                 <!-- Side navigation links -->
                 <li>
                     <ul class="collapsible collapsible-accordion">
@@ -38,7 +42,7 @@
                         <li><a class="waves-effect"  href="{% url 'dashboard:dashboard_template' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                         <!-- Admin -->
                         {% if user.is_superuser %}
-                            <li><a class="waves-effect" href="{% url 'admin:index' %}"><i class="fab fa-angrycreative fa-10x"></i> Admin</a>
+                            <li><a class="waves-effect" href="{% url 'admin:index' %}"><i class="fab fa-angrycreative"></i> Admin</a>
                         {% endif %}
                         <!-- Self-service -->
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fab fa-servicestack"></i>   Self Service<i class="fas fa-angle-down rotate-icon"></i></a>
