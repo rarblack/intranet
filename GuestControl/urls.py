@@ -1,4 +1,4 @@
-from django.urls import re_path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = []
@@ -7,12 +7,20 @@ urlpatterns = []
 urlpatterns += [
     re_path(r'/create/external-visit-ticket[/]?$',   views.ExternalVisitTicketCreateView.as_view(),     name='external_visit_ticket_create'),
     re_path(r'/create/internal-visit-ticket[/]?$',   views.InternalVisitTicketCreateView.as_view(),     name='internal_visit_ticket_create'),
+    re_path(r'/create/visitor-entrance-card[/]?$',   views.VisitorEntranceCardCreateView.as_view(),     name='visitor_entrance_card_create'),
 ]
+
+# TEMPLATE
+urlpatterns += [
+    re_path(r'/view/visitor-entrance-card/(?P<pk>\d+?)[/]$',   views.VisitorEntranceCardTemplateView.as_view(),     name='visitor_entrance_card_template'),
+]
+
 
 # DETAIL
 urlpatterns += [
     re_path(r'/detail/external-visit-ticket/(?P<pk>\d+?)[/]$',   views.ExternalVisitTicketDetailView.as_view(),   name='external_visit_ticket_detail'),
     re_path(r'/detail/internal-visit-ticket/(?P<pk>\d+?)[/]$',   views.InternalVisitTicketDetailView.as_view(),   name='internal_visit_ticket_detail'),
+    re_path(r'/detail/visitor-entrance-card/(?P<pk>\d+?)[/]$',   views.VisitorEntranceCardDetailView.as_view(),   name='visitor_entrance_card_detail'),
 
 ]
 
@@ -33,6 +41,7 @@ urlpatterns += [
 urlpatterns += [
     re_path(r'/list/(?P<pattern>.+?)/external-visit-tickets[/]?$', views.ExternalVisitTicketsListView.as_view(),   name='external_visit_tickets_list'),
     re_path(r'/list/(?P<pattern>.+?)/internal-visit-tickets[/]?$', views.InternalVisitTicketsListView.as_view(),   name='internal_visit_tickets_list'),
+    re_path(r'/list/visitor-entrance-cards[/]$',   views.VisitorEntranceCardsListView.as_view(),            name='visitor_entrance_cards_list'),
 ]
 
 # METHOD

@@ -161,4 +161,55 @@ class InternalVisitTicketDetail(models.Model):
         return 'ID: {0}'.format(self.pk)
 
 
+class DetailAbstractModel(models.Model):
 
+    status = models.IntegerField(choices=STATUSES,
+                                 default=0)
+
+    enter_datetime = models.DateTimeField(null=True,
+                                          blank=True,
+                                          default=None,
+                                          verbose_name='Actual Enter Time')
+
+    leave_datetime = models.DateTimeField(null=True,
+                                          blank=True,
+                                          default=None,
+                                          verbose_name='Actual Leave Time')
+
+    procession_datetime = models.DateTimeField(null=True,
+                                               blank=True,
+                                               default=None)
+
+    creation_datetime = models.DateTimeField(default=timezone.now,
+                                             verbose_name='Creation time')
+
+    class Meta:
+        abstract = True
+
+
+def upload_image_to(instance, filename):
+    return f'guest control/visitor entrance card images/{filename}'
+
+
+class VisitorEntranceCardModel(DetailAbstractModel):
+
+    image = models.FileField(upload_to=upload_image_to)
+
+    name = models.CharField(max_length=150)
+
+    surname = models.CharField(max_length=150)
+
+    company = models.CharField(max_length=150)
+
+    processor = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                  on_delete=models.SET_NULL,
+                                  null=True,
+                                  blank=True,
+                                  default=None,
+                                  related_name='guestcontrol_visitor_entrance_card_processor')
+
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                null=True,
+                                on_delete=models.SET_NULL,
+                                verbose_name='Creator',
+                                related_name='guestcontrol_visitor_entrance_card_creator')

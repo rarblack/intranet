@@ -6,8 +6,9 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils import timezone
 
-from .models import ExternalVisitTicket, ExternalVisitTicketDetail, InternalVisitTicket, InternalVisitTicketDetail
+from .models import ExternalVisitTicket, ExternalVisitTicketDetail, InternalVisitTicket, InternalVisitTicketDetail, VisitorEntranceCardModel
 from News.functions import articles_latest, employees_closest_birthdays, employees_newest
+from . import functions
 
 
 #                                                                                                                 CREATE
@@ -57,6 +58,35 @@ class InternalVisitTicketCreateView(LoginRequiredMixin, CreateView):
         self.object.detail = detail
         self.object.save()
         return super().form_valid(form)
+
+
+# VISITOR ENTRANCE CARD CREATE VIEW
+class VisitorEntranceCardCreateView(LoginRequiredMixin, CreateView):
+    model = VisitorEntranceCardModel
+    fields = ['name', 'surname', 'company', 'enter_datetime', 'leave_datetime']
+    template_name = 'guestcontrol/create/visitor_entrance_card/visitor_entrance_card_create.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["latest_articles"] = articles_latest()
+        context["closest_birthdays"] = employees_closest_birthdays()
+        context["newest_employees"] = employees_newest()
+        return context
+
+    def form_valid(self, form):
+        self.username = self.request.POST['name'] + self.request.POST['surname']
+        self.datetime = self.request.POST['leave_datetime']
+        self.data, self.name = functions.base64_to_content_file(self.request.POST['base64'], self.username, self.datetime)
+
+        self.object = form.save(commit=False)
+        self.object.image = self.data
+        self.object.creator = self.request.user
+        self.object.save()
+
+        return super(VisitorEntranceCardCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('guestcontrol:visitor_entrance_card_detail', kwargs={'pk': self.object.pk})
 
 
 #                                                                                                                 UPDATE
@@ -161,8 +191,40 @@ class InternalVisitTicketDetailView(LoginRequiredMixin, DetailView):
 
     def get_queryset(self):
         return self.model.objects.select_related('detail').all()
-    
-    
+
+
+# VISITOR ENTRANCE CARD DETAIL VIEW
+class VisitorEntranceCardDetailView(LoginRequiredMixin, DetailView):
+    model = VisitorEntranceCardModel
+    context_object_name = 'card'
+    template_name = 'guestcontrol/detail/visitor_entrance_card/visitor_entrance_card_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["latest_articles"] = articles_latest()
+        context["closest_birthdays"] = employees_closest_birthdays()
+        context["newest_employees"] = employees_newest()
+        return context
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+
+#                                                                                                               TEMPLATE
+# VISITOR ENTRANCE CARD TEMPLATE VIEW
+class VisitorEntranceCardTemplateView(TemplateView):
+    template_name = 'guestcontrol/template/visitor_entrance_card/visitor_entrance_card_template.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(VisitorEntranceCardTemplateView, self).get_context_data(**kwargs)
+        card = get_object_or_404(VisitorEntranceCardModel, pk=self.kwargs.get('pk'))
+        context['card'] = card
+        context["latest_articles"] = articles_latest()
+        context["closest_birthdays"] = employees_closest_birthdays()
+        context["newest_employees"] = employees_newest()
+        return context
+
+
 #                                                                                                                   LIST
 # EXTERNAL VISIT TICKET LIST VIEW
 class ExternalVisitTicketsListView(LoginRequiredMixin, ListView):
@@ -292,6 +354,20 @@ class InternalVisitTicketsListView(LoginRequiredMixin, ListView):
 
         elif self.pattern == 'all/closed':
             return self.model.objects.select_related('detail').filter(detail__status=4).order_by('-visit_datetime')
+
+
+# VISITOR ENTRANCE CARDS LIST VIEW
+class VisitorEntranceCardsListView(ListView):
+    model = VisitorEntranceCardModel
+    template_name = 'guestcontrol/list/visitor_entrance_card/visitor_entrance_card_list.html'
+    context_object_name = 'cards'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["latest_articles"] = articles_latest()
+        context["closest_birthdays"] = employees_closest_birthdays()
+        context["newest_employees"] = employees_newest()
+        return context
 
 
 #                                                                                                                METHODS

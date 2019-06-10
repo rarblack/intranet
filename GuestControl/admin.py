@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils import timezone
 
-from .models import ExternalVisitTicket, ExternalVisitTicketDetail, InternalVisitTicket, InternalVisitTicketDetail
+from .models import ExternalVisitTicket, ExternalVisitTicketDetail, InternalVisitTicket, InternalVisitTicketDetail, VisitorEntranceCardModel
 
 
 #                                                                                              ExternalVisitTicketInline
@@ -48,5 +48,9 @@ class InternalVisitTicketDetailAdmin(admin.ModelAdmin):
         elif change:
             super().save_model(request, obj, form, change)
 
+
+@admin.register(VisitorEntranceCardModel)
+class VisitorEntranceCardAdmin(admin.ModelAdmin):
+    display_list = ['id', 'name', 'surname', 'company']
 
 

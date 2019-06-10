@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+
+{% block nav-scroller %}
+    {% include 'guestcontrol/common/visitor_entrance_card/nav-scroller.html' %}
+{% endblock %}
+
+{% block content %}
+    {% include 'guestcontrol/create/visitor_entrance_card/blocks/webcam_capture_block.html' %}
+    {% include  'guestcontrol/create/visitor_entrance_card/blocks/visitor_entrance_card_block.html' %}
+{% endblock %}
