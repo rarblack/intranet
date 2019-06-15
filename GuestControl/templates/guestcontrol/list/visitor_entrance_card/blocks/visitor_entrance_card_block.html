@@ -1,30 +1,31 @@
-<div class="row justify-content-around">
+<div class="row justify-content-between">
     {% for card in cards %}
-        <!-- Card Regular -->
-        <div class="card card-cascade">
+        <!-- Card -->
+        <div class="card mb-5" style="width: 22%">
 
             <!-- Card image -->
-            <div class="view view-cascade overlay">
-                <img class="card-img-top" src="{{ card.image.url }}" alt="Card image cap">
-                <a>
+            <div class="view overlay">
+                <img class="card-img-top" src="{{ card.image.url }}" alt="visitor image">
+                <a href="#!">
                     <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
 
             <!-- Card content -->
-            <div class="card-body card-body-cascade text-center">
+            <div class="card-body">
 
                 <!-- Title -->
-                <h4 class="card-title"><strong>{{ card.name }} {{ card.surname }}</strong></h4>
-                <!-- Subtitle -->
-                <h5 class="blue-text pb-2"><strong>{{ card.company }}</strong></h5>
-                <h6>{{ card.enter_datetime }}</h6>
-                <h6>{{ card.leave_datetime }}</h6>
+                <h4 class="card-title">{{ card.name }} {{ card.surname }}</h4>
+                <h5 class="card-title">{{ card.company }}</h5>
+                <!-- Text -->
+                <h6 class="text-center" style="color:#747373">{{ card.enter_datetime }}</h6>
+                <h6 class="text-center" style="color:#747373">{{ card.leave_datetime }}</h6>
                 <!-- Button -->
-                <a class="btn btn-unique" href="{% url 'guestcontrol:visitor_entrance_card_template' pk=card.pk %}">View</a>
+                <a href="{% url 'guestcontrol:visitor_entrance_card_template' pk=card.pk %}#content" class="btn btn-primary">View</a>
+
             </div>
 
         </div>
-        <!-- Card Regular -->
+        <!-- Card -->
     {% endfor %}
 </div>

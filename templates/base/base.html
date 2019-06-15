@@ -17,8 +17,9 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'images/logoes/socar-favicon.png' %}">
     <link rel="stylesheet" href="{% static "css/sidebar.css" %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <link rel="stylesheet" href="{% static 'css/basics.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static "css/nav-scroller.css" %}">
+    <link rel="stylesheet" href="{% static 'css/visitor_card.css' %}">
 
     <!-- Library links -->
     <link rel="stylesheet" href="{% static 'vendor/fontawesome-free-5.8.2-web/css/all.min.css' %}">
@@ -27,6 +28,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/mdb/css/mdb.min.css' %}">
     <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/datatable/datatables.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker-build.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/postboot-1.0.0-rc2/css/postboot.min.css' %}">
 </head>
 
 <body class="fixed-sn black-skin">
@@ -39,20 +42,22 @@
 
     {% include 'base/blocks/sidebar_block.html' %}
 
-    <div id="welcome-container">
-        <div id="welcome-content">
-            {% include 'base/blocks/navbar_block.html' %}
-            {% block nav-scroller %}
-            {% endblock %}
-            <hr>
-            {% include 'base/blocks/random_info_block.html' %}
-            <hr>
-            {% include 'base/blocks/footer_block.html' %}
+    {% block welcome %}
+        <div id="welcome-container">
+            <div id="welcome-content">
+                {% include 'base/blocks/navbar_block.html' %}
+                {% block nav-scroller %}
+                {% endblock %}
+                <hr>
+                {% include 'base/blocks/random_info_block.html' %}
+                <hr>
+                {% include 'base/blocks/footer_block.html' %}
+            </div>
         </div>
-    </div>
+    {% endblock %}
 
     {% if user.is_authenticated %}
-        <main id="content" class="row justify-content-center align-items-center m-0 p-0 bg-white py-5" role="main">
+        <main id="content" class="row justify-content-center align-items-center" role="main">
             <div class="row justify-content-center align-items-center w-100">
                 {% block content %}
                 {% endblock %}
@@ -69,6 +74,10 @@
 <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/datatable/datatables.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/mdb/js/mdb.min.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
+<script src="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+<script src="{% static 'vendor/postboot-1.0.0-rc2/js/postboot.min.js' %}"></script>
 <script>
 
     // SideNav Initialization

@@ -61,7 +61,7 @@ class InternalVisitTicketCreateView(LoginRequiredMixin, CreateView):
 
 
 # VISITOR ENTRANCE CARD CREATE VIEW
-class VisitorEntranceCardCreateView(LoginRequiredMixin, CreateView):
+class VisitorEntranceCardCreateView(CreateView):
     model = VisitorEntranceCardModel
     fields = ['name', 'surname', 'company', 'enter_datetime', 'leave_datetime']
     template_name = 'guestcontrol/create/visitor_entrance_card/visitor_entrance_card_create.html'
@@ -194,7 +194,7 @@ class InternalVisitTicketDetailView(LoginRequiredMixin, DetailView):
 
 
 # VISITOR ENTRANCE CARD DETAIL VIEW
-class VisitorEntranceCardDetailView(LoginRequiredMixin, DetailView):
+class VisitorEntranceCardDetailView(DetailView):
     model = VisitorEntranceCardModel
     context_object_name = 'card'
     template_name = 'guestcontrol/detail/visitor_entrance_card/visitor_entrance_card_detail.html'
@@ -368,6 +368,9 @@ class VisitorEntranceCardsListView(ListView):
         context["closest_birthdays"] = employees_closest_birthdays()
         context["newest_employees"] = employees_newest()
         return context
+
+    def get_queryset(self):
+        return self.model.objects.all().order_by('-creation_datetime')
 
 
 #                                                                                                                METHODS

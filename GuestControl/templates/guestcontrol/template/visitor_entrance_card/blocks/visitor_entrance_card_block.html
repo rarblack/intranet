@@ -1,35 +1,63 @@
-<!-- Card Regular -->
-<div id="card" class="card card-cascade">
+{% load static from staticfiles %}
+
+<!-- Card -->
+<div id="entrance_card" class="card" style="width: 24%">
 
     <!-- Card image -->
-    <div class="view view-cascade overlay">
-        <img class="card-img-top" src="{{ card.image.url }}" alt="Card image cap">
-        <a>
+    <div class="view overlay">
+        <img class="card-img-top p-2" src="{{ card.image.url }}" alt="visitor image">
+        <a href="#!">
             <div class="mask rgba-white-slight"></div>
         </a>
     </div>
 
     <!-- Card content -->
-    <div class="card-body card-body-cascade text-center">
+    <div class="card-body">
 
         <!-- Title -->
-        <h4 class="card-title"><strong>{{ card.name }} {{ card.surname }}</strong></h4>
-        <!-- Subtitle -->
-        <h5 class="blue-text pb-2"><strong>{{ card.company }}</strong></h5>
-        <h6>{{ card.enter_datetime }}</h6>
-        <h6>{{ card.leave_datetime }}</h6>
+        <h4 class="card-title text-center">{{ card.name }} {{ card.surname }}</h4>
+        <h5 class="card-title text-center">{{ card.company }}</h5>
+        <!-- Text -->
+        <h6 class="text-center" style="color:#747373">{{ card.enter_datetime }}</h6>
+        <h6 class="text-center" style="color:#747373">{{ card.leave_datetime }}</h6>
+
     </div>
 
 </div>
-<!-- Card Regular -->
+<!-- Card -->
 
-<button onclick="print()">Print</button>
+<i class="fas fa-arrow-right mx-5" style="font-size: 20px;"></i>
+<button class="btn btn-primary" onclick="print('entrance_card')">Print</button>
+{#<button class="btn btn-primary" onclick="htmltocanvas()">Print</button>#}
+
+{#<div id="result"></div>#}
 
 <script>
-    function print() {
-
-        var prtContent = document.getElementById("card");
-        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+    function print(diVid) {
+        var prtContent = document.getElementById(diVid);
+        var WinPrint = window.open('', '', 'left=0,top=0,width=1300,height=900,toolbar=0,scrollbars=0,status=0');
+        WinPrint.document.write('<style>' +
+            '.card-img-top {\n' +
+            '  width: 100%;\n' +
+            '  border-top-left-radius: calc(0.25rem - 1px);\n' +
+            '  border-top-right-radius: calc(0.25rem - 1px);\n' +
+            '}' +
+            '' +
+            '.card-body {\n' +
+            '  -ms-flex: 1 1 auto;\n' +
+            '      flex: 1 1 auto;\n' +
+            '  padding: 1.25rem;\n' +
+            '}' +
+            '' +
+            '.card-title {\n' +
+            '  margin-bottom: 0.75rem;\n' +
+            '}' +
+            '' +
+            '.text-center{text-align:center!important;\n' +
+            'color:#747373;' +
+            '}' +
+            '' +
+            '</style>')
         WinPrint.document.write(prtContent.innerHTML);
         WinPrint.document.close();
         WinPrint.focus();
@@ -37,3 +65,16 @@
         WinPrint.close();
     }
 </script>
+
+
+{#{% block javascript %}#}
+{#    <script src="{% static 'vendor/html2canvas/html2canvas.min.js' %}"></script>#}
+{#    <script>#}
+{#    function htmltocanvas() {#}
+{#        html2canvas(document.body).then(function (canvas) {#}
+{#            console.log(canvas)#}
+{#            document.getElementById('result').appendChild(canvas);#}
+{#        });#}
+{#    };#}
+{#    </script>#}
+{#{% endblock %}#}

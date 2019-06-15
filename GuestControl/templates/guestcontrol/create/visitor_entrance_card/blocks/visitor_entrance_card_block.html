@@ -6,26 +6,42 @@
     <h2 class="card-title">Create an Visitor Entrance Card</h2>
     <form class="forms-sample" method="post">
         {% csrf_token %}
-            <div class="row">
-                <div class="col-md-4 mb-0">
-                    {{ form.name|as_crispy_field }}
-                </div>
-                <div class="col-md-4 mb-0">
-                    {{ form.surname|as_crispy_field }}
-                </div>
-                <div class="col-md-4 mb-0">
-                    {{ form.company|as_crispy_field }}
-                </div>
+        <div class="row">
+            <div class="col-md-4 mb-0">
+                {{ form.name|as_crispy_field }}
             </div>
-            <div class="row">
-                <div class="form-group col-md-6 mb-0">
-                    {{ form.enter_datetime|as_crispy_field }}
-                </div>
-                <div class="form-group col-md-6 mb-0">
-                    {{ form.leave_datetime|as_crispy_field }}
-                </div>
+            <div class="col-md-4 mb-0">
+                {{ form.surname|as_crispy_field }}
             </div>
+            <div class="col-md-4 mb-0">
+                {{ form.company|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-0">
+                {{ form.enter_datetime|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+                {{ form.leave_datetime|as_crispy_field }}
+            </div>
+        </div>
         <input id="base64" name="base64" type="hidden">
         <button  type="submit" class="btn btn-primary mr-0 my-4 float-right">Create</button>
     </form>
 </div>
+
+{% block javascript %}
+    <script>
+        $(function () {
+            $('#id_enter_datetime').datetimepicker({
+                format: 'MM/DD/YYYY HH:mm'
+            });
+        });
+        $(function () {
+            $('#id_leave_datetime').datetimepicker({
+                format: 'MM/DD/YYYY HH:mm'
+
+            });
+        });
+    </script>
+{% endblock %}

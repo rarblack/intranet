@@ -188,7 +188,7 @@ class DetailAbstractModel(models.Model):
 
 
 def upload_image_to(instance, filename):
-    return f'guest control/visitor entrance card images/{filename}'
+    return f'guest_control/visitor_entrance_card_images/{filename}'
 
 
 class VisitorEntranceCardModel(DetailAbstractModel):

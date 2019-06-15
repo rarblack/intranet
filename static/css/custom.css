@@ -590,3 +590,9 @@ body{
 .button_upload{
     margin: 0!important;
 }
+
+
+
+.content {
+    height: 100vh;
+}
