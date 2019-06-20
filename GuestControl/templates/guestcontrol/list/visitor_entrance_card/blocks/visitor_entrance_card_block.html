@@ -1,31 +1,59 @@
-<div class="row justify-content-between">
-    {% for card in cards %}
-        <!-- Card -->
-        <div class="card mb-5" style="width: 22%">
+<section class="section pb-3 text-center">
 
-            <!-- Card image -->
-            <div class="view overlay">
-                <img class="card-img-top" src="{{ card.image.url }}" alt="visitor image">
-                <a href="#!">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
+    <!--Section heading-->
+    <h1 class="section-heading h1 pt-4">Visitors</h1>
+    <!--Section description-->
+    <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+        numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur
+        accusamus veniam.</p>
+
+    <div class="row justify-content-center align-items-center">
+        {% for card in cards %}
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4">
+
+                <!--Card-->
+                <div id="{{ card.id }} card" class="card testimonial-card w-100">
+                    <a id="{{ card.id }}" class="printIcon"><i class="fas fa-print"></i></a>
+                    <!--Background color-->
+                    <div class="card-up teal lighten-2">
+                    </div>
+
+                    <!--Avatar-->
+                    <div class="avatar mx-auto white"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
+                                                           alt="avatar mx-auto white" class="rounded-circle img-fluid">
+                    </div>
+
+                    <div class="card-body">
+                        <!--Name-->
+                        <h4 class="card-title mt-1">John Doe</h4>
+                        <hr>
+                        <!--Quotation-->
+                        <p><i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
+                            adipisci.</p>
+                    </div>
+
+                </div>
+                <!--Card-->
+
             </div>
+            <!--Grid column-->
 
-            <!-- Card content -->
-            <div class="card-body">
+        {% endfor %}
+    </div>
+</section>
 
-                <!-- Title -->
-                <h4 class="card-title">{{ card.name }} {{ card.surname }}</h4>
-                <h5 class="card-title">{{ card.company }}</h5>
-                <!-- Text -->
-                <h6 class="text-center" style="color:#747373">{{ card.enter_datetime }}</h6>
-                <h6 class="text-center" style="color:#747373">{{ card.leave_datetime }}</h6>
-                <!-- Button -->
-                <a href="{% url 'guestcontrol:visitor_entrance_card_template' pk=card.pk %}#content" class="btn btn-primary">View</a>
 
-            </div>
-
-        </div>
-        <!-- Card -->
-    {% endfor %}
-</div>
+<script>
+    $(function () {
+        $(".printIcon").click(function () {
+            var prtContent = document.getElementById(this.id + ' card');
+            var WinPrint = window.open('', '', 'left=0,top=0,width=1300,height=900,toolbar=0,scrollbars=0,status=0');
+            WinPrint.document.write( prtContent.innerHTML );
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();
+        })
+    });
+</script>

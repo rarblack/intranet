@@ -1,27 +1,8 @@
 {% load crispy_forms_tags %}
-
-    <div class="col-lg-4 col-md-4 col-xs-12">
-        <h2 class="card-title">Contact Info</h2>
-        <div class="col-md-12 text-center" >
-            <ul class="list-unstyled mb-0">
-                <li>
-                    <i class="fas fa-map-marker-alt fa-2x blue-text"></i>
-                    <p>Bakı şəh., Ə.Rəcəbli-2 küçəsi, 10, AZ1075</p>
-                </li>
-                <li>
-                    <i class="fas fa-phone fa-2x mt-4 blue-text"></i>
-                    <p>(+994 12) 565 15 15</p>
-                </li>
-                <li>
-                    <i class="fas fa-envelope fa-2x mt-4 blue-text"></i>
-                    <p class="mb-0">office@socar-aqs.com</p>
-                </li>
-            </ul>
-        </div>
-    </div>
+<div class="row justify-content-center align-items-center p-md-5 py-xs-5">
     <div class="col-lg-8 col-md-8 col-xs-12">
-        <h2 class="card-center">Update the Ticket</h2>
-        <form class="forms-sample" method="post">
+        <h2 class="card-center text-center">Update the Ticket</h2>
+        <form class="forms" method="post">
             {% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-4 mb-0">
@@ -47,3 +28,24 @@
             <button  type="submit" class="btn btn-primary mr-2">Update</button>
         </form>
     </div>
+
+    <div class="col-lg-4 col-md-4 col-xs-12 mt-xs-5">
+        <h2 class="card-title text-center">Contact Info</h2>
+        <div class="col-md-12 text-center" >
+            <ul class="list-unstyled mb-0">
+                <li>
+                    <i class="fas fa-map-marker-alt fa-2x blue-text"></i>
+                    <p>Bakı şəh., Ə.Rəcəbli-2 küçəsi, 10, AZ1075</p>
+                </li>
+                <li>
+                    <i class="fas fa-phone fa-2x mt-4 blue-text"></i>
+                    <p>(+994 12) 565 15 15</p>
+                </li>
+                <li>
+                    <i class="fas fa-envelope fa-2x mt-4 blue-text"></i>
+                    <p class="mb-0">office@socar-aqs.com</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

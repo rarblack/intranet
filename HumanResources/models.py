@@ -75,8 +75,7 @@ class Profile(models.Model):
     #         return list(choices.DEPARTMENTS_SHORT)[self.department][1]
 
     def get_full_name(self):
-        return '{} {}'.format(self.user.first_name,
-                              self.user.last_name)
+        return f'{self.user.first_name} {self.user.last_name}'
 
     def get_balance(self):
         return self.balance

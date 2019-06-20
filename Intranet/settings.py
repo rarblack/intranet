@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'DocumentLibrary.apps.DocumentlibraryConfig',
     # 'Events.apps.EventsConfig',
     # 'Management.apps.ManagementConfig',
+    'Departments.apps.DepartmentsConfig'
 
 
 ]

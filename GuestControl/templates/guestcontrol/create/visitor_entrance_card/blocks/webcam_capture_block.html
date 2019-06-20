@@ -7,10 +7,11 @@
     form input { margin-right: 15px; }
     #results { display:inline-block; margin:20px; padding:20px; border:1px solid; background:#ccc; }
 </style>
+
 <div id="webcam_setup">
-    <div class="col-lg-12 col-md-12 col-xs-12">
-        <h2 class="card-title">Webcam</h2>
-        <div class="text-center" style="margin-top:5px; margin-bottom:20px;">Take a picture for your Visitor Entrance Card.</div>
+    <div class="col-12">
+        <h2 class="card-title text-center">Webcam</h2>
+        <div class="text-center mt-sm-1 mb-sm-5">Take a picture for your Visitor Entrance Card.</div>
 
         <div id="my_photo_booth">
             <div id="my_camera"></div>
@@ -22,8 +23,8 @@
             <script language="JavaScript">
                 Webcam.set({
                     // live preview size
-                    width: 320,
-                    height: 240,
+                    width: 480,
+                    height: 360,
 
                     // device capture size
                     dest_width: 640,
@@ -44,15 +45,15 @@
             </script>
 
             <!-- A button for taking snaps -->
-            <form>
+            <form class="form">
                 <div id="pre_take_buttons">
                     <!-- This button is shown before the user takes a snapshot -->
-                    <input type=button value="Take Snapshot" onClick="preview_snapshot()">
+                    <button class="btn btn-lg btn-primary" type=button onClick="preview_snapshot()">Take Snapshot</button>
                 </div>
                 <div id="post_take_buttons" style="display:none">
                     <!-- These buttons are shown after a snapshot is taken -->
-                    <input type=button value="Re-Try" onClick="cancel_preview()">
-                    <input type=button value="Use the photo" onClick="save_photo()" style="font-weight:bold;">
+                    <button class="btn btn-md btn-deep-orange" type=button onClick="cancel_preview()">Re-Try</button>
+                    <button class="btn btn-md btn-deep-purple" type=button onClick="save_photo()">Use the photo</button>
                 </div>
             </form>
         </div>

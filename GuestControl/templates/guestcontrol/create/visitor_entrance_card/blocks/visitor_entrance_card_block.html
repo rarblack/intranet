@@ -1,23 +1,20 @@
 {% load crispy_forms_tags %}
 
 
-
-<div id="card_form" class="col-lg-8 col-md-8 col-xs-12" style="display: none;">
-    <h2 class="card-title">Create an Visitor Entrance Card</h2>
-    <form class="forms-sample" method="post">
+<div id="card_form" class="row justify-content-center p-5" style="display: none;">
+    <h2 class="card-title text-center">Create an Visitor Entrance Card</h2>
+    <form class="form" method="post">
         {% csrf_token %}
         <div class="row">
-            <div class="col-md-4 mb-0">
+            <div class="col-12 mb-0">
                 {{ form.name|as_crispy_field }}
             </div>
-            <div class="col-md-4 mb-0">
+            <div class="col-12 mb-0">
                 {{ form.surname|as_crispy_field }}
             </div>
-            <div class="col-md-4 mb-0">
+            <div class="col-12 mb-0">
                 {{ form.company|as_crispy_field }}
             </div>
-        </div>
-        <div class="row">
             <div class="form-group col-md-6 mb-0">
                 {{ form.enter_datetime|as_crispy_field }}
             </div>

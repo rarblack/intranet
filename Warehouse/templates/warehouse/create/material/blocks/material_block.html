@@ -1,8 +1,10 @@
 {% load crispy_forms_tags %}
 
+
+<div class="row justify-content-center p-5">
     <div class="col-lg-8 col-md-8 col-xs-12">
-        <h2 class="">Create a Tag</h2>
-        <form class="forms-sample" method="POST" enctype="multipart/form-data">
+        <h2 class="card-title text-center">Create a Tag</h2>
+        <form class="forms-sample" method="POST">
             {% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-6 mb-0">
@@ -15,4 +17,4 @@
             <button  type="submit" class="btn btn-primary float-right mr-2">Create</button>
         </form>
     </div>
-
+</div>

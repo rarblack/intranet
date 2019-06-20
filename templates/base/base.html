@@ -13,68 +13,71 @@
     <!-- Title -->
     <title>{% block title %}{% endblock %}</title>
 
+    <!-- Title logo -->
+    <link type="image/png" rel="shortcut icon" href="{% static 'images/socar-logo/logo_alov.png' %}">
+
     <!-- Custom links -->
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/logoes/socar-favicon.png' %}">
-    <link rel="stylesheet" href="{% static "css/sidebar.css" %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static "css/nav-scroller.css" %}">
-    <link rel="stylesheet" href="{% static 'css/visitor_card.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static "css/offcanvas.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/visitor_card.css' %}">
 
     <!-- Library links -->
-    <link rel="stylesheet" href="{% static 'vendor/fontawesome-free-5.8.2-web/css/all.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/mdb/css/mdb.min.css' %}">
-    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/datatable/datatables.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker-build.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'vendor/fontawesome-free-5.8.2-web/css/all.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'vendor/mdb/css/mdb.min.css' %}">
+    <!-- jQuery -->
+    <script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'vendor/datatable/datatables.min.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker-build.css' %}">
 </head>
 
-<body class="fixed-sn black-skin">
+<body class="blue-skin bg-light">
 
-
-
-<div class="container-fluid w-90">
-    <!-- Sidebar -->
-
-
+<header>
     {% include 'base/blocks/sidebar_block.html' %}
+    {% include 'base/blocks/navbar_block.html' %}
 
-    {% block welcome %}
-        <div id="welcome-container">
-            <div id="welcome-content">
-                {% include 'base/blocks/navbar_block.html' %}
-                {% block nav-scroller %}
-                {% endblock %}
-                <hr>
-                {% include 'base/blocks/random_info_block.html' %}
-                <hr>
-                {% include 'base/blocks/footer_block.html' %}
-            </div>
-        </div>
-    {% endblock %}
+    <div class="nav-scroller bg-white shadow-sm">
+        <nav class="nav nav-underline">
+            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link" href="#">
+                Friends
+                <span class="badge badge-pill bg-light align-text-bottom">27</span>
+            </a>
+            <a class="nav-link" href="#"><i class="fas fa-caret-down"></i> Explore</a>
+            <a class="nav-link" href="#">Suggestions</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+        </nav>
+    </div>
+</header>
 
-    {% if user.is_authenticated %}
-        <main id="content" class="row justify-content-center align-items-center" role="main">
-            <div class="row justify-content-center align-items-center w-100">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </main>
-    {% endif %}
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+</main>
 
-</div>
+<!-- Footer -->
+{% include 'base/blocks/footer_block.html'%}
 
 <!-- Custom scripts -->
-<script src="{% static 'js/custom.js' %}"></script>
+
 <!-- Library scripts -->
-<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+<script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/datatable/datatables.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/mdb/js/mdb.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/moment_js/moment.js' %}"></script>
-<script src="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+<script type="text/javascript" src="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+
 <script>
 
     // SideNav Initialization
