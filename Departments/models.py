@@ -21,19 +21,25 @@ class DetailAbstractModel(models.Model):
 
 #                                                                                                               DRILLING
 # WELL DATA MODEL
-class WellStatisticalDataModel(DetailAbstractModel):
+class WellDataStatModel(DetailAbstractModel):
 
-    image = models.ImageField(upload_to=upload_image_to)
+    image = models.ImageField(upload_to=upload_image_to,
+                              verbose_name='Image of the instance')
 
     subject = models.CharField(max_length=500,
                                null=True,
                                blank=True,
-                               verbose_name='Subject of the instance.')
+                               verbose_name='Subject of the instance')
 
     description = models.TextField(max_length=10000,
                                    null=True,
                                    blank=True,
-                                   verbose_name='Description of the instance.')
+                                   verbose_name='Description of the instance')
+
+    association_date = models.DateField(blank=True,
+                                        default=timezone.now,
+                                        verbose_name='Real creation date of the stat',
+                                        help_text="If left blank, that means you desire to have today's date to be recorded")
 
     creator = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 null=True,

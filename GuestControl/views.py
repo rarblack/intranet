@@ -43,13 +43,6 @@ class InternalVisitTicketCreateView(LoginRequiredMixin, CreateView):
     template_name = 'guestcontrol/create/internal_visit_ticket/internal_visit_ticket_create.html'
     success_url = reverse_lazy('guestcontrol:internal_visit_tickets_list', kwargs={'pattern': 'my/open'})
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
-
     def form_valid(self, form):
         detail = InternalVisitTicketDetail.objects.create(status=0,
                                                           created_by=self.request.user,
@@ -65,13 +58,7 @@ class VisitorEntranceCardCreateView(CreateView):
     model = VisitorEntranceCardModel
     fields = ['name', 'surname', 'company', 'enter_datetime', 'leave_datetime']
     template_name = 'guestcontrol/create/visitor_entrance_card/visitor_entrance_card_create.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
+    success_url = reverse_lazy('guestcontrol:visitor_entrance_cards_list')
 
     def form_valid(self, form):
         self.username = self.request.POST['name'] + self.request.POST['surname']
@@ -85,9 +72,6 @@ class VisitorEntranceCardCreateView(CreateView):
 
         return super(VisitorEntranceCardCreateView, self).form_valid(form)
 
-    def get_success_url(self):
-        return reverse_lazy('guestcontrol:visitor_entrance_card_detail', kwargs={'pk': self.object.pk})
-
 
 #                                                                                                                 UPDATE
 # EXTERNAL VISIT TICKET UPDATE VIEW
@@ -95,13 +79,6 @@ class ExternalVisitTicketUpdateView(LoginRequiredMixin, UpdateView):
     model = ExternalVisitTicket
     fields = ['name', 'surname', 'company', 'subject', 'purpose', 'contact_type', 'contact', 'email', 'host', 'visit_datetime', 'leave_datetime', 'importance', 'note']
     template_name = 'guestcontrol/update/external_visit_ticket/external_visit_ticket_update.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
 
     def get_success_url(self):
         return reverse_lazy('guestcontrol:external_visit_ticket_detail', kwargs={'pk': self.kwargs.get('pk')})
@@ -129,13 +106,6 @@ class InternalVisitTicketUpdateView(LoginRequiredMixin, UpdateView):
     model = InternalVisitTicket
     fields = ['user', 'subject', 'purpose', 'host', 'visit_datetime', 'leave_datetime', 'importance', 'note']
     template_name = 'guestcontrol/update/internal_visit_ticket/internal_visit_ticket_update.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
 
     def get_success_url(self):
         return reverse_lazy('guestcontrol:internal_visit_ticket_detail', kwargs={'pk': self.kwargs.get('pk')})
@@ -165,13 +135,6 @@ class ExternalVisitTicketDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'ticket'
     template_name = 'guestcontrol/detail/external_visit_ticket/external_visit_ticket_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
-
     def get_queryset(self):
         return self.model.objects.select_related('detail').all()
 
@@ -181,13 +144,6 @@ class InternalVisitTicketDetailView(LoginRequiredMixin, DetailView):
     model = InternalVisitTicket
     context_object_name = 'ticket'
     template_name = 'guestcontrol/detail/internal_visit_ticket/internal_visit_ticket_detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
 
     def get_queryset(self):
         return self.model.objects.select_related('detail').all()
@@ -199,13 +155,6 @@ class VisitorEntranceCardDetailView(DetailView):
     context_object_name = 'card'
     template_name = 'guestcontrol/detail/visitor_entrance_card/visitor_entrance_card_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
-
     def get_queryset(self):
         return self.model.objects.all()
 
@@ -215,14 +164,10 @@ class VisitorEntranceCardDetailView(DetailView):
 class VisitorEntranceCardTemplateView(TemplateView):
     template_name = 'guestcontrol/template/visitor_entrance_card/visitor_entrance_card_template.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(VisitorEntranceCardTemplateView, self).get_context_data(**kwargs)
-        card = get_object_or_404(VisitorEntranceCardModel, pk=self.kwargs.get('pk'))
-        context['card'] = card
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
+
+# NAVIGATION TEMPLATE VIEW
+class NavigationTemplateView(LoginRequiredMixin, TemplateView):
+    template_name = 'guestcontrol/template/navigation/navigation_template.html'
 
 
 #                                                                                                                   LIST
@@ -231,13 +176,6 @@ class ExternalVisitTicketsListView(LoginRequiredMixin, ListView):
     model = ExternalVisitTicket
     template_name = 'guestcontrol/list/external_visit_tickets/external_visit_tickets_list.html'
     context_object_name = 'tickets'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
 
     def get_queryset(self):
         self.pattern = self.kwargs.get('pattern')

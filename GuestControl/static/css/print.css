@@ -1,0 +1,17 @@
+@media print {
+    .printCard{
+        position:absolute;!important;
+        width:300px;!important;
+        height:300px;!important;
+        z-index:15;!important;
+        top:50%;!important;
+        left:50%;!important;
+        margin:-150px 0 0 -150px;!important;
+    }
+
+    img {
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 25px;
+    }
+}

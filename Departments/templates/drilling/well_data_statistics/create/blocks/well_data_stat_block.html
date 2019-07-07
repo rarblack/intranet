@@ -1,0 +1,65 @@
+{% load crispy_forms_tags %}
+
+<div class="row justify-content-center align-items-center  p-md-5 py-xs-5">
+    <div class="col-lg-8 col-md-8 col-xs-12">
+        <form class="forms-sample" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-12">
+                    {{ form.subject|as_crispy_field }}
+                </div>
+                <div class="form-group col-12">
+                    {{ form.association_date|as_crispy_field }}
+                </div>
+                <div class="form-group col-12">
+                    {{ form.description|as_crispy_field }}
+                </div>
+                <div class="form-group col-12">
+                    <div class="form-group file-upload-info">
+                        {{ form.image|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+            <button  type="submit" class="btn btn-primary mr-0 my-4 float-right">Create</button>
+        </form>
+    </div>
+</div>
+
+{% block javascript %}
+    <script>
+        $(function () {
+            $('#id_association_date').datetimepicker({
+                format: 'YYYY-MM-DD'
+            });
+        });
+    </script>
+{% endblock %}
+
+{#<div class="row justify-content-center align-items-center  p-md-5 py-xs-5">#}
+{#    <div class="col-lg-8 col-md-8 col-xs-12">#}
+{#        <h2 class="card-title text-center">Create the Stat</h2>#}
+{#        <form class="md-form border border-light " method="POST" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            <div class="row">#}
+{#                <div class="form-group col-12">#}
+{#                    {{ form.subject|as_crispy_field }}#}
+{#                </div>#}
+{#                <div class="form-group col-12">#}
+{#                    {{ form.description|as_crispy_field }}#}
+{#                </div>#}
+{#                <div class="form-group col-12">#}
+{#                    <div class="file-field">#}
+{#                        <a class="btn-floating peach-gradient mt-0 float-left">#}
+{#                            <i class="fas fa-paperclip" aria-hidden="true"></i>#}
+{#                            <input type="file">#}
+{#                        </a>#}
+{#                        <div class="file-path-wrapper">#}
+{#                            <input class="file-path validate" type="text" placeholder="Upload your file">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <button  type="submit" class="btn btn-primary mr-0 my-4 float-right">Create</button>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}

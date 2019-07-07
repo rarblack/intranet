@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <section class="section  mt-5 pb-3 text-center">
+        <nav>
+            <div class="nav nav-tabs blue" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                   aria-controls="nav-home" aria-selected="true">Well Data Stats</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="row justify-content-between tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                   <a href="{% url 'department:drilling_well_data_stat_create' %}" class="btn btn-primary"><i class="fas fa-magic mr-1"></i> Create a stat</a>
+                <a href="{% url 'department:drilling_well_data_stat_list' %}" class="btn btn-primary"><i class="fas fa-list mr-1"></i> List stats</a>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

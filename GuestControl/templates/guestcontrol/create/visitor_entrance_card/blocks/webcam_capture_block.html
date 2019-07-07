@@ -5,13 +5,20 @@
     h1, h2, h3 { margin-top:0; margin-bottom:0; }
     form { margin-top: 15px; }
     form input { margin-right: 15px; }
-    #results { display:inline-block; margin:20px; padding:20px; border:1px solid; background:#ccc; }
+    #results { display:inline-block; padding:20px; border:1px solid; background:#ccc; }
 </style>
 
-<div id="webcam_setup">
-    <div class="col-12">
-        <h2 class="card-title text-center">Webcam</h2>
-        <div class="text-center mt-sm-1 mb-sm-5">Take a picture for your Visitor Entrance Card.</div>
+<section id="webcam_setup" class="section pb-3 text-center mt-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 p-0 mb-4">
+            <!--Section description-->
+            <div class="card ">
+                {#        <a id="search_close" href=""><i class="fas fa-times"></i></a>#}
+                <div class="card-body">
+                    <b>ATTENTION:</b> To create the visitor badge please first take the photo of yours and then fill the form as required.
+                </div>
+            </div>
+        </div>
 
         <div id="my_photo_booth">
             <div id="my_camera"></div>
@@ -23,8 +30,8 @@
             <script language="JavaScript">
                 Webcam.set({
                     // live preview size
-                    width: 480,
-                    height: 360,
+                    width: 420,
+                    height: 300,
 
                     // device capture size
                     dest_width: 640,
@@ -48,17 +55,17 @@
             <form class="form">
                 <div id="pre_take_buttons">
                     <!-- This button is shown before the user takes a snapshot -->
-                    <button class="btn btn-lg btn-primary" type=button onClick="preview_snapshot()">Take Snapshot</button>
+                    <button class="btn btn-lg btn-primary" style="width: 100%!important; margin: 0!important;" type=button onClick="preview_snapshot()">Take Snapshot</button>
                 </div>
                 <div id="post_take_buttons" style="display:none">
                     <!-- These buttons are shown after a snapshot is taken -->
-                    <button class="btn btn-md btn-deep-orange" type=button onClick="cancel_preview()">Re-Try</button>
-                    <button class="btn btn-md btn-deep-purple" type=button onClick="save_photo()">Use the photo</button>
+                    <button class="btn btn-md btn-deep-orange" style="width: 100%!important; margin: 0!important;" type=button onClick="cancel_preview()">Re-Try</button>
+                    <button class="btn btn-md btn-deep-purple" style="width: 100%!important; margin: 0!important;" type=button onClick="save_photo()">Use the photo</button>
                 </div>
             </form>
         </div>
 
-        <div id="results" style="display:none">
+        <div class="text-center" id="results" style="display:none">
             <!-- Your captured image will appear here... -->
         </div>
 
@@ -110,4 +117,5 @@
             }
         </script>
     </div>
-</div>
+    </div>
+</section>

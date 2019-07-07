@@ -31,7 +31,17 @@ urlpatterns += [
 
 # DASHBOARD
 urlpatterns += [
-    re_path(r'^$|dashboard', include(('Dashboard.urls', 'Dashboard'), namespace='dashboard'))
+    re_path(r'^$|home', include(('Dashboard.urls', 'Dashboard'), namespace='dashboard'))
+]
+
+# DASHBOARD
+urlpatterns += [
+    path('dashboard', include(('Dashboard.urls', 'Dashboard'), namespace='dashboard'))
+]
+
+# DEPARTMENTS
+urlpatterns += [
+    path('department', include(('Departments.urls', 'Departments'), namespace='department'))
 ]
 
 # DIRECTORY

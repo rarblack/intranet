@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+
+
+
+{% block content %}
+    <a class="back-to-nav" href="{% url 'department:drilling_navigation_template' %}"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+    {% include 'drilling/well_data_statistics/create/blocks/well_data_stat_block.html' %}
+{% endblock %}

@@ -1,63 +1,67 @@
 {% load static %}
-<div class="col-12">
-    <div class="pt-3 pb-3 mt-5 rounded">
-        <table id="table" class="table table-bordered table-hover w-100">
-            <thead>
-            <tr>
-                {% block thead %}
-                    <th>Action</th>
-                    <th>{{ name|default:'Name' }}</th>
-                    <th>{{ surname|default:'Surname' }}</th>
-                    <th>{{ company|default:'Company' }}</th>
-                    <th>{{ subject|default:'Subject' }}</th>
-                    <th>{{ purpose|default:'Purpose' }}</th>
-                    <th>{{ host|default:'Host' }}</th>
-                    <th>{{ visit_datetime|default:'Visit datetime' }}</th>
-                    <th>{{ leave_datetime|default:'Leave datetime' }}</th>
-                    <th>{{ importance|default:'Importance' }}</th>
-                    <th>{{ status|default:'Status' }}</th>
-                    {% if not user == tickets.0.detail.created_by %}
-                        <th>{{ created_by|default:'Creator' }}</th>
-                    {% endif %}
-                    <th>{{ created_at|default:'Created at' }}</th>
-                {% endblock %}
-            </tr>
-            </thead>
 
-            <tbody>
-            {% for ticket in tickets %}
+
+<div class="row justify-content-center align-items-center  p-md-5 py-xs-5">
+    <div class="col-12">
+        <div class="pt-3 pb-3 mt-5 rounded">
+            <table id="table" class="table table-bordered table-hover w-100">
+                <thead>
                 <tr>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <a class="btn btn-primary" href="{% url 'guestcontrol:external_visit_ticket_detail' pk=ticket.pk %}#content">View</a>
-{#                            {% if user != ticket.detail.created_by and user.is_superuser or user != ticket.detail.created_by and user.is_staff and user.profile.department == 5 %}#}
-{#                                <a class="btn btn-danger"  href="{% url 'guestcontrol:internal_visit_ticket_detail_update' pk=ticket.detail.pk %}/#content">Process</a>#}
-{#                            {% else %}#}
-{#                                <a class="btn btn-danger"  href="{% url 'guestcontrol:internal_visit_ticket_update' pk=ticket.pk %}/#content">Update</a>#}
-{#                            {% endif %}#}
-                            {% if ticket.detail.created_by == user %}
-                              <a class="btn btn-danger"  href="{% url 'guestcontrol:external_visit_ticket_update' pk=ticket.pk %}/#content">Update</a>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td class="text-center">{{ ticket.name }}</td>
-                    <td class="text-center">{{ ticket.surname }}</td>
-                    <td class="text-center">{{ ticket.company }}</td>
-                    <td class="text-center">{{ ticket.subject }}</td>
-                    <td class="text-center">{{ ticket.get_purpose_display }}</td>
-                    <td class="text-center">{{ ticket.host.get_full_name }}</td>
-                    <td class="text-center">{{ ticket.visit_datetime }}</td>
-                    <td class="text-center">{{ ticket.visit_datetime }}</td>
-                    <td class="text-center">{{ ticket.get_importance_display}}</td>
-                    <td class="text-center">{{ ticket.detail.get_status_display }}</td>
-                    {% if user != ticket.detail.created_by %}
-                        <td class="text-center">{{ ticket.detail.created_by }}</td>
-                    {% endif %}
-                    <td class="text-center">{{ ticket.detail.created_at }}</td>
+                    {% block thead %}
+                        <th>Action</th>
+                        <th>{{ name|default:'Name' }}</th>
+                        <th>{{ surname|default:'Surname' }}</th>
+                        <th>{{ company|default:'Company' }}</th>
+                        <th>{{ subject|default:'Subject' }}</th>
+                        <th>{{ purpose|default:'Purpose' }}</th>
+                        <th>{{ host|default:'Host' }}</th>
+                        <th>{{ visit_datetime|default:'Visit datetime' }}</th>
+                        <th>{{ leave_datetime|default:'Leave datetime' }}</th>
+                        <th>{{ importance|default:'Importance' }}</th>
+                        <th>{{ status|default:'Status' }}</th>
+                        {% if not user == tickets.0.detail.created_by %}
+                            <th>{{ created_by|default:'Creator' }}</th>
+                        {% endif %}
+                        <th>{{ created_at|default:'Created at' }}</th>
+                    {% endblock %}
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                {% for ticket in tickets %}
+                    <tr>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a class="btn btn-primary" href="{% url 'guestcontrol:external_visit_ticket_detail' pk=ticket.pk %}#content">View</a>
+                                {#                            {% if user != ticket.detail.created_by and user.is_superuser or user != ticket.detail.created_by and user.is_staff and user.profile.department == 5 %}#}
+                                {#                                <a class="btn btn-danger"  href="{% url 'guestcontrol:internal_visit_ticket_detail_update' pk=ticket.detail.pk %}/#content">Process</a>#}
+                                {#                            {% else %}#}
+                                {#                                <a class="btn btn-danger"  href="{% url 'guestcontrol:internal_visit_ticket_update' pk=ticket.pk %}/#content">Update</a>#}
+                                {#                            {% endif %}#}
+                                {% if ticket.detail.created_by == user %}
+                                    <a class="btn btn-danger"  href="{% url 'guestcontrol:external_visit_ticket_update' pk=ticket.pk %}/#content">Update</a>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td class="text-center">{{ ticket.name }}</td>
+                        <td class="text-center">{{ ticket.surname }}</td>
+                        <td class="text-center">{{ ticket.company }}</td>
+                        <td class="text-center">{{ ticket.subject }}</td>
+                        <td class="text-center">{{ ticket.get_purpose_display }}</td>
+                        <td class="text-center">{{ ticket.host.get_full_name }}</td>
+                        <td class="text-center">{{ ticket.visit_datetime }}</td>
+                        <td class="text-center">{{ ticket.visit_datetime }}</td>
+                        <td class="text-center">{{ ticket.get_importance_display}}</td>
+                        <td class="text-center">{{ ticket.detail.get_status_display }}</td>
+                        {% if user != ticket.detail.created_by %}
+                            <td class="text-center">{{ ticket.detail.created_by }}</td>
+                        {% endif %}
+                        <td class="text-center">{{ ticket.detail.created_at }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

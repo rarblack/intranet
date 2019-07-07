@@ -213,3 +213,6 @@ class VisitorEntranceCardModel(DetailAbstractModel):
                                 on_delete=models.SET_NULL,
                                 verbose_name='Creator',
                                 related_name='guestcontrol_visitor_entrance_card_creator')
+
+    def get_full_name(self):
+        return f'{self.name} {self.surname}'

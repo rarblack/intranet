@@ -21,16 +21,26 @@
     <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static "css/offcanvas.css" %}">
     <link type="text/css" rel="stylesheet" href="{% static 'css/visitor_card.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'test.css' %}">
 
     <!-- Library links -->
     <link type="text/css" rel="stylesheet" href="{% static 'vendor/fontawesome-free-5.8.2-web/css/all.min.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'vendor/mdb/css/mdb.min.css' %}">
+
     <!-- jQuery -->
     <script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+    <!-- Datatable -->
     <link type="text/css" rel="stylesheet" href="{% static 'vendor/datatable/datatables.min.css' %}"/>
+
+    <!-- DateTimePicker -->
     <link type="text/css" rel="stylesheet" href="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker-build.css' %}">
+
+    <!-- Block css -->
+    {% block css %}{% endblock %}
+
 </head>
 
 <body class="blue-skin bg-light">
@@ -41,22 +51,22 @@
 
     <div class="nav-scroller bg-white shadow-sm">
         <nav class="nav nav-underline">
-            <a class="nav-link active" href="#">Dashboard</a>
-            <a class="nav-link" href="#">
-                Friends
-                <span class="badge badge-pill bg-light align-text-bottom">27</span>
-            </a>
-            <a class="nav-link" href="#"><i class="fas fa-caret-down"></i> Explore</a>
-            <a class="nav-link" href="#">Suggestions</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
+{#            <a class="nav-link active" href="#">Dashboard</a>#}
+{#            <a class="nav-link" href="#">#}
+{#                Friends#}
+{#                <span class="badge badge-pill bg-light align-text-bottom">27</span>#}
+{#            </a>#}
+{#            <a class="nav-link" href="#"><i class="fas fa-caret-down"></i> Explore</a>#}
+{#            <a class="nav-link" href="#">Suggestions</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#            <a class="nav-link" href="#">Link</a>#}
         </nav>
     </div>
 </header>
@@ -73,10 +83,12 @@
 <!-- Library scripts -->
 <script type="text/javascript" src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'vendor/printJs/print.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/datatable/datatables.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/mdb/js/mdb.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/moment_js/moment.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+{% block javascript %}{% endblock %}
 
 <script>
 
@@ -87,8 +99,7 @@
 
 </script>
 
-{% block javascript %}
-{% endblock %}
+
 
 </body>
 

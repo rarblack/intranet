@@ -21,5 +21,32 @@ footer.page-footer .footer-copyright {
     top: 15px;
     right: 15px;
     font-size: 25px;
-    color: #fff!important;
+    color: #fff !important;
+}
+
+.limit-text {
+    font-size: 0.825rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;
+    max-height: 50px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.nav-tabs {
+    border-radius: .2rem!important;
+    padding: 0rem;
+}
+
+.nav-tabs .nav-item {
+    border-radius: .2rem!important;
+}
+
+.back-to-nav {
+    cursor: pointer;
+    position: absolute;
+    left: 50px;
+    top: 135px;
 }

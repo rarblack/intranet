@@ -12,30 +12,33 @@
     </a>
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'dashboard:dashboard_template' %}"><i class="fas fa-tachometer-alt"></i> <span class="clearfix d-none d-sm-inline-block">Dashboard</span></a>
+            <a class="nav-link" href="#"><i class="fas fa-fire"></i> <span class="clearfix d-none d-sm-inline-block">HR-HotLine</span></a>
         </li>
+{#        <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'dashboard:dashboard_template' %}"><i class="fas fa-tachometer-alt"></i> <span class="clearfix d-none d-sm-inline-block">Dashboard</span></a>#}
+{#        </li>#}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'directory:contacts_list' %}"><i class="fas fa-address-book"></i> <span class="clearfix d-none d-sm-inline-block">Directory</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'news:articles_list' pattern='my/open' %}"><i class="far fa-newspaper"></i> <span class="clearfix d-none d-sm-inline-block">News</span></a>
+            <a class="nav-link" href="{% url 'news:articles_list' pattern='my/open' %}"><i class="fas fa-newspaper"></i> <span class="clearfix d-none d-sm-inline-block">News</span></a>
         </li>
 
-{#        {% if user.is_authenticated %}#}
-{#            <li class="nav-item dropdown">#}
-{#                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"#}
-{#                   aria-haspopup="true" aria-expanded="false">#}
-{#                    <i class="far fa-newspaper"></i>#}
-{#                    Dropdown#}
-{#                </a>#}
-{#                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">#}
-{#                    <a class="dropdown-item" href="#">Action</a>#}
-{#                    <a class="dropdown-item" href="#">Settings</a>#}
-{#                    <a class="dropdown-item" href="{% url 'logout' %}">Sign out</a>#}
-{#                </div>#}
-{##}
-{#            </li>#}
-{#        {% endif %}#}
+        {#        {% if user.is_authenticated %}#}
+        {#            <li class="nav-item dropdown">#}
+        {#                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"#}
+        {#                   aria-haspopup="true" aria-expanded="false">#}
+        {#                    <i class="far fa-newspaper"></i>#}
+        {#                    Dropdown#}
+        {#                </a>#}
+        {#                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">#}
+        {#                    <a class="dropdown-item" href="#">Action</a>#}
+        {#                    <a class="dropdown-item" href="#">Settings</a>#}
+        {#                    <a class="dropdown-item" href="{% url 'logout' %}">Sign out</a>#}
+        {#                </div>#}
+        {##}
+        {#            </li>#}
+        {#        {% endif %}#}
 
         {% if user.is_authenticated %}
             <li class="nav-item">

@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% load static from staticfiles %}
+
+
+{% block content %}
+    <a class="back-to-nav" href="{% url 'department:drilling_navigation_template' %}"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+    {% include 'drilling/well_data_statistics/list/blocks/well_data_stats_block.html' %}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'vendor/ligthbox2-master/css/lightbox.css' %}">
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'vendor/ligthbox2-master/js/lightbox.js' %}"></script>
+{% endblock %}

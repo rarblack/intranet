@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+    <a class="back-to-nav" href="{% url 'guestcontrol:navigation_template' %}"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
     {% include 'guestcontrol/create/visitor_entrance_card/blocks/webcam_capture_block.html' %}
     {% include  'guestcontrol/create/visitor_entrance_card/blocks/visitor_entrance_card_block.html' %}
 {% endblock %}

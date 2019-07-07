@@ -44,6 +44,11 @@ urlpatterns += [
     re_path(r'/list/visitor-entrance-cards[/]$',   views.VisitorEntranceCardsListView.as_view(),            name='visitor_entrance_cards_list'),
 ]
 
+# NAVIGATION
+urlpatterns += [
+     re_path(r'/navigation[/]?$',   views.NavigationTemplateView.as_view(), name='navigation_template'),
+]
+
 # METHOD
 urlpatterns += [
     re_path(r'/open/external_visit_ticket/(?P<pk>\d+?)[/]?$',  views.external_visit_ticket_open_method,  name='external_visit_ticket_open'),

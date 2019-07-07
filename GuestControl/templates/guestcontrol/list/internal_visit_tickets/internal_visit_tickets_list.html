@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
-        {% include 'guestcontrol/list/internal_visit_tickets/blocks/internal_visit_tickets_block.html'%}
+    <a class="back-to-nav" href="{% url 'guestcontrol:navigation_template' %}"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+    {% include 'guestcontrol/list/internal_visit_tickets/blocks/internal_visit_tickets_block.html'%}
 {% endblock %}
 

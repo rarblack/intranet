@@ -1,0 +1,114 @@
+{% load static from staticfiles %}
+
+<section class="section pb-3 text-center mb-4">
+
+    <!--Section description-->
+    <div class="card my-5">
+        {#        <a id="search_close" href=""><i class="fas fa-times"></i></a>#}
+        <div class="card-body">
+            The default is <b>today</b>. If you desire to search on different date range please consider of pushing search icon
+            <a href="" data-toggle="modal" data-target="#orangeModalSubscription">
+                <li class="fas fa-search fa-2x"></li>
+            </a>
+        </div>
+    </div>
+
+    <!--Search model trigger-->
+    <div class="text-center">
+
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+        {% for stat in stats %}
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4">
+
+                <!-- Card -->
+                <div class="card">
+
+                    <!-- Card image -->
+                    <div class="p-1">
+                        <a href="{{ stat.image.url }}" data-lightbox="image-{{ stat.id }}" data-title="My caption">
+                            <img class="card-img-top"  src="{{ stat.image.url }}" alt="Card image cap">
+                        </a>
+                        <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">{{ stat.subject }}</h4>
+                        <!-- Text -->
+                        <p class="card-text limit-text">{{ stat.description }}</p>
+
+                    </div>
+
+                </div>
+                <!-- Card -->
+
+            </div>
+            <!--Grid column-->
+
+        {% endfor %}
+    </div>
+</section>
+
+<div class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-warning" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header text-center" style="background-color: transparent!important;">
+                <h4 class="modal-title w-100 font-weight-bold py-2">Search</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="md-form mb-5">
+                        <i class="fas fa-calendar-alt prefix grey-text"></i>
+                        <input type="text" id="start_date" name="start_date" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="id_start_date">Start date</label>
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fas fa-calendar-alt prefix grey-text"></i>
+                        <input type="text" id="end_date" name="end_date" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="id_end_date">End date</label>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center">
+                        <button type="submit" class="btn btn-outline-warning waves-effect">Search <i class="fas fa-search ml-1"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+
+{% block javascript %}
+    <script>
+        $(function () {
+            $('#start_date').datetimepicker({
+                format: 'YYYY-MM-DD'
+            });
+
+            $('#end_date').datetimepicker({
+                format: 'YYYY-MM-DD'
+
+            });
+            {#$('.card #search_close').onclick(function () {#}
+            {#    this.style.#}
+            {#);#}
+        });
+    </script>
+{% endblock %}
