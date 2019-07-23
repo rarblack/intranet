@@ -8,7 +8,6 @@ from django.utils import timezone
 
 from .models import Ticket, TicketDetail, Activity, Message, Car
 from News.functions import articles_latest, employees_newest, employees_closest_birthdays
-from .choices import ACTIONS
 
 
 #                                                                                                                 CREATE
@@ -63,11 +62,11 @@ class CarCreateView(LoginRequiredMixin, CreateView):
 
 
 # MESSAGE CREATE VIEW
-class MessageCreateView(CreateView):
+class MessageCreateView(LoginRequiredMixin, CreateView):
 
     model = Message
     fields = ['reason', 'explanation']
-    template_name = 'helpdesk/create/message/message_create.html'
+    template_name = 'help_desk/help_desk/create/message/message_create.html'
     success_url = reverse_lazy('helpdesk:navigation_template', kwargs={'pattern': 'main'})
 
     def dispatch(self, request, *args, **kwargs):

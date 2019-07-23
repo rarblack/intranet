@@ -19,6 +19,7 @@ from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 import sys
+from . import views
 
 # ADMIN
 urlpatterns = [
@@ -26,12 +27,12 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('accounts', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
-# DASHBOARD
+# HOME
 urlpatterns += [
-    re_path(r'^$|home', include(('Dashboard.urls', 'Dashboard'), namespace='dashboard'))
+    re_path(r'^$|home', include(('Home.urls', 'Home'), namespace='home'))
 ]
 
 # DASHBOARD
@@ -51,7 +52,7 @@ urlpatterns += [
 
 # DOCUMENT LIBRARY
 urlpatterns += [
-    path('document-library', include(('DocumentLibrary.urls', 'DocumentLibrary'), namespace='doclib'))
+    path('document-library', include(('DocumentLibrary.urls', 'DocumentLibrary'), namespace='document_library'))
 ]
 
 # # EVENTS
@@ -61,12 +62,12 @@ urlpatterns += [
 
 # GUEST-CONTROL
 urlpatterns += [
-    path('guest-control', include(('GuestControl.urls', 'GuestControl'), namespace="guestcontrol")),
+    path('guest-control', include(('GuestControl.urls', 'GuestControl'), namespace="guest_control")),
 ]
 
 # HELP DESK
 urlpatterns += [
-    path('help-desk', include(('HelpDesk.urls', 'HelpDesk'), namespace='helpdesk')),
+    path('help-desk', include(('HelpDesk.urls', 'HelpDesk'), namespace='help_desk')),
 ]
 
 # HUMAN-RESOURCES

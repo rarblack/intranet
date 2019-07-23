@@ -56,13 +56,6 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
         print('Successs')
         return super().form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
-
     def get_success_url(self):
         return reverse_lazy('news:article_detail', kwargs={'pk': self.object.pk})
 
@@ -190,14 +183,6 @@ class ArticleDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return self.model.objects.select_related('detail').all()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['activities'] = Activity.objects.filter(detail=self.object.detail)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
-
 
 # TAG DETAIL VIEW
 class TagDetailView(LoginRequiredMixin, DetailView):
@@ -230,7 +215,7 @@ class ArticleTemplateView(LoginRequiredMixin, TemplateView):
 
 #                                                                                                                 DELETE
 # TAG DELETE VIEW
-class TagDeleteView(DeleteView):
+class TagDeleteView(LoginRequiredMixin, DeleteView):
     model = Tag
     context_object_name = 'tag'
     template_name = 'news/delete/tag/tag_confirm_delete.html'

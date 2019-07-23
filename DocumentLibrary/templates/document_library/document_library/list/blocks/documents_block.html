@@ -1,0 +1,31 @@
+{% extends 'base/blocks/list/table_block.html' %}
+
+
+{% block thead %}
+    <th class="th-sm">{{ user_name|default:'User' }}</th>
+    <th class="th-sm">{{ file_name|default:"File's name " }}</th>
+    <th class="th-sm">{{ file_extension|default:"File's extension" }}</th>
+    <th class="th-sm">{{ date|default:'Upload date' }}</th>
+    <th class="th-sm">Action</th>
+{% endblock %}
+
+{% block tbody %}
+    {% for document in documents %}
+        <tr>
+            <td>{{ document.creator.get_full_name }}</td>
+            <td>{{ document.file_name }}</td>
+            <td>{{ document.file_extension}}</td>
+            <td>{{ document.creation_datetime}}</td>
+            <td>
+                <form style="display:inline" method="post" action="{% url 'document_library:document_download' document.file|stringformat:"s" %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Download">
+                </form>
+                <form style="display:inline" method="post" action="{% url 'document_library:document_delete' document.pk %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}

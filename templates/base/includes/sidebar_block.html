@@ -1,0 +1,102 @@
+<!-- Sidebar navigation -->
+<div id="slide-out" class="side-nav fixed wide sn-bg-1">
+    <ul class="custom-scrollbar">
+        <!-- Logo -->
+        <li>
+            <div class="logo-wrapper sn-ad-avatar-wrapper">
+                <a href="#"><img src="{{ user.profile.profile_image.url }}" class="rounded-circle"><span>{{ user.profile.get_full_name }}</span></a>
+            </div>
+        </li>
+        <!--/. Logo -->
+        <!-- Side navigation links -->
+        <li>
+            <ul class="collapsible collapsible-accordion">
+                <!-- Admin -->
+                {% if user.is_superuser %}
+                    <li><a class="waves-effect" href="{% url 'admin:index' %}" target="_blank"><i class="fas fa-user-cog"></i> Admin</a>
+                {% endif %}
+                <!-- Home -->
+                <li><a class="waves-effect"  href="{% url 'home:home_template' %}" target="_blank"><i class="fas fa-home"></i> Home</a></li>
+                <!-- Dashboard -->
+                <li><a class="waves-effect"  href="{% url 'dashboard:dashboard_template' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <!-- Self-service -->
+                <li><a class="collapsible-header waves-effect arrow-r"><i class="fab fa-servicestack"></i>   Self Service<i class="fas fa-angle-down rotate-icon"></i></a>
+                    <div class="collapsible-body">
+                        <ul class="list-unstyled">
+                            <li><a href="{% url 'warehouse:ticket_create' %}" class="waves-effect"><i class="fas fa-warehouse"></i> Warehouse</a>
+                            </li>
+                            <li><a href="{% url 'transportation:ticket_create' %}" class="waves-effect"><i class="fas fa-bus"></i> Transportation</a>
+                            </li>
+                            <li><a href="#" class="waves-effect"><i class="fas fa-cheese"></i> Lunchroom</a>
+                            </li>
+                            <li><a href="#" class="waves-effect"><i class="fas fa-wrench"></i> Settings</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Departments -->
+                <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-building"></i> Departments<i class="fas fa-angle-down rotate-icon"></i></a>
+                    <div class="collapsible-body">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="waves-effect">ICT</a>
+                            </li>
+{#                            <li><a href="#" class="waves-effect">HR</a>#}
+{#                            </li>#}
+{#                            <li><a href="#" class="waves-effect">LD</a>#}
+{#                            </li>#}
+                            <li><a href="#" class="waves-effect">Finance</a>
+                            </li>
+                            <li><a href="{% url 'department:drilling_navigation_template' %}" class="waves-effect">Drilling</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Directory -->
+                <li><a class="waves-effect" href="{% url 'directory:contacts_list' %}/"><i class="fas fa-address-book"></i> Directory</a>
+                    <!-- Document Library -->
+                <li><a class="waves-effect" href="{% url 'document_library:navigation_template' %}/"><i class="fas fa-file-alt"></i> Document Library</a>
+                    <!-- IT HelpDesk -->
+                <li><a class="waves-effect" href="{% url 'help_desk:ticket_create' %}/"><i class="fas fa-hands-helping"></i> IT Help Desk</a>
+                    <!-- Management -->
+                <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-tasks"></i> Management<i class="fas fa-angle-down rotate-icon"></i></a>
+                    <div class="collapsible-body">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="waves-effect">Project Management</a>
+                            </li>
+                            <li><a href="#" class="waves-effect">Task Management</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Events -->
+                <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-calendar-alt"></i> Events<i class="fas fa-angle-down rotate-icon"></i></a>
+                    <div class="collapsible-body">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="waves-effect">Events</a>
+                            </li>
+                            <li><a href="#" class="waves-effect">Invitations</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <!-- GUEST CONTROL -->
+             <li><a class="waves-effect" href="{% url 'guest_control:navigation_template' %}"><i class="fas fa-user"></i> Guest Control</a>
+{#                <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-calendar-alt"></i> Guest Control<i class="fas fa-angle-down rotate-icon"></i></a>#}
+{#                    <div class="collapsible-body">#}
+{#                        <ul class="list-unstyled">#}
+{#                            <li><a href="{% url 'guestcontrol:external_visit_tickets_list' pattern='my/open' %}" class="waves-effect">External Visit Tickets</a>#}
+{#                            </li>#}
+{#                            <li><a href="{% url 'guestcontrol:internal_visit_tickets_list' pattern='my/open' %}" class="waves-effect">Internal Visit Tickets</a>#}
+{#                            </li>#}
+{#                            <li><a href="{% url 'guestcontrol:visitor_entrance_card_create' %}" class="waves-effect">Visitor Entrance Card</a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </li>#}
+                <!--/. Side navigation links -->
+            </ul>
+            <div class="sidenav-bg rgba-blue-strong"></div>
+        </li>
+    </ul>
+</div>
+<!--/. Sidebar navigation -->

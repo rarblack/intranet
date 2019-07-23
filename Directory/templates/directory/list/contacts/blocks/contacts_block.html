@@ -1,31 +1,20 @@
-{% load static %}
-<div class="col-12 my-5">
-    <table id="table" class="table table-bordered table-hover w-100 my-5">
-        <thead>
-        <tr>
-            {% block thead %}
-                <th>{{ user_name|default:'User' }}</th>
-                <th>{{ department|default:'Department' }}</th>
-                <th>{{ internal_number|default:'Internal number' }}</th>
-                <th>{{ mobile_number|default:'Mobile number' }}</th>
-            {% endblock %}
-        </tr>
-        </thead>
+{% extends 'base/blocks/list/table_block.html' %}
 
-        <tbody>
-        {% block tbody %}
-            {% for contact in contacts %}
-                <tr>
-                    <td>{{ contact.user.get_full_name }}</td>
-                    <td>{{ contact.get_department_display }}</td>
-                    <td>{{ contact.internal_number}}</td>
-                    <td>{{ contact.mobile_number}}</td>
-                </tr>
-            {% endfor %}
-        {% endblock %}
-        </tbody>
-    </table>
-</div>
-{% block javascript %}
-    <script src="{% static "js/datatable_configuration.js" %}"></script>
+
+{% block thead %}
+    <th class="th-sm">{{ user_name|default:'User' }}</th>
+    <th class="th-sm">{{ department|default:'Department' }}</th>
+    <th class="th-sm">{{ internal_number|default:'Internal number' }}</th>
+    <th class="th-sm">{{ mobile_number|default:'Mobile number' }}</th>
+{% endblock %}
+
+{% block tbody %}
+    {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.user.get_full_name }}</td>
+            <td>{{ contact.get_department_display }}</td>
+            <td>{{ contact.internal_number}}</td>
+            <td>{{ contact.mobile_number}}</td>
+        </tr>
+    {% endfor %}
 {% endblock %}

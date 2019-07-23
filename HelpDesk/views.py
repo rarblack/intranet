@@ -15,7 +15,7 @@ from News.functions import articles_latest, employees_newest, employees_closest_
 class TicketCreateView(LoginRequiredMixin, CreateView):
     model = Ticket
     fields = ['type', 'subject', 'location', 'importance', 'note']
-    template_name = 'helpdesk/create/ticket/ticket_create.html'
+    template_name = 'help_desk/help_desk/create/ticket/ticket_create.html'
     success_url = reverse_lazy('helpdesk:tickets_list', kwargs={'pattern': 'my/open'})
 
     def get_context_data(self, **kwargs):
@@ -45,7 +45,7 @@ class MessageCreateView(CreateView):
 
     model = Message
     fields = ['reason', 'explanation']
-    template_name = 'helpdesk/create/message/message_create.html'
+    template_name = 'help_desk/help_desk/create/message/message_create.html'
     success_url = reverse_lazy('helpdesk:navigation_template', kwargs={'pattern': 'main'})
 
     def get_context_data(self, **kwargs):
@@ -78,14 +78,7 @@ class MessageCreateView(CreateView):
 class TicketUpdateView(LoginRequiredMixin, UpdateView):
     model = Ticket
     fields = ['type', 'subject', 'location', 'importance', 'note', 'file']
-    template_name = 'helpdesk/update/ticket/ticket_update.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
+    template_name = 'help_desk/help_desk/update/ticket/ticket_update.html'
 
     def get_success_url(self):
         return reverse_lazy('helpdesk:ticket_detail', kwargs={'pk': self.kwargs.get('pk')})
@@ -95,14 +88,7 @@ class TicketUpdateView(LoginRequiredMixin, UpdateView):
 class TicketDetailUpdateView(LoginRequiredMixin, UpdateView):
     model = TicketDetail
     fields = ['status', 'assignee']
-    template_name = 'helpdesk/update/ticket_detail/ticket_detail_update.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
+    template_name = 'help_desk/help_desk/update/ticket_detail/ticket_detail_update.html'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -125,25 +111,18 @@ class TicketDetailUpdateView(LoginRequiredMixin, UpdateView):
 class TicketDetailView(LoginRequiredMixin, DetailView):
     model = Ticket
     context_object_name = 'ticket'
-    template_name = 'helpdesk/detail/ticket/ticket_detail.html'
+    template_name = 'help_desk/help_desk/detail/ticket/ticket_detail.html'
 
     def get_queryset(self):
         return self.model.objects.select_related('detail').all()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['activities'] = Activity.objects.filter(detail_id=self.kwargs.get('pk'))
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
 
 
 #                                                                                                                   LIST
 # TICKET LIST VIEW
 class TicketsListView(LoginRequiredMixin, ListView):
     model = Ticket
-    template_name = 'helpdesk/list/tickets/tickets_list.html'
+    template_name = 'help_desk/help_desk/list/tickets/tickets_list.html'
     context_object_name = 'tickets'
 
     def get_context_data(self, **kwargs):

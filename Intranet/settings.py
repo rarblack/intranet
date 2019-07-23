@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # LOCAL APPS
     'CommonItems.apps.CommonitemsConfig',
+    'Home.apps.HomeConfig',
     'Dashboard.apps.DashboardConfig',
     # 'PeopleOnBoard.apps.PeopleOnBoardConfig',
     # 'Lunchroom.apps.LunchroomConfig',

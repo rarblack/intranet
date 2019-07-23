@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    <title>Guest Control</title>
+{% endblock %}
+
+{% block nav-scroller %}
+    {% include 'guest_control/common/internal_visit_ticket/nav-scroller.html' %}
+{% endblock %}
+
+{% block content %}
+    <a class="back-to-nav" href="{% url 'guest_control:navigation_template' %}"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+    {% include 'guest_control/list/internal_visit_tickets/blocks/internal_visit_tickets_block.html' %}
+{% endblock %}
+

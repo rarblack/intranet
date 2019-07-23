@@ -64,11 +64,11 @@ class MaterialCreateView(LoginRequiredMixin, CreateView):
 
 
 # MESSAGE CREATE VIEW
-class MessageCreateView(CreateView):
+class MessageCreateView(LoginRequiredMixin, CreateView):
 
     model = Message
     fields = ['reason', 'explanation']
-    template_name = 'helpdesk/create/message/message_create.html'
+    template_name = 'help_desk/help_desk/create/message/message_create.html'
     success_url = reverse_lazy('helpdesk:navigation_template', kwargs={'pattern': 'main'})
 
     def dispatch(self, request, *args, **kwargs):
@@ -158,6 +158,7 @@ class MaterialUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('warehouse:material_detail', kwargs={'pk': self.object.pk})
+
 
 #                                                                                                                 DETAIL
 # TICKET DETAIL VIEW

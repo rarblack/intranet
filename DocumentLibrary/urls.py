@@ -3,21 +3,23 @@ from . import views
 
 # VIEW
 urlpatterns = [
-    re_path(r'/view/uploaded/files[/]?$', views.ListViewFilesView.as_view(), name='view-uploaded-files')
+    # re_path(r'/list/documents/(?P<table>.*?)[/]?$', views.DocumentsListView.as_view(), name='documents_list')
+    re_path(r'/list/documents/[/]?$', views.DocumentsListView.as_view(), name='documents_list'),
+    re_path(r'/navigation[/]?$', views.NavigationTemplateView.as_view(), name='navigation_template')
 ]
 
 # UPLOAD
 urlpatterns += [
-    re_path('/upload/files[/]?$', views.FileCreateView.as_view(), name='upload-files')
+    re_path('/create/document[/]?$', views.DocumentCreateView.as_view(), name='document_create')
 ]
 
 # DELETE
 urlpatterns += [
-    re_path('/delete/file/<int:pk>[/]?$', views.DeleteUploadFilesView.as_view(), name='delete-uploaded-file')
+    re_path('r/delete/document/(?P<pk>\d+?)[/]?$', views.DeleteDocumentView.as_view(), name='document_delete')
 ]
 
 
 # DOWNLOAD
 urlpatterns += [
-    re_path(r'/download/file/(?P<path>.*?)[/]?$', views.download, name='download-uploaded-file')
+    re_path(r'/download/document/(?P<path>.*?)[/]?$', views.document_download_method, name='document_download')
 ]
