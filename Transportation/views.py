@@ -259,13 +259,6 @@ class CarsListView(LoginRequiredMixin, ListView):
     template_name = 'transportation/list/cars/cars_list.html'
     context_object_name = 'cars'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["latest_articles"] = articles_latest()
-        context["closest_birthdays"] = employees_closest_birthdays()
-        context["newest_employees"] = employees_newest()
-        return context
-
 
 #                                                                                                                METHODS
 # TICKET DETAIL CLOSE METHOD
