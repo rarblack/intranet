@@ -6,4 +6,4 @@ from HumanResources.models import Profile
 class ContactsListView(LoginRequiredMixin, ListView):
     model = Profile
     context_object_name = 'contacts'
-    template_name = 'directory/list/contacts/contacts_list.html'
+    template_name = 'directory/default/list/contacts_list.html'
