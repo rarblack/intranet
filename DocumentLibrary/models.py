@@ -6,9 +6,7 @@ from django.contrib.auth.models import User
 
 
 def upload_to(instance, filename):
-
-    # return f'document_library/department_{instance.creator.profile.department}/user_{instance.creator.profile.id}/{filename}'
-    return f'document_library/{filename}'
+    return 'document_library/user_{0}/{1}'.format(instance.creator.id, filename)
 
 
 class DocumentModel(models.Model):

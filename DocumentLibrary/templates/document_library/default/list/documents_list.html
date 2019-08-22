@@ -5,9 +5,7 @@
 {% endblock %}
 
 {% block content %}
-
-    <a class="back-to-nav" href="{% url 'document_library:navigation_template' %}"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
-    {% include 'document_library/document_library/list/blocks/documents_block.html' %}
+    {% include 'document_library/default/list/blocks/documents_block.html' %}
     {#    {% if table %}#}
     {#        {% include 'document_library/document_library/list/blocks/documents_block.html' %}#}
     {#    {% else %}#}

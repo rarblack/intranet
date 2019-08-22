@@ -215,4 +215,4 @@ class VisitorEntranceCardModel(DetailAbstractModel):
                                 related_name='guestcontrol_visitor_entrance_card_creator')
 
     def get_full_name(self):
-        return f'{self.name} {self.surname}'
+        return '{0} {1}'.format(self.name, self.surname)
