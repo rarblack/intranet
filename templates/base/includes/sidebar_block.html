@@ -4,7 +4,14 @@
         <!-- Logo -->
         <li>
             <div class="logo-wrapper sn-ad-avatar-wrapper">
-                <a href="#"><img src="{{ user.profile.profile_image.url }}" class="rounded-circle"><span>{{ user.profile.get_full_name }}</span></a>
+                <a href="#">
+                    <img src="
+                    {% if user.profile.profile_image %}
+                        {{ user.profile.profile_image.url }}
+                    {% endif %}"
+                         class="rounded-circle">
+                    <span>{{ user.profile.get_full_name }}</span>
+                </a>
             </div>
         </li>
         <!--/. Logo -->
@@ -40,10 +47,10 @@
                         <ul class="list-unstyled">
                             <li><a href="#" class="waves-effect">ICT</a>
                             </li>
-{#                            <li><a href="#" class="waves-effect">HR</a>#}
-{#                            </li>#}
-{#                            <li><a href="#" class="waves-effect">LD</a>#}
-{#                            </li>#}
+                            {#                            <li><a href="#" class="waves-effect">HR</a>#}
+                            {#                            </li>#}
+                            {#                            <li><a href="#" class="waves-effect">LD</a>#}
+                            {#                            </li>#}
                             <li><a href="#" class="waves-effect">Finance</a>
                             </li>
                             <li><a href="{% url 'department:drilling_navigation_template' %}" class="waves-effect">Drilling</a>
@@ -79,21 +86,21 @@
                         </ul>
                     </div>
                 </li>
-            <!-- GUEST CONTROL -->
-             <li><a class="waves-effect" href="{% url 'guest_control:navigation_template' %}"><i class="fas fa-user"></i> Guest Control</a>
-{#                <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-calendar-alt"></i> Guest Control<i class="fas fa-angle-down rotate-icon"></i></a>#}
-{#                    <div class="collapsible-body">#}
-{#                        <ul class="list-unstyled">#}
-{#                            <li><a href="{% url 'guestcontrol:external_visit_tickets_list' pattern='my/open' %}" class="waves-effect">External Visit Tickets</a>#}
-{#                            </li>#}
-{#                            <li><a href="{% url 'guestcontrol:internal_visit_tickets_list' pattern='my/open' %}" class="waves-effect">Internal Visit Tickets</a>#}
-{#                            </li>#}
-{#                            <li><a href="{% url 'guestcontrol:visitor_entrance_card_create' %}" class="waves-effect">Visitor Entrance Card</a>#}
-{#                            </li>#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </li>#}
-                <!--/. Side navigation links -->
+                <!-- GUEST CONTROL -->
+                <li><a class="waves-effect" href="{% url 'guest_control:navigation_template' %}"><i class="fas fa-user"></i> Guest Control</a>
+                    {#                <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-calendar-alt"></i> Guest Control<i class="fas fa-angle-down rotate-icon"></i></a>#}
+                    {#                    <div class="collapsible-body">#}
+                    {#                        <ul class="list-unstyled">#}
+                    {#                            <li><a href="{% url 'guestcontrol:external_visit_tickets_list' pattern='my/open' %}" class="waves-effect">External Visit Tickets</a>#}
+                    {#                            </li>#}
+                    {#                            <li><a href="{% url 'guestcontrol:internal_visit_tickets_list' pattern='my/open' %}" class="waves-effect">Internal Visit Tickets</a>#}
+                    {#                            </li>#}
+                    {#                            <li><a href="{% url 'guestcontrol:visitor_entrance_card_create' %}" class="waves-effect">Visitor Entrance Card</a>#}
+                    {#                            </li>#}
+                    {#                        </ul>#}
+                    {#                    </div>#}
+                    {#                </li>#}
+                    <!--/. Side navigation links -->
             </ul>
             <div class="sidenav-bg rgba-blue-strong"></div>
         </li>

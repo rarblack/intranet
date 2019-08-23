@@ -467,7 +467,7 @@
             if (classType === AI) {
                 return types.push(AL);
             }
-            // For supplementary characters, a useful default is to treat characters in the range 10000..1FFFD as AL
+            // For supplementary characters, a useful entrance_card is to treat characters in the range 10000..1FFFD as AL
             // and characters in the ranges 20000..2FFFD and 30000..3FFFD as ID, until the implementation can be revised
             // to take into account the actual line breaking properties for these characters.
             if (classType === XX) {

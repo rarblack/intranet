@@ -346,7 +346,7 @@ $.extend( RowGroup.prototype, {
 
 
 /**
- * RowGroup default settings for initialisation
+ * RowGroup entrance_card settings for initialisation
  *
  * @namespace
  * @name RowGroup.defaults

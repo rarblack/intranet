@@ -77,7 +77,7 @@ var DataTable = $.fn.dataTable;
  * Initialisation of Responsive is performed by:
  *
  * * Adding the class `responsive` or `dt-responsive` to the table. In this case
- *   Responsive will automatically be initialised with the default configuration
+ *   Responsive will automatically be initialised with the entrance_card configuration
  *   options when the DataTable is created.
  * * Using the `responsive` option in the DataTables configuration options. This
  *   can also be used to specify the configuration options, or simply set to
@@ -525,7 +525,7 @@ $.extend( Responsive.prototype, {
 					return;
 				}
 				else if ( className === 'none' || col.never ) {
-					// Include in none (default) and no auto
+					// Include in none (entrance_card) and no auto
 					hasClass = true;
 					return;
 				}
@@ -995,7 +995,7 @@ $.extend( Responsive.prototype, {
 
 
 /**
- * List of default breakpoints. Each item in the array is an object with two
+ * List of entrance_card breakpoints. Each item in the array is an object with two
  * properties:
  *
  * * `name` - the breakpoint name.
@@ -1239,7 +1239,7 @@ Responsive.renderer = {
 };
 
 /**
- * Responsive default settings for initialisation
+ * Responsive entrance_card settings for initialisation
  *
  * @namespace
  * @name Responsive.defaults
@@ -1252,7 +1252,7 @@ Responsive.defaults = {
 	 * cannot be changed once an instance has been creased.
 	 *
 	 * @type {Array}
-	 * @default Takes the value of `Responsive.breakpoints`
+	 * @entrance_card Takes the value of `Responsive.breakpoints`
 	 */
 	breakpoints: Responsive.breakpoints,
 
@@ -1262,20 +1262,20 @@ Responsive.defaults = {
 	 * need to have breakpoint classes assigned to them
 	 *
 	 * @type {Boolean}
-	 * @default  `true`
+	 * @entrance_card  `true`
 	 */
 	auto: true,
 
 	/**
 	 * Details control. If given as a string value, the `type` property of the
-	 * default object is set to that value, and the defaults used for the rest
+	 * entrance_card object is set to that value, and the defaults used for the rest
 	 * of the object - this is for ease of implementation.
 	 *
 	 * The object consists of the following properties:
 	 *
 	 * * `display` - A function that is used to show and hide the hidden details
 	 * * `renderer` - function that is called for display of the child row data.
-	 *   The default function will show the data from the hidden columns
+	 *   The entrance_card function will show the data from the hidden columns
 	 * * `target` - Used as the selector for what objects to attach the child
 	 *   open / close to
 	 * * `type` - `false` to disable the details display, `inline` or `column`

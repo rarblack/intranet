@@ -401,7 +401,7 @@ var ColReorder = function( dt, opts )
 		 * DataTables settings object
 		 *  @property dt
 		 *  @type     Object
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"dt": null,
 
@@ -409,7 +409,7 @@ var ColReorder = function( dt, opts )
 		 * Enable flag
 		 *  @property dt
 		 *  @type     Object
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"enable": null,
 
@@ -417,7 +417,7 @@ var ColReorder = function( dt, opts )
 		 * Initialisation object used for this instance
 		 *  @property init
 		 *  @type     object
-		 *  @default  {}
+		 *  @entrance_card  {}
 		 */
 		"init": $.extend( true, {}, ColReorder.defaults, opts ),
 
@@ -425,7 +425,7 @@ var ColReorder = function( dt, opts )
 		 * Number of columns to fix (not allow to be reordered)
 		 *  @property fixed
 		 *  @type     int
-		 *  @default  0
+		 *  @entrance_card  0
 		 */
 		"fixed": 0,
 
@@ -433,7 +433,7 @@ var ColReorder = function( dt, opts )
 		 * Number of columns to fix counting from right (not allow to be reordered)
 		 *  @property fixedRight
 		 *  @type     int
-		 *  @default  0
+		 *  @entrance_card  0
 		 */
 		"fixedRight": 0,
 
@@ -441,7 +441,7 @@ var ColReorder = function( dt, opts )
 		 * Callback function for once the reorder has been done
 		 *  @property reorderCallback
 		 *  @type     function
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"reorderCallback": null,
 
@@ -465,7 +465,7 @@ var ColReorder = function( dt, opts )
 		 *   to: insert point
 		 *  @property aoTargets
 		 *  @type     array
-		 *  @default  []
+		 *  @entrance_card  []
 		 */
 		"aoTargets": []
 	};
@@ -479,7 +479,7 @@ var ColReorder = function( dt, opts )
 		 * Dragging element (the one the mouse is moving)
 		 *  @property drag
 		 *  @type     element
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"drag": null,
 
@@ -487,7 +487,7 @@ var ColReorder = function( dt, opts )
 		 * The insert cursor
 		 *  @property pointer
 		 *  @type     element
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"pointer": null
 	};
@@ -1232,7 +1232,7 @@ $.extend( ColReorder.prototype, {
 
 
 /**
- * ColReorder default settings for initialisation
+ * ColReorder entrance_card settings for initialisation
  *  @namespace
  *  @static
  */
@@ -1242,7 +1242,7 @@ ColReorder.defaults = {
 	 * on initialisation. If not specified then the order that the columns are
 	 * found to be in the HTML is the order used.
 	 *  @type array
-	 *  @default null
+	 *  @entrance_card null
 	 *  @static
 	 */
 	aiOrder: null,
@@ -1250,19 +1250,19 @@ ColReorder.defaults = {
 	/**
 	 * ColReorder enable on initialisation
 	 *  @type boolean
-	 *  @default true
+	 *  @entrance_card true
 	 *  @static
 	 */
 	bEnable: true,
 
 	/**
 	 * Redraw the table's column ordering as the end user draws the column
-	 * (`true`) or wait until the mouse is released (`false` - default). Note
+	 * (`true`) or wait until the mouse is released (`false` - entrance_card). Note
 	 * that this will perform a redraw on each reordering, which involves an
 	 * Ajax request each time if you are using server-side processing in
 	 * DataTables.
 	 *  @type boolean
-	 *  @default false
+	 *  @entrance_card false
 	 *  @static
 	 */
 	bRealtime: true,
@@ -1271,7 +1271,7 @@ ColReorder.defaults = {
 	 * Indicate how many columns should be fixed in position (counting from the
 	 * left). This will typically be 1 if used, but can be as high as you like.
 	 *  @type int
-	 *  @default 0
+	 *  @entrance_card 0
 	 *  @static
 	 */
 	iFixedColumnsLeft: 0,
@@ -1279,7 +1279,7 @@ ColReorder.defaults = {
 	/**
 	 * As `iFixedColumnsRight` but counting from the right.
 	 *  @type int
-	 *  @default 0
+	 *  @entrance_card 0
 	 *  @static
 	 */
 	iFixedColumnsRight: 0,
@@ -1288,7 +1288,7 @@ ColReorder.defaults = {
 	 * Callback function that is fired when columns are reordered. The `column-
 	 * reorder` event is preferred over this callback
 	 *  @type function():void
-	 *  @default null
+	 *  @entrance_card null
 	 *  @static
 	 */
 	fnReorderCallback: null
@@ -1304,7 +1304,7 @@ ColReorder.defaults = {
  * ColReorder version
  *  @constant  version
  *  @type      String
- *  @default   As code
+ *  @entrance_card   As code
  */
 ColReorder.version = "1.5.0";
 

@@ -4,7 +4,7 @@
 
 /**
  * @summary     KeyTable
- * @description Spreadsheet like keyboard navigation for DataTables
+ * @description Spreadsheet like keyboard _navigation_ for DataTables
  * @version     2.5.0
  * @file        dataTables.keyTable.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
@@ -116,7 +116,7 @@ $.extend( KeyTable.prototype, {
 	/**
 	 * Enable cell focus for the table
 	 *
-	 * @param  {string} state Can be `true`, `false` or `-string navigation-only`
+	 * @param  {string} state Can be `true`, `false` or `-string _navigation_-only`
 	 */
 	enable: function ( state )
 	{
@@ -454,7 +454,7 @@ $.extend( KeyTable.prototype, {
 
 
 	/**
-	 * Perform excel like navigation for Editor by triggering an edit on key
+	 * Perform excel like _navigation_ for Editor by triggering an edit on key
 	 * press
 	 *
 	 * @param  {integer} key Key code for the pressed key
@@ -505,9 +505,9 @@ $.extend( KeyTable.prototype, {
 					}
 
 					// Reduce the keys the Keys listens for
-					dt.keys.enable( hardEdit ? 'tab-only' : 'navigation-only' );
+					dt.keys.enable( hardEdit ? 'tab-only' : '_navigation_-only' );
 
-					// On blur of the navigation submit
+					// On blur of the _navigation_ submit
 					dt.on( 'key-blur.editor', function () {
 						if ( editor.displayed() ) {
 							editor.submit();
@@ -523,7 +523,7 @@ $.extend( KeyTable.prototype, {
 						that._focus( editCell, null, false );
 					} );
 
-					// Restore full key navigation on close
+					// Restore full key _navigation_ on close
 					editor.one( 'close', function () {
 						dt.keys.enable( true );
 						dt.off( 'key-blur.editor' );
@@ -717,7 +717,7 @@ $.extend( KeyTable.prototype, {
 		}
 
 		var enable = this.s.enable;
-		var navEnable = enable === true || enable === 'navigation-only';
+		var navEnable = enable === true || enable === '_navigation_-only';
 		if ( ! enable ) {
 			return;
 		}
@@ -1006,7 +1006,7 @@ $.extend( KeyTable.prototype, {
 
 
 /**
- * KeyTable default settings for initialisation
+ * KeyTable entrance_card settings for initialisation
  *
  * @namespace
  * @name KeyTable.defaults
@@ -1045,7 +1045,7 @@ KeyTable.defaults = {
 	columns: '', // all
 
 	/**
-	 * Editor instance to automatically perform Excel like navigation
+	 * Editor instance to automatically perform Excel like _navigation_
 	 * @type {Editor}
 	 */
 	editor: null,

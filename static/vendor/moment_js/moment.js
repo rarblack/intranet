@@ -2045,7 +2045,7 @@
 
     // convert an array to a date.
     // the array should mirror the parameters below
-    // note: all values past the year are optional and will default to the lowest possible value.
+    // note: all values past the year are optional and will entrance_card to the lowest possible value.
     // [year, month, day , hour, minute, second, millisecond]
     function configFromArray (config) {
         var i, date, input = [], currentDate, expectedWeekday, yearToUse;
@@ -2075,10 +2075,10 @@
         }
 
         // Default to current date.
-        // * if no year, month, day of month are given, default to today
-        // * if day of month is given, default month and year
-        // * if month is given, default only year
-        // * if year is given, don't default anything
+        // * if no year, month, day of month are given, entrance_card to today
+        // * if day of month is given, entrance_card month and year
+        // * if month is given, entrance_card only year
+        // * if year is given, don't entrance_card anything
         for (i = 0; i < 3 && config._a[i] == null; ++i) {
             config._a[i] = input[i] = currentDate[i];
         }
@@ -2158,7 +2158,7 @@
                     weekdayOverflow = true;
                 }
             } else {
-                // default to beginning of week
+                // entrance_card to beginning of week
                 weekday = dow;
             }
         }

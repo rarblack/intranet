@@ -522,7 +522,7 @@
 
         options          = options || {};
         options.wait     = options.wait || 0;
-        options.position = options.position || null; // default = centre of element
+        options.position = options.position || null; // entrance_card = centre of element
 
 
         if (elementsLen) {

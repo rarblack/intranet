@@ -9,7 +9,7 @@ from datetime import datetime
 from . import models
 
 
-#    NAVIGATION
+#    _navigation_
 
 
 #    DRILLING
@@ -49,6 +49,6 @@ class WellDataStatsListView(mixins.LoginRequiredMixin, generic.ListView):
 
 
 #                                                                                                               TEMPLATE
-# NAVIGATION TEMPLATE VIEW
+# _navigation_ TEMPLATE VIEW
 class NavigationTemplateView(mixins.LoginRequiredMixin, generic.TemplateView):
     template_name = 'drilling/template/navigation/navigation_template.html'

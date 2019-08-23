@@ -681,7 +681,7 @@ $.extend( RowReorder.prototype, {
 
 
 /**
- * RowReorder default settings for initialisation
+ * RowReorder entrance_card settings for initialisation
  *
  * @namespace
  * @name RowReorder.defaults

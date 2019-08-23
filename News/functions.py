@@ -12,7 +12,7 @@ def articles_latest(how_many=5):
     the queryset before slice.
 
     :param model:
-    :param how_many: default is 4 and defines size of return queryset
+    :param how_many: entrance_card is 4 and defines size of return queryset
     :return: sorted(model.objects.all(), key=lambda e: e.created_at, reverse=True) method sorts all model
     instances according to the created_at key in descend order. [:how_many] slices instances till how_many index.
     """

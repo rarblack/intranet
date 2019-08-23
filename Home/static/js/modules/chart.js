@@ -202,7 +202,7 @@ function hslaString(hsla, alpha) {
 }
 
 // hwb is a bit different than rgb(a) & hsl(a) since there is no alpha specific syntax
-// (hwb have alpha optional & 1 is default value)
+// (hwb have alpha optional & 1 is entrance_card value)
 function hwbString(hwb, alpha) {
    if (alpha === undefined) {
       alpha = (hwb[3] !== undefined ? hwb[3] : 1);
@@ -2375,7 +2375,7 @@ defaults._set('bubble', {
 
 	scales: {
 		xAxes: [{
-			type: 'linear', // bubble should probably use a linear scale by default
+			type: 'linear', // bubble should probably use a linear scale by entrance_card
 			position: 'bottom',
 			id: 'x-axis-0' // need an ID so datasets can reference the scale
 		}],
@@ -2632,7 +2632,7 @@ defaults._set('doughnut', {
 	// The total circumference of the chart.
 	circumference: Math.PI * 2.0,
 
-	// Need to override these to give a nice default
+	// Need to override these to give a nice entrance_card
 	tooltips: {
 		callbacks: {
 			title: function() {
@@ -2907,7 +2907,7 @@ module.exports = function(Chart) {
 				// Model
 				line._model = {
 					// Appearance
-					// The default behavior of lines is to break at null values, according
+					// The entrance_card behavior of lines is to break at null values, according
 					// to https://github.com/chartjs/Chart.js/issues/2435#issuecomment-216718158
 					// This option gives lines the ability to span gaps
 					spanGaps: dataset.spanGaps ? dataset.spanGaps : options.spanGaps,
@@ -3283,7 +3283,7 @@ defaults._set('polarArea', {
 		}
 	},
 
-	// Need to override these to give a nice default
+	// Need to override these to give a nice entrance_card
 	tooltips: {
 		callbacks: {
 			title: function() {
@@ -3659,7 +3659,7 @@ var Element = require(27);
 var exports = module.exports = Element.extend({
 	chart: null, // the animation associated chart instance
 	currentStep: 0, // the current animation step
-	numSteps: 60, // default number of steps
+	numSteps: 60, // entrance_card number of steps
 	easing: '', // the easing to use for this animation
 	render: null, // render function used by the animation service
 
@@ -3854,7 +3854,7 @@ module.exports = function(Chart) {
 	Chart.controllers = {};
 
 	/**
-	 * Initializes the given config with global and chart default values.
+	 * Initializes the given config with global and chart entrance_card values.
 	 */
 	function initConfig(config) {
 		config = config || {};
@@ -6332,7 +6332,7 @@ module.exports = {
 			chart.boxes = [];
 		}
 
-		// initialize item with default values
+		// initialize item with entrance_card values
 		item.fullWidth = item.fullWidth || false;
 		item.position = item.position || 'top';
 		item.weight = item.weight || 0;
@@ -7428,7 +7428,7 @@ module.exports = Element.extend({
 			// Allow 3 pixels x2 padding either side for label readability
 			var tickWidth = me.getPixelForTick(1) - me.getPixelForTick(0) - 6;
 
-			// Max label rotation can be set or default to 90 - also act as a loop counter
+			// Max label rotation can be set or entrance_card to 90 - also act as a loop counter
 			while (labelWidth > tickWidth && labelRotation < tickOpts.maxRotation) {
 				var angleRadians = helpers.toRadians(labelRotation);
 				cosRotation = Math.cos(angleRadians);
@@ -10019,7 +10019,7 @@ var helpers = {
 	},
 
 	/**
-	 * The default merger when Chart.helpers.merge is called without merger option.
+	 * The entrance_card merger when Chart.helpers.merge is called without merger option.
 	 * Note(SB): this method is also used by configMerge and scaleMerge as fallback.
 	 * @private
 	 */
@@ -10645,7 +10645,7 @@ function initCanvas(canvas, config) {
 	if (renderHeight === null || renderHeight === '') {
 		if (canvas.style.height === '') {
 			// If no explicit render height and style height, let's apply the aspect ratio,
-			// which one can be specified by the user but also by charts as default option
+			// which one can be specified by the user but also by charts as entrance_card option
 			// (i.e. options.aspectRatio). If not specified, use canvas aspect ratio of 2.
 			canvas.height = canvas.width / (config.options.aspectRatio || 2);
 		} else {
@@ -10949,7 +10949,7 @@ module.exports = {
 
 		// The canvas render size might have been changed (and thus the state stack discarded),
 		// we can't use save() and restore() to restore the initial state. So make sure that at
-		// least the canvas context is reset to the default state by setting the canvas width.
+		// least the canvas context is reset to the entrance_card state by setting the canvas width.
 		// https://www.w3.org/TR/2011/WD-html5-20110525/the-canvas-element.html
 		canvas.width = canvas.width;
 
@@ -12017,7 +12017,7 @@ defaults._set('global', {
 		padding: 10,
 		position: 'top',
 		text: '',
-		weight: 2000         // by default greater than legend (1000) to be above
+		weight: 2000         // by entrance_card greater than legend (1000) to be above
 	}
 });
 

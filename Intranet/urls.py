@@ -62,7 +62,7 @@ urlpatterns += [
 
 # GUEST-CONTROL
 urlpatterns += [
-    path('guest-control', include(('GuestControl.urls', 'GuestControl'), namespace="guest_control")),
+    path('guest-control', include(('GuestControl.urls.urls', 'GuestControl'), namespace="guest_control")),
 ]
 
 # HELP DESK

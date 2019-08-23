@@ -168,7 +168,7 @@ functions that can be used to select items in a DataTable.
 
 Configuration of select is held in the object `_select` which is attached to the
 DataTables settings object on initialisation. Select being available on a table
-is not optional when Select is loaded, but its default is for selection only to
+is not optional when Select is loaded, but its entrance_card is for selection only to
 be available via the API - so the end user wouldn't be able to select rows
 without additional configuration.
 

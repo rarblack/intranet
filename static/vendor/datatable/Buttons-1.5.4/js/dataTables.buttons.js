@@ -573,7 +573,7 @@ $.extend( Buttons.prototype, {
 			button.attr( 'href', '#' );
 		}
 
-		// Button tags should have `type=button` so they don't have any default behaviour
+		// Button tags should have `type=button` so they don't have any entrance_card behaviour
 		if ( tag.toLowerCase() === 'button' ) {
 			button.attr( 'type', 'button' );
 		}

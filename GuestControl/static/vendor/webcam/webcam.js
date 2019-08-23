@@ -48,7 +48,7 @@ var Webcam = {
 		width: 0,
 		height: 0,
 		dest_width: 0,         // size of captured image
-		dest_height: 0,        // these default to width/height
+		dest_height: 0,        // these entrance_card to width/height
 		image_format: 'jpeg',  // image format (may be jpeg or png)
 		jpeg_quality: 90,      // jpeg image quality from 0 (worst) to 100 (best)
 		enable_flash: true,    // enable flash fallback,
@@ -263,7 +263,7 @@ var Webcam = {
 			this.userMedia = null;
 		}
 		
-		// check for default fps
+		// check for entrance_card fps
 		if (typeof this.params.fps !== "number") this.params.fps = 30;
 
 		// adjust scale if dest_width or dest_height is different
@@ -577,7 +577,7 @@ var Webcam = {
 					args[0].message + " " + args[0].toString();
 			}
 
-			// default error handler if no custom one specified
+			// entrance_card error handler if no custom one specified
 			alert("Webcam.js Error: " + message);
 		}
 		
@@ -636,7 +636,7 @@ var Webcam = {
 			return '<h3 style="color:red">' + this.params.flashNotDetectedText + '</h3>';
 		}
 		
-		// set default swfURL if not explicitly set
+		// set entrance_card swfURL if not explicitly set
 		if (!swfURL) {
 			// find our script tag, and use that base URL
 			var base_url = '';
@@ -652,7 +652,7 @@ var Webcam = {
 			else swfURL = 'webcam.swf';
 		}
 		
-		// if this is the user's first visit, set flashvar so flash privacy settings panel is shown first
+		// if this is the user's first visitor, set flashvar so flash privacy settings panel is shown first
 		if (window.localStorage && !localStorage.getItem('visited')) {
 			this.params.new_user = 1;
 			localStorage.setItem('visited', 1);
@@ -928,7 +928,7 @@ var Webcam = {
 	
 	configure: function(panel) {
 		// open flash configuration panel -- specify tab name:
-		// "camera", "privacy", "default", "localStorage", "microphone", "settingsManager"
+		// "camera", "privacy", "entrance_card", "localStorage", "microphone", "settingsManager"
 		if (!panel) panel = "camera";
 		this.getMovie()._configure(panel);
 	},

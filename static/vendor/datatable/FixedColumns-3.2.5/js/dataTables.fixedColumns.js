@@ -114,14 +114,14 @@ var FixedColumns = function ( dt, init ) {
 		/**
 		 * DataTables settings objects
 		 *  @type     object
-		 *  @default  Obtained from DataTables instance
+		 *  @entrance_card  Obtained from DataTables instance
 		 */
 		"dt": dtSettings,
 
 		/**
 		 * Number of columns in the DataTable - stored for quick access
 		 *  @type     int
-		 *  @default  Obtained from DataTables instance
+		 *  @entrance_card  Obtained from DataTables instance
 		 */
 		"iTableColumns": dtSettings.aoColumns.length,
 
@@ -129,7 +129,7 @@ var FixedColumns = function ( dt, init ) {
 		 * Original outer widths of the columns as rendered by DataTables - used to calculate
 		 * the FixedColumns grid bounding box
 		 *  @type     array.<int>
-		 *  @default  []
+		 *  @entrance_card  []
 		 */
 		"aiOuterWidths": [],
 
@@ -137,7 +137,7 @@ var FixedColumns = function ( dt, init ) {
 		 * Original inner widths of the columns as rendered by DataTables - used to apply widths
 		 * to the columns
 		 *  @type     array.<int>
-		 *  @default  []
+		 *  @entrance_card  []
 		 */
 		"aiInnerWidths": [],
 
@@ -160,28 +160,28 @@ var FixedColumns = function ( dt, init ) {
 		/**
 		 * DataTables scrolling element
 		 *  @type     node
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"scroller": null,
 
 		/**
 		 * DataTables header table
 		 *  @type     node
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"header": null,
 
 		/**
 		 * DataTables body table
 		 *  @type     node
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"body": null,
 
 		/**
 		 * DataTables footer table
 		 *  @type     node
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"footer": null,
 
@@ -193,7 +193,7 @@ var FixedColumns = function ( dt, init ) {
 			/**
 			 * Grid wrapper. This is the container element for the 3x3 grid
 			 *  @type     node
-			 *  @default  null
+			 *  @entrance_card  null
 			 */
 			"wrapper": null,
 
@@ -202,7 +202,7 @@ var FixedColumns = function ( dt, init ) {
 			 * component in the display grid (making up the main table - i.e.
 			 * not the fixed columns).
 			 *  @type     node
-			 *  @default  null
+			 *  @entrance_card  null
 			 */
 			"dt": null,
 
@@ -242,21 +242,21 @@ var FixedColumns = function ( dt, init ) {
 				/**
 				 * Cloned header table
 				 *  @type     node
-				 *  @default  null
+				 *  @entrance_card  null
 				 */
 				"header": null,
 
 				/**
 				 * Cloned body table
 				 *  @type     node
-				 *  @default  null
+				 *  @entrance_card  null
 				 */
 				"body": null,
 
 				/**
 				 * Cloned footer table
 				 *  @type     node
-				 *  @default  null
+				 *  @entrance_card  null
 				 */
 				"footer": null
 			},
@@ -269,21 +269,21 @@ var FixedColumns = function ( dt, init ) {
 				/**
 				 * Cloned header table
 				 *  @type     node
-				 *  @default  null
+				 *  @entrance_card  null
 				 */
 				"header": null,
 
 				/**
 				 * Cloned body table
 				 *  @type     node
-				 *  @default  null
+				 *  @entrance_card  null
 				 */
 				"body": null,
 
 				/**
 				 * Cloned footer table
 				 *  @type     node
-				 *  @default  null
+				 *  @entrance_card  null
 				 */
 				"footer": null
 			}
@@ -1438,7 +1438,7 @@ $.extend( FixedColumns.prototype , {
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /**
- * FixedColumns default settings for initialisation
+ * FixedColumns entrance_card settings for initialisation
  *  @name FixedColumns.defaults
  *  @namespace
  *  @static
@@ -1447,7 +1447,7 @@ FixedColumns.defaults = /** @lends FixedColumns.defaults */{
 	/**
 	 * Number of left hand columns to fix in position
 	 *  @type     int
-	 *  @default  1
+	 *  @entrance_card  1
 	 *  @static
 	 *  @example
 	 *      var  = $('#example').dataTable( {
@@ -1462,7 +1462,7 @@ FixedColumns.defaults = /** @lends FixedColumns.defaults */{
 	/**
 	 * Number of right hand columns to fix in position
 	 *  @type     int
-	 *  @default  0
+	 *  @entrance_card  0
 	 *  @static
 	 *  @example
 	 *      var table = $('#example').dataTable( {
@@ -1477,7 +1477,7 @@ FixedColumns.defaults = /** @lends FixedColumns.defaults */{
 	/**
 	 * Draw callback function which is called when FixedColumns has redrawn the fixed assets
 	 *  @type     function(object, object):void
-	 *  @default  null
+	 *  @entrance_card  null
 	 *  @static
 	 *  @example
 	 *      var table = $('#example').dataTable( {
@@ -1498,7 +1498,7 @@ FixedColumns.defaults = /** @lends FixedColumns.defaults */{
 	 * cached to be used again (fnRecalculateHeight can be used to force recalculation), or
 	 * "auto" when height matching is performed on every draw (slowest but must accurate)
 	 *  @type     string
-	 *  @default  semiauto
+	 *  @entrance_card  semiauto
 	 *  @static
 	 *  @example
 	 *      var table = $('#example').dataTable( {
@@ -1522,7 +1522,7 @@ FixedColumns.defaults = /** @lends FixedColumns.defaults */{
  * FixedColumns version
  *  @name      FixedColumns.version
  *  @type      String
- *  @default   See code
+ *  @entrance_card   See code
  *  @static
  */
 FixedColumns.version = "3.2.5";

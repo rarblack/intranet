@@ -1,7 +1,7 @@
 'use strict';
 
 (function ($) {
-  $('.input-default-wrapper').on('change', '.input-default-js', function (e) {
+  $('.input-entrance_card-wrapper').on('change', '.input-entrance_card-js', function (e) {
 
     var $this = $(e.target),
         $label = $this.next('label'),

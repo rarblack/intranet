@@ -149,13 +149,13 @@ ZeroClipboard_TableTools.Client.prototype = {
 	ready: false, // whether movie is ready to receive events or not
 	movie: null, // reference to movie object
 	clipText: '', // text to copy to clipboard
-	fileName: '', // default file save name
+	fileName: '', // entrance_card file save name
 	action: 'copy', // action to perform
-	handCursorEnabled: true, // whether to show hand cursor, or default pointer cursor
+	handCursorEnabled: true, // whether to show hand cursor, or entrance_card pointer cursor
 	cssEffects: true, // enable CSS mouse effects on dom container
 	handlers: null, // user event handlers
 	sized: false,
-	sheetName: '', // default sheet name for excel export
+	sheetName: '', // entrance_card sheet name for excel export
 
 	glue: function(elem, title) {
 		// glue to DOM element
@@ -337,7 +337,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 	},
 
 	setHandCursor: function(enabled) {
-		// enable hand cursor (true), or default arrow cursor (false)
+		// enable hand cursor (true), or entrance_card arrow cursor (false)
 		this.handCursorEnabled = enabled;
 		if (this.ready) {
 			this.movie.setHandCursor(enabled);
@@ -1079,7 +1079,7 @@ var _excelSpecials = [
  * DataTables options and methods
  */
 
-// Set the default SWF path
+// Set the entrance_card SWF path
 DataTable.Buttons.swfPath = '//cdn.datatables.net/buttons/'+DataTable.Buttons.version+'/swf/flashExport.swf';
 
 // Method to allow Flash buttons to be resized when made visible - as they are

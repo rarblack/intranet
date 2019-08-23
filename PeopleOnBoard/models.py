@@ -77,7 +77,7 @@ class Company(models.Model):
 
 
 # class Log(models.Model):
-#     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular Log')
+#     id = models.UUIDField(primary_key=True, entrance_card=uuid.uuid4, help_text='Unique ID for this particular Log')
 #     employee_instance = models.ForeignKey(EmployeeInstance, on_delete=models.CASCADE, null=True, verbose_name='Employee Instance')
 #     employee_instance_id = models.UUIDField(editable=False, null=True, blank=True, verbose_name='Related instance id')
 #     creator = models.CharField(max_length=30, editable=False, null=True, blank=True, verbose_name="Who created")
@@ -85,7 +85,7 @@ class Company(models.Model):
 #     editor = models.CharField(max_length=30, editable=False, null=True, blank=True, verbose_name="Who edited")
 #     edit_time = models.DateTimeField(editable=False, null=True, blank=True)
 #     is_changed = models.BooleanField(editable=False, verbose_name='is changed',)
-#     is_terminated = models.BooleanField(default=False, verbose_name='is terminated')
+#     is_terminated = models.BooleanField(entrance_card=False, verbose_name='is terminated')
 #
 #     def __str__(self):
 #         return '{0} {1}'.format(self.employee_instance.id, self.is_terminated)

@@ -121,7 +121,7 @@ var Scroller = function ( dt, opts ) {
 		/**
 		 * DataTables settings object
 		 *  @type     object
-		 *  @default  Passed in as first parameter to constructor
+		 *  @entrance_card  Passed in as first parameter to constructor
 		 */
 		"dt": dtApi.settings()[0],
 
@@ -134,14 +134,14 @@ var Scroller = function ( dt, opts ) {
 		/**
 		 * Pixel location of the top of the drawn table in the viewport
 		 *  @type     int
-		 *  @default  0
+		 *  @entrance_card  0
 		 */
 		"tableTop": 0,
 
 		/**
 		 * Pixel location of the bottom of the drawn table in the viewport
 		 *  @type     int
-		 *  @default  0
+		 *  @entrance_card  0
 		 */
 		"tableBottom": 0,
 
@@ -149,7 +149,7 @@ var Scroller = function ( dt, opts ) {
 		 * Pixel location of the boundary for when the next data set should be loaded and drawn
 		 * when scrolling up the way.
 		 *  @type     int
-		 *  @default  0
+		 *  @entrance_card  0
 		 *  @private
 		 */
 		"redrawTop": 0,
@@ -159,7 +159,7 @@ var Scroller = function ( dt, opts ) {
 		 * when scrolling down the way. Note that this is actually calculated as the offset from
 		 * the top.
 		 *  @type     int
-		 *  @default  0
+		 *  @entrance_card  0
 		 *  @private
 		 */
 		"redrawBottom": 0,
@@ -167,14 +167,14 @@ var Scroller = function ( dt, opts ) {
 		/**
 		 * Auto row height or not indicator
 		 *  @type     bool
-		 *  @default  0
+		 *  @entrance_card  0
 		 */
 		"autoHeight": true,
 
 		/**
 		 * Number of rows calculated as visible in the visible viewport
 		 *  @type     int
-		 *  @default  0
+		 *  @entrance_card  0
 		 */
 		"viewportRows": 0,
 
@@ -183,7 +183,7 @@ var Scroller = function ( dt, opts ) {
 		 * and when the user scrolls the viewport in order to stop the cookie set taking too much
 		 * CPU!
 		 *  @type     int
-		 *  @default  0
+		 *  @entrance_card  0
 		 */
 		"stateTO": null,
 
@@ -191,7 +191,7 @@ var Scroller = function ( dt, opts ) {
 		 * setTimeout reference for the redraw, used when server-side processing is enabled in the
 		 * DataTables in order to prevent DoSing the server
 		 *  @type     int
-		 *  @default  null
+		 *  @entrance_card  null
 		 */
 		"drawTO": null,
 
@@ -204,14 +204,14 @@ var Scroller = function ( dt, opts ) {
 			/**
 			 * Height of rows in the table
 			 *  @type     int
-			 *  @default  0
+			 *  @entrance_card  0
 			 */
 			row: null,
 
 			/**
 			 * Pixel height of the viewport
 			 *  @type     int
-			 *  @default  0
+			 *  @entrance_card  0
 			 */
 			viewport: null
 		},
@@ -1141,7 +1141,7 @@ $.extend( Scroller.prototype, {
 
 
 /**
- * Scroller default settings for initialisation
+ * Scroller entrance_card settings for initialisation
  *  @namespace
  *  @name Scroller.defaults
  *  @static
@@ -1152,7 +1152,7 @@ Scroller.defaults = /** @lends Scroller.defaults */{
 	 * useful when debugging Scroller or if just curious as to what it is doing, but should
 	 * be turned off for production.
 	 *  @type     bool
-	 *  @default  false
+	 *  @entrance_card  false
 	 *  @static
 	 *  @example
 	 *    var oTable = $('#example').dataTable( {
@@ -1170,7 +1170,7 @@ Scroller.defaults = /** @lends Scroller.defaults */{
 	 * Scroller will attempt to automatically calculate the height of rows for it's internal
 	 * calculations. However the height that is used can be overridden using this parameter.
 	 *  @type     int|string
-	 *  @default  auto
+	 *  @entrance_card  auto
 	 *  @static
 	 *  @example
 	 *    var oTable = $('#example').dataTable( {
@@ -1189,7 +1189,7 @@ Scroller.defaults = /** @lends Scroller.defaults */{
 	 * the scrolling to finish before requesting more data from the server. This prevents
 	 * you from DoSing your own server! The wait time can be configured by this parameter.
 	 *  @type     int
-	 *  @default  200
+	 *  @entrance_card  200
 	 *  @static
 	 *  @example
 	 *    var oTable = $('#example').dataTable( {
@@ -1214,7 +1214,7 @@ Scroller.defaults = /** @lends Scroller.defaults */{
 	 * of rows after the current viewport. Adjusting this value can be useful for ensuring
 	 * smooth scrolling based on your data set.
 	 *  @type     int
-	 *  @default  7
+	 *  @entrance_card  7
 	 *  @static
 	 *  @example
 	 *    var oTable = $('#example').dataTable( {
@@ -1234,9 +1234,9 @@ Scroller.defaults = /** @lends Scroller.defaults */{
 	 * allow the data to look continuous to a user scrolling through the data). If given as 0
 	 * then the table will be redrawn whenever the viewport is scrolled, while 1 would not
 	 * redraw the table until the currently loaded data has all been shown. You will want
-	 * something in the middle - the default factor of 0.5 is usually suitable.
+	 * something in the middle - the entrance_card factor of 0.5 is usually suitable.
 	 *  @type     float
-	 *  @default  0.5
+	 *  @entrance_card  0.5
 	 *  @static
 	 *  @example
 	 *    var oTable = $('#example').dataTable( {
@@ -1254,7 +1254,7 @@ Scroller.defaults = /** @lends Scroller.defaults */{
 	 * Show (or not) the loading element in the background of the table. Note that you should
 	 * include the dataTables.scroller.css file for this to be displayed correctly.
 	 *  @type     boolean
-	 *  @default  false
+	 *  @entrance_card  false
 	 *  @static
 	 *  @example
 	 *    var oTable = $('#example').dataTable( {
@@ -1280,7 +1280,7 @@ Scroller.oDefaults = Scroller.defaults;
 /**
  * Scroller version
  *  @type      String
- *  @default   See code
+ *  @entrance_card   See code
  *  @name      Scroller.version
  *  @static
  */

@@ -17,5 +17,5 @@ urlpatterns += [
 
 #                                                                                                               TEMPLATE
 urlpatterns += [
-    re_path(r'/drilling/navigation[/]?$', views.NavigationTemplateView.as_view(), name='drilling_navigation_template')
+    re_path(r'/drilling/_navigation_[/]?$', views.NavigationTemplateView.as_view(), name='drilling_navigation_template')
 ]

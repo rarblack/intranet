@@ -1260,7 +1260,7 @@ bars:
       - list
       - menu
       - nav
-      - navigation
+      - _navigation_
       - ol
       - reorder
       - settings
@@ -4363,7 +4363,7 @@ compass:
       - directory
       - location
       - menu
-      - navigation
+      - _navigation_
       - safari
       - travel
   styles:
@@ -5311,7 +5311,7 @@ directions:
   search:
     terms:
       - map
-      - navigation
+      - _navigation_
       - sign
       - turn
   styles:
@@ -5887,7 +5887,7 @@ ellipsis-h:
       - list
       - menu
       - nav
-      - navigation
+      - _navigation_
       - ol
       - reorder
       - settings
@@ -5909,7 +5909,7 @@ ellipsis-v:
       - list
       - menu
       - nav
-      - navigation
+      - _navigation_
       - ol
       - reorder
       - settings
@@ -10917,7 +10917,7 @@ location-arrow:
       - direction
       - gps
       - map
-      - navigation
+      - _navigation_
       - place
   styles:
     - solid
@@ -11167,7 +11167,7 @@ map:
       - localize
       - location
       - map
-      - navigation
+      - _navigation_
       - paper
       - pin
       - place
@@ -11193,7 +11193,7 @@ map-marked:
       - localize
       - location
       - map
-      - navigation
+      - _navigation_
       - paper
       - pin
       - place
@@ -11218,7 +11218,7 @@ map-marked-alt:
       - localize
       - location
       - map
-      - navigation
+      - _navigation_
       - paper
       - pin
       - place
@@ -11244,7 +11244,7 @@ map-marker:
       - localize
       - location
       - map
-      - navigation
+      - _navigation_
       - paper
       - pin
       - place
@@ -11269,7 +11269,7 @@ map-marker-alt:
       - localize
       - location
       - map
-      - navigation
+      - _navigation_
       - paper
       - pin
       - place
@@ -11298,7 +11298,7 @@ map-pin:
       - location
       - map
       - marker
-      - navigation
+      - _navigation_
       - pin
       - place
       - position
@@ -14480,7 +14480,7 @@ route:
   search:
     terms:
       - directions
-      - navigation
+      - _navigation_
       - travel
   styles:
     - solid
@@ -16531,7 +16531,7 @@ street-view:
       - directions
       - location
       - map
-      - navigation
+      - _navigation_
   styles:
     - solid
   unicode: f21d

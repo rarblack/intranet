@@ -136,7 +136,7 @@ var Tooltip = function () {
 
     _initialiseProps.call(this);
 
-    // apply user options over default ones
+    // apply user options over entrance_card ones
     options = _extends({}, DEFAULT_OPTIONS, options);
 
     reference.jquery && (reference = reference[0]);

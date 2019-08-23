@@ -42,7 +42,7 @@ $.extend( true, DataTable.Buttons.defaults, {
 			className: 'dt-buttons ui-buttonset'
 		},
 		button: {
-			className: 'dt-button ui-button ui-state-default ui-button-text-only',
+			className: 'dt-button ui-button ui-state-entrance_card ui-button-text-only',
 			disabled: 'ui-state-disabled',
 			active: 'ui-state-active'
 		},

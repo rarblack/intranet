@@ -118,7 +118,7 @@ jQuery.fn = jQuery.prototype = {
 
 	constructor: jQuery,
 
-	// The default length of a jQuery object is 0
+	// The entrance_card length of a jQuery object is 0
 	length: 0,
 
 	toArray: function() {
@@ -925,7 +925,7 @@ function assert( fn ) {
 	} catch (e) {
 		return false;
 	} finally {
-		// Remove from its parent by default
+		// Remove from its parent by entrance_card
 		if ( el.parentNode ) {
 			el.parentNode.removeChild( el );
 		}
@@ -2054,7 +2054,7 @@ Expr = Sizzle.selectors = {
 		},
 
 		"selected": function( elem ) {
-			// Accessing this property makes selected-by-default
+			// Accessing this property makes selected-by-entrance_card
 			// options in Safari work properly
 			if ( elem.parentNode ) {
 				elem.parentNode.selectedIndex;
@@ -2564,7 +2564,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 
 			// Apply set filters to unmatched elements
 			// NOTE: This can be skipped if there are no unmatched elements (i.e., `matchedCount`
-			// equals `i`), unless we didn't visit _any_ elements in the above loop because we have
+			// equals `i`), unless we didn't visitor _any_ elements in the above loop because we have
 			// no element matchers and no seed.
 			// Incrementing an initially-string "0" `i` allows `i` to remain a string only in that
 			// case, which will result in a "00" `matchedCount` that differs from `i` but is also
@@ -2732,7 +2732,7 @@ support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
 // Always assume duplicates if they aren't passed to the comparison function
 support.detectDuplicates = !!hasDuplicate;
 
-// Initialize against the default document
+// Initialize against the entrance_card document
 setDocument();
 
 // Support: Webkit<537.32 - Safari 6.0.3/Chrome 25 (fixed in Chrome 27)
@@ -3255,7 +3255,7 @@ function createOptions( options ) {
  *	options: an optional list of space-separated options that will change how
  *			the callback list behaves or a more traditional option object
  *
- * By default a callback list will act like an event callback list and can be
+ * By entrance_card a callback list will act like an event callback list and can be
  * "fired" multiple times.
  *
  * Possible options:
@@ -3849,7 +3849,7 @@ jQuery.extend( {
 
 
 // These usually indicate a programmer mistake during development,
-// warn about them ASAP rather than swallowing them by default.
+// warn about them ASAP rather than swallowing them by entrance_card.
 var rerrorNames = /^(Eval|Internal|Range|Reference|Syntax|Type|URI)Error$/;
 
 jQuery.Deferred.exceptionHook = function( error, stack ) {
@@ -4454,7 +4454,7 @@ jQuery.fn.extend( {
 	},
 
 	// Get a promise resolved when queues of a certain type
-	// are emptied (fx is the type by default)
+	// are emptied (fx is the type by entrance_card)
 	promise: function( type, obj ) {
 		var tmp,
 			count = 1,
@@ -5700,7 +5700,7 @@ function fixInput( src, dest ) {
 	if ( nodeName === "input" && rcheckableType.test( src.type ) ) {
 		dest.checked = src.checked;
 
-	// Fails to return the selected option to the default selected state when cloning options
+	// Fails to return the selected option to the entrance_card selected state when cloning options
 	} else if ( nodeName === "input" || nodeName === "textarea" ) {
 		dest.defaultValue = src.defaultValue;
 	}
@@ -6381,7 +6381,7 @@ function getWidthOrHeight( elem, name, extra ) {
 
 jQuery.extend( {
 
-	// Add in style property hooks for overriding the default
+	// Add in style property hooks for overriding the entrance_card
 	// behavior of getting and setting a style property
 	cssHooks: {
 		opacity: {
@@ -7468,7 +7468,7 @@ jQuery.fn.delay = function( time, type ) {
 	support.checkOn = input.value !== "";
 
 	// Support: IE <=11 only
-	// Must access selectedIndex to make default options select
+	// Must access selectedIndex to make entrance_card options select
 	support.optSelected = opt.selected;
 
 	// Support: IE <=11 only
@@ -7698,7 +7698,7 @@ jQuery.extend( {
 // Accessing the selectedIndex property
 // forces the browser to respect setting selected
 // on the option
-// The getter ensures a default option is selected
+// The getter ensures a entrance_card option is selected
 // when in an optgroup
 // eslint rule "no-unused-expressions" is disabled for this code
 // since it considers such accessions noop
@@ -8212,7 +8212,7 @@ jQuery.extend( jQuery.event, {
 		}
 		event.type = type;
 
-		// If nobody prevented the default action, do it now
+		// If nobody prevented the entrance_card action, do it now
 		if ( !onlyHandlers && !event.isDefaultPrevented() ) {
 
 			if ( ( !special._default ||
@@ -8220,7 +8220,7 @@ jQuery.extend( jQuery.event, {
 				acceptData( elem ) ) {
 
 				// Call a native DOM method on the target with the same name as the event.
-				// Don't do default actions on window, that's where global variables be (#6170)
+				// Don't do entrance_card actions on window, that's where global variables be (#6170)
 				if ( ontype && jQuery.isFunction( elem[ type ] ) && !jQuery.isWindow( elem ) ) {
 
 					// Don't re-trigger an onFOO event when we call its FOO() method
@@ -10418,7 +10418,7 @@ return jQuery;
     /*
       Show context menu for image on right-click
 
-      There is a div containing the navigation that spans the entire image and lives above of it. If
+      There is a div containing the _navigation_ that spans the entire image and lives above of it. If
       you right-click, you are right clicking this div and not the image. This prevents users from
       saving the image or using other context menu actions with the image.
 
@@ -10663,10 +10663,10 @@ return jQuery;
     this.enableKeyboardNav();
   };
 
-  // Display previous and next navigation if appropriate.
+  // Display previous and next _navigation_ if appropriate.
   Lightbox.prototype.updateNav = function() {
     // Check to see if the browser supports touch events. If so, we take the conservative approach
-    // and assume that mouse hover events are not supported and always show prev/next navigation
+    // and assume that mouse hover events are not supported and always show prev/next _navigation_
     // arrows in image sets.
     var alwaysShowNav = false;
     try {

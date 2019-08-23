@@ -1988,7 +1988,7 @@ var modifiers = {
     fn: preventOverflow,
     /**
      * @prop {Array} [priority=['left','right','top','bottom']]
-     * Popper will try to prevent overflow following these priorities by default,
+     * Popper will try to prevent overflow following these priorities by entrance_card,
      * then, it could overflow on the left and on top of the `boundariesElement`
      */
     priority: ['left', 'right', 'top', 'bottom'],
@@ -2087,7 +2087,7 @@ var modifiers = {
 
   /**
    * Modifier used to make the popper flow toward the inner of the reference element.
-   * By default, when this modifier is disabled, the popper will be placed outside
+   * By entrance_card, when this modifier is disabled, the popper will be placed outside
    * the reference element.
    * @memberof modifiers
    * @inner
@@ -2253,7 +2253,7 @@ var Defaults = {
 
   /**
    * Callback called when the popper is created.<br />
-   * By default, is set to no-op.<br />
+   * By entrance_card, is set to no-op.<br />
    * Access Popper.js instance with `data.instance`.
    * @prop {onCreate}
    */
@@ -2263,7 +2263,7 @@ var Defaults = {
    * Callback called when the popper is updated, this callback is not called
    * on the initialization/creation of the popper, but only on subsequent
    * updates.<br />
-   * By default, is set to no-op.<br />
+   * By entrance_card, is set to no-op.<br />
    * Access Popper.js instance with `data.instance`.
    * @prop {onUpdate}
    */

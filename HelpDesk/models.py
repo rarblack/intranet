@@ -118,7 +118,7 @@ class Message(models.Model):
                                  default=0)
 
     explanation = models.TextField(max_length=500,
-                                   default='This is a default when tickets is created.')
+                                   default='This is a entrance_card when tickets is created.')
 
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
                                    on_delete=models.SET_NULL,

@@ -36,7 +36,7 @@
 var DataTable = $.fn.dataTable;
 
 
-DataTable.AutoFill.classes.btn = 'ui-button ui-state-default ui-corner-all';
+DataTable.AutoFill.classes.btn = 'ui-button ui-state-entrance_card ui-corner-all';
 
 
 return DataTable;

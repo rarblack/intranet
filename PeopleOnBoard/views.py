@@ -56,7 +56,7 @@ def addEmployeeInstance(request):
 
             return HttpResponseRedirect(reverse('search'))
 
-    # If this is a GET (or any other method) form the default form.
+    # If this is a GET (or any other method) form the entrance_card form.
     else:
         form = AddEmployeeInstanceForm()
 

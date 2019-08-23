@@ -388,13 +388,13 @@ function allocUnsafe (that, size) {
 }
 
 /**
- * Equivalent to Buffer(num), by default creates a non-zero-filled Buffer instance.
+ * Equivalent to Buffer(num), by entrance_card creates a non-zero-filled Buffer instance.
  * */
 Buffer.allocUnsafe = function (size) {
   return allocUnsafe(null, size)
 }
 /**
- * Equivalent to SlowBuffer(num), by default creates a non-zero-filled Buffer instance.
+ * Equivalent to SlowBuffer(num), by entrance_card creates a non-zero-filled Buffer instance.
  */
 Buffer.allocUnsafeSlow = function (size) {
   return allocUnsafe(null, size)
@@ -1790,7 +1790,7 @@ Buffer.prototype.fill = function fill (val, start, end, encoding) {
     val = val & 255
   }
 
-  // Invalid ranges are not set to a default, so can range check early.
+  // Invalid ranges are not set to a entrance_card, so can range check early.
   if (start < 0 || this.length < start || this.length < end) {
     throw new RangeError('Out of range index')
   }
@@ -3294,8 +3294,8 @@ EventEmitter.EventEmitter = EventEmitter;
 EventEmitter.prototype._events = undefined;
 EventEmitter.prototype._maxListeners = undefined;
 
-// By default EventEmitters will print a warning if more than 10 listeners are
-// added to it. This is a useful default which helps finding memory leaks.
+// By entrance_card EventEmitters will print a warning if more than 10 listeners are
+// added to it. This is a useful entrance_card which helps finding memory leaks.
 EventEmitter.defaultMaxListeners = 10;
 
 // Obviously not all Emitters should be limited to 10. This function allows
@@ -3964,7 +3964,7 @@ var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) 
   var index = 0;
   var length, step, iterator, result;
   if (typeof iterFn != 'function') throw TypeError(iterable + ' is not iterable!');
-  // fast case for arrays with default iterator
+  // fast case for arrays with entrance_card iterator
   if (isArrayIter(iterFn)) for (length = toLength(iterable.length); length > index; index++) {
     result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
     if (result === BREAK || result === RETURN) return result;
@@ -4115,7 +4115,7 @@ function splitWords(text, noWrap) {
 
 function copyStyle(source, destination) {
 	destination = destination || {};
-	source = source || {}; //TODO: default style
+	source = source || {}; //TODO: entrance_card style
 
 	for (var key in source) {
 		if (key != 'text' && source.hasOwnProperty(key)) {
@@ -4694,7 +4694,7 @@ function WritableState(options, stream) {
   var noDecode = options.decodeStrings === false;
   this.decodeStrings = !noDecode;
 
-  // Crypto is kind of old and crusty.  Historically, its default string
+  // Crypto is kind of old and crusty.  Historically, its entrance_card string
   // encoding is 'binary' so we have to make this configurable.
   // Everything else in the universe uses 'utf8', though.
   this.defaultEncoding = options.defaultEncoding || 'utf8';
@@ -6183,7 +6183,7 @@ exports.format = function(f) {
 
 
 // Mark that a method should not be used.
-// Returns a modified function which warns once by default.
+// Returns a modified function which warns once by entrance_card.
 // If --no-deprecation is set, then it is a no-op.
 exports.deprecate = function(fn, msg) {
   // Allow for deprecating things in the process of starting up.
@@ -6246,7 +6246,7 @@ exports.debuglog = function(set) {
  */
 /* legacy: obj, showHidden, depth, colors*/
 function inspect(obj, opts) {
-  // default options
+  // entrance_card options
   var ctx = {
     seen: [],
     stylize: stylizeNoColor
@@ -6261,7 +6261,7 @@ function inspect(obj, opts) {
     // got an "options" object
     exports._extend(ctx, opts);
   }
-  // set default options
+  // set entrance_card options
   if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
   if (isUndefined(ctx.depth)) ctx.depth = 2;
   if (isUndefined(ctx.colors)) ctx.colors = false;
@@ -8041,7 +8041,7 @@ var isNull = __webpack_require__(0).isNull;
  * @constructor
  * @this {StyleContextStack}
  * @param {Object} named styles dictionary
- * @param {Object} optional default style definition
+ * @param {Object} optional entrance_card style definition
  */
 function StyleContextStack(styleDictionary, defaultStyle) {
 	this.defaultStyle = defaultStyle || {};
@@ -8758,7 +8758,7 @@ function ReadableState(options, stream) {
   // has it been destroyed
   this.destroyed = false;
 
-  // Crypto is kind of old and crusty.  Historically, its default string
+  // Crypto is kind of old and crusty.  Historically, its entrance_card string
   // encoding is 'binary' so we have to make this configurable.
   // Everything else in the universe uses 'utf8', though.
   this.defaultEncoding = options.defaultEncoding || 'utf8';
@@ -11296,7 +11296,7 @@ module.exports = function (iterator, fn, value, entries) {
 /* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// check on default Array iterator
+// check on entrance_card Array iterator
 var Iterators = __webpack_require__(23);
 var ITERATOR = __webpack_require__(4)('iterator');
 var ArrayProto = Array.prototype;
@@ -13126,9 +13126,9 @@ function PdfPrinter(fontDescriptors) {
  *
  * @param {Object} docDefinition document definition
  * @param {Object} docDefinition.content an array describing the pdf structure (for more information take a look at the examples in the /examples folder)
- * @param {Object} [docDefinition.defaultStyle] default (implicit) style definition
+ * @param {Object} [docDefinition.defaultStyle] entrance_card (implicit) style definition
  * @param {Object} [docDefinition.styles] dictionary defining all styles which can be used in the document
- * @param {Object} [docDefinition.pageSize] page size (pdfkit units, A4 dimensions by default)
+ * @param {Object} [docDefinition.pageSize] page size (pdfkit units, A4 dimensions by entrance_card)
  * @param {Number} docDefinition.pageSize.width width
  * @param {Number} docDefinition.pageSize.height height
  * @param {Object} [docDefinition.pageMargins] page margins (pdfkit units)
@@ -13731,7 +13731,7 @@ LayoutBuilder.prototype.registerTableLayouts = function (tableLayouts) {
  * @param {Object} docStructure document-definition-object
  * @param {Object} fontProvider font provider
  * @param {Object} styleDictionary dictionary with style definitions
- * @param {Object} defaultStyle default style definition
+ * @param {Object} defaultStyle entrance_card style definition
  * @return {Array} an array of pages
  */
 LayoutBuilder.prototype.layoutDocument = function (docStructure, fontProvider, styleDictionary, defaultStyle, background, header, footer, images, watermark, pageBreakBeforeFct) {
@@ -17955,7 +17955,7 @@ module.exports = deprecate;
 
 /**
  * Mark that a method should not be used.
- * Returns a modified function which warns once by default.
+ * Returns a modified function which warns once by entrance_card.
  *
  * If `localStorage.noDeprecation = true` is set, then it is a no-op.
  *
@@ -18734,7 +18734,7 @@ var BS_BLOCK_DONE     = 2; /* block flush performed */
 var BS_FINISH_STARTED = 3; /* finish started, need only more output at next deflate */
 var BS_FINISH_DONE    = 4; /* finish done, accept no more input or output */
 
-var OS_CODE = 0x03; // Unix :) . Don't detect, use this default.
+var OS_CODE = 0x03; // Unix :) . Don't detect, use this entrance_card.
 
 function err(strm, errorCode) {
   strm.msg = msg[errorCode];
@@ -19686,7 +19686,7 @@ function lm_init(s) {
   /*** CLEAR_HASH(s); ***/
   zero(s.head); // Fill with NIL (= 0);
 
-  /* Set the default configuration parameters:
+  /* Set the entrance_card configuration parameters:
    */
   s.max_lazy_match = configuration_table[s.level].max_lazy;
   s.good_match = configuration_table[s.level].good_length;
@@ -19716,7 +19716,7 @@ function DeflateState() {
   this.method = Z_DEFLATED; /* can only be DEFLATED */
   this.last_flush = -1;   /* value of flush param for previous deflate call */
 
-  this.w_size = 0;  /* LZ77 window size (32K by default) */
+  this.w_size = 0;  /* LZ77 window size (32K by entrance_card) */
   this.w_bits = 0;  /* log2(w_size)  (8..16) */
   this.w_mask = 0;  /* w_size - 1 */
 
@@ -19994,7 +19994,7 @@ function deflateInit2(strm, level, method, windowBits, memLevel, strategy) {
   // Don't need mem init magic for JS.
   //s.high_water = 0;  /* nothing written to s->window yet */
 
-  s.lit_bufsize = 1 << (memLevel + 6); /* 16K elements by default */
+  s.lit_bufsize = 1 << (memLevel + 6); /* 16K elements by entrance_card */
 
   s.pending_buf_size = s.lit_bufsize * 4;
 
@@ -27003,7 +27003,7 @@ var CFFBlendOp = function () {
 }();
 
 var CFFPrivateDict = new CFFDict([
-// key       name                    type                                          default
+// key       name                    type                                          entrance_card
 [6, 'BlueValues', 'delta', null], [7, 'OtherBlues', 'delta', null], [8, 'FamilyBlues', 'delta', null], [9, 'FamilyOtherBlues', 'delta', null], [[12, 9], 'BlueScale', 'number', 0.039625], [[12, 10], 'BlueShift', 'number', 7], [[12, 11], 'BlueFuzz', 'number', 1], [10, 'StdHW', 'number', null], [11, 'StdVW', 'number', null], [[12, 12], 'StemSnapH', 'delta', null], [[12, 13], 'StemSnapV', 'delta', null], [[12, 14], 'ForceBold', 'boolean', false], [[12, 17], 'LanguageGroup', 'number', 0], [[12, 18], 'ExpansionFactor', 'number', 0.06], [[12, 19], 'initialRandomSeed', 'number', 0], [20, 'defaultWidthX', 'number', 0], [21, 'nominalWidthX', 'number', 0], [22, 'vsindex', 'number', 0], [23, 'blend', CFFBlendOp, null], [19, 'Subrs', new CFFPointer(new CFFIndex(), { type: 'local' }), null]]);
 
 // Automatically generated from Appendix A of the CFF specification; do
@@ -27502,11 +27502,11 @@ var CFFPrivateOp = function () {
 }();
 
 var FontDict = new CFFDict([
-// key       name                   type(s)                                 default
+// key       name                   type(s)                                 entrance_card
 [18, 'Private', new CFFPrivateOp(), null], [[12, 38], 'FontName', 'sid', null]]);
 
 var CFFTopDict = new CFFDict([
-// key       name                   type(s)                                 default
+// key       name                   type(s)                                 entrance_card
 [[12, 30], 'ROS', ['sid', 'sid', 'number'], null], [0, 'version', 'sid', null], [1, 'Notice', 'sid', null], [[12, 0], 'Copyright', 'sid', null], [2, 'FullName', 'sid', null], [3, 'FamilyName', 'sid', null], [4, 'Weight', 'sid', null], [[12, 1], 'isFixedPitch', 'boolean', false], [[12, 2], 'ItalicAngle', 'number', 0], [[12, 3], 'UnderlinePosition', 'number', -100], [[12, 4], 'UnderlineThickness', 'number', 50], [[12, 5], 'PaintType', 'number', 0], [[12, 6], 'CharstringType', 'number', 2], [[12, 7], 'FontMatrix', 'array', [0.001, 0, 0, 0.001, 0, 0]], [13, 'UniqueID', 'number', null], [5, 'FontBBox', 'array', [0, 0, 0, 0]], [[12, 8], 'StrokeWidth', 'number', 0], [14, 'XUID', 'array', null], [15, 'charset', CFFCharset, ISOAdobeCharset], [16, 'Encoding', CFFEncoding, StandardEncoding], [17, 'CharStrings', new CFFPointer(new CFFIndex()), null], [18, 'Private', new CFFPrivateOp(), null], [[12, 20], 'SyntheticBase', 'number', null], [[12, 21], 'PostScript', 'sid', null], [[12, 22], 'BaseFontName', 'sid', null], [[12, 23], 'BaseFontBlend', 'delta', null],
 
 // CID font specific
@@ -27973,7 +27973,7 @@ var BaseCoord = new r.VersionedStruct(r.uint16, {
 });
 
 var BaseValues = new r.Struct({
-  defaultIndex: r.uint16, // Index of default baseline for this script-same index in the BaseTagList
+  defaultIndex: r.uint16, // Index of entrance_card baseline for this script-same index in the BaseTagList
   baseCoordCount: r.uint16,
   baseCoords: new r.Array(new r.Pointer(r.uint16, BaseCoord), 'baseCoordCount')
 });
@@ -30522,7 +30522,7 @@ var GlyphRun = function () {
     this.script = script;
 
     /**
-     * The language requested for shaping, as passed in. If `null`, the default language for the
+     * The language requested for shaping, as passed in. If `null`, the entrance_card language for the
      * script was used.
      * @type {string}
      */
@@ -30530,7 +30530,7 @@ var GlyphRun = function () {
 
     /**
      * The direction requested for shaping, as passed in (either ltr or rtl).
-     * If `null`, the default direction of the script is used.
+     * If `null`, the entrance_card direction of the script is used.
      * @type {string}
      */
     this.direction = direction$$ || direction(script);
@@ -32408,7 +32408,7 @@ var DefaultShaper = (_temp = _class$4 = function () {
   };
 
   DefaultShaper.planFeatures = function planFeatures(plan) {
-    // Do nothing by default. Let subclasses override this.
+    // Do nothing by entrance_card. Let subclasses override this.
   };
 
   DefaultShaper.planPostprocessing = function planPostprocessing(plan, userFeatures) {
@@ -32688,7 +32688,7 @@ var OTProcessor = function () {
     // Setup variation substitutions
     this.variationsIndex = font._variationProcessor ? this.findVariationsIndex(font._variationProcessor.normalizedCoords) : -1;
 
-    // initialize to default script + language
+    // initialize to entrance_card script + language
     this.selectScript();
 
     // current context (set by applyFeatures)
@@ -38044,7 +38044,7 @@ var COLRGlyph = function (_Glyph) {
       }
 
       // if base glyph not found in COLR table,
-      // default to normal glyph from glyf or CFF
+      // entrance_card to normal glyph from glyf or CFF
       if (baseLayer == null) {
         var g = this._font._getBaseGlyph(this.id);
         var color = {
@@ -38107,7 +38107,7 @@ var GlyphVariationProcessor = function () {
   }
 
   GlyphVariationProcessor.prototype.normalizeCoords = function normalizeCoords(coords) {
-    // the default mapping is linear along each axis, in two segments:
+    // the entrance_card mapping is linear along each axis, in two segments:
     // from the minValue to defaultValue, and from defaultValue to maxValue.
     var normalized = [];
     for (var i = 0; i < this.font.fvar.axis.length; i++) {
@@ -39384,7 +39384,7 @@ var TTFFont = (_class = function () {
   /**
    * An array of all [OpenType feature tags](https://www.microsoft.com/typography/otspec/featuretags.htm)
    * (or mapped AAT tags) supported by the font.
-   * The features parameter is an array of OpenType feature tags to be applied in addition to the default set.
+   * The features parameter is an array of OpenType feature tags to be applied in addition to the entrance_card set.
    * If this is an AAT font, the OpenType feature tags are mapped to AAT features.
    *
    * @type {string[]}
@@ -39453,7 +39453,7 @@ var TTFFont = (_class = function () {
   /**
    * Returns an object describing the available variation axes
    * that this font supports. Keys are setting tags, and values
-   * contain the axis name, range, and default value.
+   * contain the axis name, range, and entrance_card value.
    *
    * @type {object}
    */
@@ -41066,9 +41066,9 @@ Utf16BEDecoder.prototype.end = function() {
 
 // == UTF-16 codec =============================================================
 // Decoder chooses automatically from UTF-16LE and UTF-16BE using BOM and space-based heuristic.
-// Defaults to UTF-16LE, as it's prevalent and default in Node.
+// Defaults to UTF-16LE, as it's prevalent and entrance_card in Node.
 // http://en.wikipedia.org/wiki/UTF-16 and http://encoding.spec.whatwg.org/#utf-16le
-// Decoder default can be changed: iconv.decode(buf, 'utf16', {defaultEncoding: 'utf-16be'});
+// Decoder entrance_card can be changed: iconv.decode(buf, 'utf16', {defaultEncoding: 'utf-16be'});
 
 // Encoder uses UTF-16LE and prepends BOM (which can be overridden with addBOM: false).
 
@@ -42251,7 +42251,7 @@ function DBCSCodec(codecOptions, iconv) {
     // `encodeTable` is array mapping from unicode char to encoded char. All its values are integers for performance.
     // Because it can be sparse, it is represented as array of buckets by 256 chars each. Bucket can be null.
     // Values: >=  0 -> it is a normal char. Write the value (if <=256 then 1 byte, if <=65536 then 2 bytes, etc.).
-    //         == UNASSIGNED -> no conversion found. Output a default char.
+    //         == UNASSIGNED -> no conversion found. Output a entrance_card char.
     //         <= SEQ_START  -> it's an index in encodeTableSeq, see below. The character starts a sequence.
     this.encodeTable = [];
     
@@ -42532,14 +42532,14 @@ DBCSEncoder.prototype.write = function(str) {
 
             } else if (resCode == undefined) { // Current character is not part of the sequence.
 
-                // Try default character for this sequence
+                // Try entrance_card character for this sequence
                 resCode = seqObj[DEF_CHAR];
                 if (resCode !== undefined) {
                     dbcsCode = resCode; // Found. Write it.
                     nextChar = uCode; // Current character will be written too in the next iteration.
 
                 } else {
-                    // TODO: What if we have no default? (resCode == undefined)
+                    // TODO: What if we have no entrance_card? (resCode == undefined)
                     // Then, we should write first char of the sequence as-is and try the rest recursively.
                     // Didn't do it for now because no encoding has this situation yet.
                     // Currently, just skip the sequence and write current char.
@@ -45362,7 +45362,7 @@ $export($export.S + $export.F * !__webpack_require__(262)(function (iter) { Arra
     var iterFn = getIterFn(O);
     var length, result, step, iterator;
     if (mapping) mapfn = ctx(mapfn, aLen > 2 ? arguments[2] : undefined, 2);
-    // if object isn't iterable or it's array with default iterator - use simple case
+    // if object isn't iterable or it's array with entrance_card iterator - use simple case
     if (iterFn != undefined && !(C == Array && isArrayIter(iterFn))) {
       for (iterator = iterFn.call(O), result = new C(); !(step = iterator.next()).done; index++) {
         createProperty(result, index, mapping ? call(iterator, mapfn, [step.value, index], true) : step.value);
@@ -46774,7 +46774,7 @@ $export($export.S, 'Number', { EPSILON: Math.pow(2, -52) });
 /**
  * Clones (copies) an Object using deep copying.
  *
- * This function supports circular references by default, but if you are certain
+ * This function supports circular references by entrance_card, but if you are certain
  * there are no circular references in your object, you can save some CPU time
  * by calling clone(obj, false).
  *
@@ -46783,7 +46783,7 @@ $export($export.S, 'Number', { EPSILON: Math.pow(2, -52) });
  *
  * @param `parent` - the object to be cloned
  * @param `circular` - set to true if the object to be cloned may contain
- *    circular references. (optional - true by default)
+ *    circular references. (optional - true by entrance_card)
  * @param `depth` - set to a number if the object is only to be cloned to
  *    a particular depth. (optional - defaults to Infinity)
  * @param `prototype` - sets the prototype to be used when cloning an object.
