@@ -1,0 +1,39 @@
+<!-- Posts -->
+<section>
+    <div class="container mt-5">
+        <!-- Grid row -->
+        <div class="row text-center">
+            {% if posts %}
+                {% for post in posts %}
+                    {% include 'news/post/list/blocks/includes/posts/post-card.html' %}
+                {% endfor %}
+            {% else %}
+                {% include 'news/post/list/blocks/includes/errors/no-posts.html' %}
+            {% endif %}
+        </div>
+        {% include 'news/post/list/blocks/includes/posts/pagination.html' %}
+
+    </div>
+</section>
+<!-- Posts -->
+
+<!-- Minibar -->
+<section>
+
+    <div class="container-fluid grey lighten-3 pb-3">
+        <div class="container">
+
+            <!-- Grid row -->
+            <div class="row justify-content-center">
+
+                {% include 'news/post/list/blocks/includes/minibar/latest-posts.html' %}
+
+                {% include 'news/post/list/blocks/includes/minibar/oldest-posts.html' %}
+
+            </div>
+            <!-- Grid row -->
+        </div>
+    </div>
+
+</section>
+<!-- Minibar -->

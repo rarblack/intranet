@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+
+    {{ post.title }} | News
+
+{% endblock %}
+
+{% block navbar %}
+
+   {% include 'base/blocks/navbar.html' %}
+
+{% endblock %}
+
+{% block main %}
+    {% include 'news/post/detail/blocks/blog.html' %}
+{% endblock %}
+
+{% block footer %}
+    {% include 'base/blocks/footer.html' %}
+{% endblock %}

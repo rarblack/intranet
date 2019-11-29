@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+
+    Posts | News
+
+{% endblock %}
+
+{% block navbar %}
+
+    {% include 'base/blocks/navbar.html' %}
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="animated fadeIn delay-1s" style="margin-top:100px!important;">
+        {% include 'news/post/list/blocks/posts.html' %}
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+
+    {% include 'base/blocks/footer.html' %}
+
+{% endblock %}
+

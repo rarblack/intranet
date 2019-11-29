@@ -1,0 +1,10 @@
+{% extends 'intranet/../../../../../Intranet/templates/base/base.html' %}
+
+{% block title %}
+    <title>Detail | Help Desk</title>
+{% endblock %}
+
+{% block content %}
+    <a class="back-to-nav" href="{% url 'document_library:navigation_template' %}"><i class="fas fa-arrow-circle-left fa-2x"></i></a>
+    {% include 'help_desk/help_desk/detail/ticket/blocks/ticket_block.html' %}
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- Featured news -->
+<div class="single-news mb-4">
+
+    <!-- Image -->
+    <div class="view overlay rounded z-depth-1-half mb-4">
+        <img class="img-fluid" src="{{ left_featured_post.0.image.url }}" alt="{{ left_featured_post.0.id }}'s post image">
+        <a>
+            <div class="mask rgba-white-slight"></div>
+        </a>
+    </div>
+
+    <!-- Data -->
+    <div class="news-data d-flex justify-content-between">
+        <a class="light-blue-text">
+            <h6 class="font-weight-bold">{{ left_featured_post.0.get_category_display }}</h6>
+        </a>
+        <p class="font-weight-bold dark-grey-text"><i class="fas fa-clock-o pr-2"></i> {{ left_featured_post.0.created_at | date:"M d, Y" }}</p>
+    </div>
+
+    <!-- Excerpt -->
+    <h3 class="font-weight-bold dark-grey-text mb-3"><a href="{% url 'news:detail_post' pk=left_featured_post.0.pk %}">{{ left_featured_post.0.title }}</a></h3>
+    <p class="dark-grey-text">{{ left_featured_post.0.abstract | slice:255 }}...</p>
+
+</div>
+<!-- Featured news -->

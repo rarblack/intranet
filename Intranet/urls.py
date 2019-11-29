@@ -1,79 +1,78 @@
-"""SocarProject URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more view please see:
-    https://docs.djangoproject.com/en/2.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
+
 import sys
-from . import views
+
+from .views.methods.home.views import render_home
+from .views.methods.welcome.views import render_welcome
+from .views.methods.common.views import render_home_or_welcome
+from .views.classes.dashboard.views import DashboardTemplateView
+
+urlpatterns = []
+
+#                                                                                                                SINGLES
+urlpatterns += [
+    path('', render_home_or_welcome),
+    path('welcome/', render_welcome, name='welcome'),
+    path('home/', render_home, name='home'),
+
+    path('intranet/dashboard/', DashboardTemplateView.as_view(), name='dashboard'),
+]
+
+
+#                                                                                                         3RD PARTY APPS
 
 # ADMIN
-urlpatterns = [
-    path('admin', admin.site.urls),
+urlpatterns += [
+    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
+    path('admin/', admin.site.urls),
 ]
 
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
 ]
 
-# HOME
+# CKEDITOR
 urlpatterns += [
-    re_path(r'^$|home', include(('Home.urls', 'Home'), namespace='home'))
+    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
-# DASHBOARD
-urlpatterns += [
-    path('dashboard', include(('Dashboard.urls', 'Dashboard'), namespace='dashboard'))
-]
 
-# DEPARTMENTS
-urlpatterns += [
-    path('department', include(('Departments.urls', 'Departments'), namespace='department'))
-]
-
-# DIRECTORY
-urlpatterns += [
-    path('directory', include(('Directory.urls', 'Directory'), namespace='directory'))
-]
-
-# DOCUMENT LIBRARY
-urlpatterns += [
-    path('document-library', include(('DocumentLibrary.urls', 'DocumentLibrary'), namespace='document_library'))
-]
+#
+# # DEPARTMENTS
+# urlpatterns += [
+#     path('department', include(('Departments.urls', 'Departments'), namespace='department'))
+# ]
+#
+# # DIRECTORY
+# urlpatterns += [
+#     path('directory', include(('Directory.urls', 'Directory'), namespace='directory'))
+# ]
+#
+# # DOCUMENT LIBRARY
+# urlpatterns += [
+#     path('document-library', include(('DocumentLibrary.urls', 'DocumentLibrary'), namespace='document_library'))
+# ]
 
 # # EVENTS
 # urlpatterns += [
 #     path('//events', include(('Events.urls', 'events'), namespace='events'))
 # ]
 
-# GUEST-CONTROL
-urlpatterns += [
-    path('guest-control', include(('GuestControl.urls.urls', 'GuestControl'), namespace="guest_control")),
-]
+# # GUEST-CONTROL
+# urlpatterns += [
+#     path('guest-control', include(('GuestControl.urls.urls', 'GuestControl'), namespace="guest_control")),
+# ]
+#
+# # HELP DESK
+# urlpatterns += [
+#     path('help-desk', include(('HelpDesk.urls', 'HelpDesk'), namespace='help_desk')),
+# ]
 
-# HELP DESK
-urlpatterns += [
-    path('help-desk', include(('HelpDesk.urls', 'HelpDesk'), namespace='help_desk')),
-]
-
-# HUMAN-RESOURCES
-urlpatterns += [
-    path('human-resources', include('HumanResources.urls')),
-]
 
 # LUNCHROOM
 # urlpatterns += [
@@ -87,7 +86,7 @@ urlpatterns += [
 
 # NEWS
 urlpatterns += [
-    path('news', include(('News.urls', 'News'), namespace='news')),
+    path('intranet/news/', include(('News.urls.urls', 'News'), namespace='news')),
 ]
 
 # PEOPLE ON BOARD
@@ -101,14 +100,14 @@ urlpatterns += [
 # ]
 
 # TRANSPORTATION
-urlpatterns += [
-    path('self-service/transportation', include(('Transportation.urls', 'Transportation'), namespace='transportation')),
-]
+# urlpatterns += [
+#     path('self-service/transportation', include(('Transportation.urls', 'Transportation'), namespace='transportation')),
+# ]
 
 # WAREHOUSE
-urlpatterns += [
-    path('self-service/warehouse', include(('Warehouse.urls', 'Warehouse'), namespace='warehouse')),
-]
+# urlpatterns += [
+#     path('self-service/warehouse', include(('Warehouse.urls', 'Warehouse'), namespace='warehouse')),
+# ]
 
 
 # EXTRA SETTINGS
@@ -134,5 +133,5 @@ if settings.DEBUG:
         path('__debug__/', include(debug_toolbar.urls))
     ]
 
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

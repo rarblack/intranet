@@ -1,0 +1,70 @@
+{##}
+{#<!-- Intro -->#}
+{#<section>#}
+{#    <div class="container-fluid">#}
+{##}
+{#        {% include 'news/post/detail/blocks/includes/intro/intro.html' %}#}
+{##}
+{#    </div>#}
+{#</section>#}
+{#<!-- Intro -->#}
+
+{% load static %}
+
+<!-- Blog section -->
+<section class="animated fadeIn delay-1s">
+
+    <div class="container-fluid mb-5">
+
+        <hr class="my-5">
+
+        <div class="container">
+
+            <!-- Blog -->
+            <div class="row mt-5 pt-3">
+
+                <!-- Main listing -->
+                <div class="col-lg-8 col-12 mt-1 mx-lg-4">
+
+                    <!-- Section: Blog v.3 -->
+                    <section class="pb-5 text-lg-left">
+
+                        <!-- Grid row -->
+                        <div class="row mb-4">
+
+                            <!-- Grid column -->
+                            <div class="col-md-12">
+
+                                {% include 'news/post/detail/blocks/includes/post/post.html' %}
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+                <div class="col-lg-3 col-12 mt-1">
+
+                    <!-- Sidebar -->
+                    {% include 'news/post/detail/blocks/includes/sidebar/about-author.html' %}
+
+
+                    <!-- Section: Featured posts -->
+                    <section class="section widget-content mt-5">
+
+                        {% include 'news/post/detail/blocks/includes/featured/author-posts.html' %}
+
+                    </section>
+                    <!--  Section: Featured posts -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

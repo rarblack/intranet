@@ -1,0 +1,21 @@
+<section class="section  mt-5 pb-3 text-center">
+
+    <nav>
+
+        <div class="nav nav-tabs blue" id="nav-tab" role="tablist">
+
+        </div>
+
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+
+        <div class="row justify-content-between tab-pane fade show active" id="nav-ivt" role="tabpanel" aria-labelledby="nav-home-tab">
+
+            <a href="{% url 'guest_control:internal_visitor_ticket_create' %}" class="btn btn-primary"><i class="fas fa-magic mr-1"></i> Create </a>
+            <a href="{% url 'guest_control:internal_visitor_tickets_list' pattern='open' %}" class="btn btn-primary"><i class="fas fa-list mr-1"></i> List </a>
+        </div>
+
+    </div>
+
+</section>

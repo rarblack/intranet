@@ -1,0 +1,34 @@
+
+
+<!-- Card -->
+<div class="card">
+
+    <!-- Card image -->
+    <div class="view overlay">
+        <img src="{{ post.image.url }}" class="img-fluid" alt="post image">
+        <a>
+            <div class="mask rgba-white-slight"></div>
+        </a>
+    </div>
+    <!-- Card image -->
+
+    <!-- Card content -->
+    <div class="card-body">
+        <!-- Title -->
+        <h4 class="card-title">
+            <strong>{{ post.title }}</strong>
+        </h4>
+        <hr>
+
+        {{ post.body |safe }}
+
+        <hr>
+
+    </div>
+    <!-- Card content -->
+
+
+    {% include 'news/post/detail/blocks/includes/post/tags.html' %}
+
+</div>
+<!-- Card -->

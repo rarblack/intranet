@@ -1,7 +1,7 @@
 from django.utils import timezone
 import uuid
 from django.contrib.auth.models import User
-from HumanResources.models import Profile
+from User.models import Profile
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save

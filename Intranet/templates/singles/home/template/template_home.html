@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    {% if user.is_authenticated %}
+        Home
+    {% else %}
+        Welcome
+    {% endif %}
+{% endblock %}
+
+{% block navbar %}
+    {% include 'singles/home/template/blocks/navbar.html' %}
+{% endblock %}
+
+{% block carousel %}
+    {% include 'base/blocks/carousel.html' %}
+{% endblock %}
+
+{% block main %}
+    {% include 'singles/home/template/blocks/newsfeeds.html' %}
+{% endblock %}
+
+{% block footer %}
+    {% include 'base/blocks/footer.html' %}
+{% endblock %}

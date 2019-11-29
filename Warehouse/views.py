@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.utils import timezone
 
-from HumanResources.models import Profile
+from User.models import Profile
 from News.functions import articles_latest, employees_closest_birthdays, employees_newest
 from .models import Ticket, TicketDetail, Activity, Message, Material
 from .choices import ACTIONS

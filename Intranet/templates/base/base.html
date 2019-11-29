@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+
+    <!-- Title -->
+    <title>
+        {% block title %}
+            {% if user.is_authenticated %}
+                Home
+            {% else %}
+                Welcome
+            {% endif %}
+        {% endblock %}
+    </title>
+
+    <!-- Title logo -->
+    <link type="image/png" rel="shortcut icon" href="{% static 'intranet/images/socar-logo/logo_alov.png' %}">
+
+    <!-- Library links -->
+    <link type="text/css" rel="stylesheet" href="{% static 'intranet/vendor/fontawesome-free-5.8.2-web/css/all.min.css' %}">
+
+    <link type="text/css" rel="stylesheet" href="{% static 'intranet/vendor/bootstrap/css/bootstrap.min.css' %}">
+
+    <link type="text/css" rel="stylesheet" href="{% static 'intranet/vendor/mdb/css/mdb.min.css' %}">
+
+    <!-- Datatable -->
+    {% if DATATABLES  %}
+        <link type="text/css" rel="stylesheet" href="{% static 'intranet/vendor/datatable/datatables.min.css' %}"/>
+    {% endif %}
+    <!-- DateTimePicker -->
+    <link type="text/css" rel="stylesheet" href="{% static 'intranet/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker-build.css' %}">
+
+    <!-- Custom CSS -->
+    {% if HOME or WELCOME %}
+        <link rel="stylesheet" href="{% static 'intranet/css/style.min.css' %}">
+    {% endif %}
+
+    {% if VISITORCARD %}
+        <link type="text/css" rel="stylesheet" href="{% static 'intranet/css/visitor_card.css' %}">
+    {% endif %}
+
+    <link rel="stylesheet" href="{% static 'intranet/css/custom.css' %}">
+    {% block css %}{% endblock %}
+</head>
+
+<body style="overflow-x:hidden;">
+
+<header>
+    {% block navbar %}
+    {% endblock %}
+
+    {% block sidebar %}
+    {% endblock %}
+</header>
+
+{% if WELCOME or HOME %}
+    {% block carousel %}
+    {% endblock %}
+{% endif %}
+
+<main role="main">
+    {% block main %}
+    {% endblock %}
+</main>
+
+<!-- Footer -->
+{% block footer %}
+{% endblock %}
+
+
+<!-- Library scripts -->
+
+<script type="text/javascript" src="{% static 'intranet/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'intranet/vendor/bootstrap/js/popper.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'intranet/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'intranet/vendor/mdb/js/mdb.min.js' %}"></script>
+
+{#<script type="text/javascript" src="{% static 'intranet/vendor/printJs/print.min.js' %}"></script>#}
+
+{% if DATATABLES %}
+    <script type="text/javascript" src="{% static 'intranet/vendor/datatable/datatables.min.js' %}"></script>
+{% endif %}
+
+<script type="text/javascript" src="{% static 'intranet/vendor/moment_js/moment.js' %}"></script>
+
+{% if DATATIMEPICKER %}
+    <script type="text/javascript" src="{% static 'intranet/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+{% endif %}
+
+{% block javascript %}{% endblock %}
+
+<script>
+
+    // SideNav Initialization
+    $(".button-collapse").sideNav();
+
+    new WOW().init();
+
+</script>
+
+
+
+</body>
+
+</html>

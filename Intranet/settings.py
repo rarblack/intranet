@@ -22,19 +22,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'yk$p9j!1rujffj1_^u)663#ycc3t657kodkmj7586dz+-d1i!1'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+#  SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# NOT TO ADD SLASH TO THE END OF URL
-APPEND_SLASH = False
+
+APPEND_SLASH = True
 
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'inet.socar-aqs.local', '192.168.0.10']
 
+
 INTERNAL_IP = ['127.0.0.1']
-# Application definition
+
 
 INSTALLED_APPS = [
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,34 +47,25 @@ INSTALLED_APPS = [
 
     # 3RD PARTY APPS
     'crispy_forms',
-    'debug_toolbar',
+    'ckeditor',
+    # 'debug_toolbar',
 
     # LOCAL APPS
-    'CommonItems.apps.CommonitemsConfig',
-    'Home.apps.HomeConfig',
-    'Dashboard.apps.DashboardConfig',
-    # 'PeopleOnBoard.apps.PeopleOnBoardConfig',
-    # 'Lunchroom.apps.LunchroomConfig',
-    'Transportation.apps.TransportationConfig',
-    'Warehouse.apps.WarehouseConfig',
-    'HumanResources.apps.HumanResourcesConfig',
-    'HelpDesk.apps.HelpdeskConfig',
-    'GuestControl.apps.GuestcontrolConfig',
-    # 'Settings.apps.SettingsConfig',
+    # 'CommonItems.apps.CommonItemsConfig',
+    # 'Transportation.apps.TransportationConfig',
+    # 'Warehouse.apps.WarehouseConfig',
+    'User.apps.UserConfig',
+    # 'HelpDesk.apps.HelpdeskConfig',
+    # 'GuestControl.apps.GuestcontrolConfig',
     'News.apps.NewsConfig',
-    'Directory.apps.DirectoryConfig',
-    'DocumentLibrary.apps.DocumentlibraryConfig',
-    # 'Events.apps.EventsConfig',
-    # 'Management.apps.ManagementConfig',
-    'Departments.apps.DepartmentsConfig'
+    # 'Directory.apps.DirectoryConfig',
+    # 'DocumentLibrary.apps.DocumentlibraryConfig',
+    # 'Departments.apps.DepartmentsConfig'
 
 
 ]
 
 MIDDLEWARE = [
-    # 3RD PARTY MIDDLEWARE
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # END
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,7 +82,7 @@ ROOT_URLCONF = 'Intranet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.normpath(os.path.join(BASE_DIR, 'templates'))],
+        'DIRS': [os.path.normpath(os.path.join(BASE_DIR, 'Intranet/templates'))],
         'APP_DIRS': True,
 
         'OPTIONS': {
@@ -105,8 +99,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Intranet.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+#                                                                                                               Database
+#                                                          https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -116,8 +110,8 @@ DATABASES = {
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+#                                                                                                    Password validation
+#                                           https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -135,8 +129,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
+#                                                                                                   Internationalization
+#                                                                     https://docs.djangoproject.com/en/2.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -149,56 +143,54 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+#                                                                                 Static files (CSS, JavaScript, Images)
+#                                                              https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/media/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'PeopleOnBoard/static/'),
-    os.path.join(BASE_DIR, 'Warehouse/static/'),
-    os.path.join(BASE_DIR, 'GuestControl/static/'),
-    os.path.join(BASE_DIR, 'HelpDesk/static/'),
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static')
 ]
 
-STATIC_ROOT = '/static/'
-STATIC_URL = '/static/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
-# CUSTOM SETTINGS
+#                                                                                                        CUSTOM SETTINGS
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'dashboard:dashboard_template'
-LOGOUT_REDIRECT_URL = 'dashboard:dashboard_template'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'welcome'
 
+# --------------------------------------------------------------------------------------------------- 3RD PARTY SETTINGS
 
-# 3RD PARTY SETTINGS
+#                                                                                                                 CRISPY
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# DEBUG TOOLBAR SETTINGS
-DEBUG_TOOLBAR_PANELS = [
-    'debug_toolbar.panels.versions.VersionsPanel',
-    'debug_toolbar.panels.timer.TimerPanel',
-    'debug_toolbar.panels.settings.SettingsPanel',
-    'debug_toolbar.panels.headers.HeadersPanel',
-    'debug_toolbar.panels.request.RequestPanel',
-    'debug_toolbar.panels.sql.SQLPanel',
-    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-    'debug_toolbar.panels.templates.TemplatesPanel',
-    'debug_toolbar.panels.cache.CachePanel',
-    'debug_toolbar.panels.signals.SignalsPanel',
-    'debug_toolbar.panels.logging.LoggingPanel',
-    'debug_toolbar.panels.redirects.RedirectsPanel',
-]
+#                                                                                                               CKEDITOR
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_UPLOAD_PATH = "uploads"
 
 
-def show_toolbar(request):
-    return True
+#                                                                                                    LDAP AUTHENTICATION
+AUTH_LDAP_SERVER_URI = "ldap://192.168.0.1:389"
 
-
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
-    'SHOW_TOOLBAR_CALLBACK': show_toolbar
+AUTH_LDAP_USER_ATTR_MAP = {
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail",
 }
 
-AUTH_USER_MODEL = 'HumanResources.CustomUser'
+AUTH_LDAP_USER_FLAGS_BY_GROUP = {
+    "is_active": "cn=active,ou=django,ou=groups,dc=example,dc=com",
+    "is_staff": "cn=staff,ou=django,ou=groups,dc=example,dc=com",
+    "is_superuser": "cn=superuser,ou=django,ou=groups,dc=example,dc=com",
+}
+
+AUTH_LDAP_FIND_GROUP_PERMS = True
+
+AUTH_LDAP_CACHE_TIMEOUT = 3600
+
+AUTHENTICATION_BACKENDS = (
+    "django_auth_ldap.backend.LDAPBackend",
+    "django.contrib.auth.backends.ModelBackend",
+)

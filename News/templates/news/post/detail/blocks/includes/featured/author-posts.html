@@ -1,0 +1,43 @@
+<!--  Card -->
+<div class="card card-body pb-0">
+    <p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
+        <strong>FEATURED POSTS</strong>
+    </p>
+    {% if author_recent_posts %}
+        {% for author_post in author_recent_posts %}
+            <div class="single-post">
+
+            <!-- Grid row -->
+            <div class="row mb-4">
+                <div class="col-5">
+
+                    <!-- Image -->
+                    <div class="view overlay">
+                        <img src="{{ author_post.image.url }}"
+                             class="img-fluid z-depth-1 rounded-0" alt="sample image">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Excerpt -->
+                <div class="col-7">
+                    <h6 class="mt-0 font-small">
+                        <a href="{% url 'news:detail_post' pk=author_post.pk %}">
+                            <strong>{{ author_post.title }}</strong>
+                        </a>
+                    </h6>
+
+                    <div class="post-data">
+                        <p class="font-small grey-text mb-0">
+                            <i class="far fa-clock-o"></i> {{ author_post.created_at | date:"M d, Y" }}</p>
+                    </div>
+                </div>
+                <!--  Excerpt -->
+            </div>
+            <!--  Grid row -->
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>
